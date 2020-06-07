@@ -1,0 +1,10 @@
+.hover:hover{
+    background: #ccc;
+    border-radius: 9999px;
+}
+.pointer{
+    cursor: pointer;
+}
+.wmaxc{
+    width: max-content;
+}
