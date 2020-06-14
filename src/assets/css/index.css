@@ -1,0 +1,17 @@
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "reuseble.css";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root{
+  display: flex;
+  height: 100%;
+}

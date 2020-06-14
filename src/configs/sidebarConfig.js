@@ -3,11 +3,11 @@ import profile from "../assets/icons/profile.svg";
 import orders from "../assets/icons/orders.svg";
 import findOrder from "../assets/icons/findOrder.svg";
 import todoList from "../assets/icons/todoList.svg";
-const size = 40;
+const size = 30;
 export const sidebarConfig = [
   {
     id: "profile",
-    title: "Профиль",
+    title: "Аккаунт",
     icon: <img width={size} src={profile} />,
     link: "/profile",
   },
@@ -17,6 +17,7 @@ export const sidebarConfig = [
     icon: <img width={size} src={orders} />,
     link: "/orders",
   },
+
   {
     id: "findOrder",
     title: "Найти заказ",

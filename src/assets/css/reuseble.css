@@ -1,10 +1,10 @@
 .hover:hover{
-    background: #ccc;
+    background: #ddd;
     border-radius: 9999px;
 }
 .pointer{
     cursor: pointer;
 }
-.wmaxc{
+.max-content{
     width: max-content;
 }
