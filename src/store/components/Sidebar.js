@@ -4,7 +4,7 @@ import logout from "../../assets/icons/logout.svg";
 import logo from "../../assets/icons/logo.svg";
 const Sidebar = () => {
   return (
-    <div className="d-flex h-100 flex-column justify-content-between">
+    <div className="d-flex h-100 flex-column justify-content-between position-fixed">
       <div>
         <img src={logo} alt="na|teste" className="m-3" />
         {sidebarConfig.map((item) => (
