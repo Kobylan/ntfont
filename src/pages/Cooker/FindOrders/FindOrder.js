@@ -24,7 +24,7 @@ const FindOrder = () => {
   }
 
   return (
-    <div className="middle-content ">
+    <div className="middle-content " style={{ height: "1000px" }}>
       <div>FILTER ELEMENT</div>
       <div className="">
         {
