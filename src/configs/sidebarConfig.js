@@ -6,28 +6,28 @@ import todoList from "../assets/icons/todoList.svg";
 const size = 30;
 export const sidebarConfig = [
   {
-    id: "profile",
+    id: "1",
     title: "Аккаунт",
-    icon: <img width={size} src={profile} />,
+    icon: <img width={size} src={profile} alt="Аккаунт" />,
     link: "/profile",
   },
   {
-    id: "orders",
+    id: "orde2rs",
     title: "Заказы",
-    icon: <img width={size} src={orders} />,
+    icon: <img width={size} src={orders} alt="Заказы" />,
     link: "/orders",
   },
 
   {
-    id: "findOrder",
+    id: "3",
     title: "Найти заказ",
-    icon: <img width={size} src={findOrder} />,
+    icon: <img width={size} src={findOrder} alt="Найти заказ" />,
     link: "/find-order",
   },
   {
-    id: "todoList",
+    id: "4",
     title: "Список дел",
-    icon: <img width={size} src={todoList} />,
+    icon: <img width={size} src={todoList} alt="Список дел" />,
     link: "/todo-list",
   },
 ];

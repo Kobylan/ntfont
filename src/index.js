@@ -6,14 +6,16 @@ import FindOrder from "./pages/Cooker/FindOrders/FindOrder";
 
 ReactDOM.render(
   <React.StrictMode>
-    <header className="d-flex w-25 align-items-end flex-column m-1">
+    <header>
       <Sidebar />
     </header>
-    <main className="d-flex w-75 flex-grow-1">
-      <div className=" flex-grow-1 w-50">
-        <FindOrder />
+    <main>
+      <div className="main-container">
+        <div className="main-content">
+          <FindOrder />
+          <div className="right-side">somecontent</div>
+        </div>
       </div>
-      <div className=" flex-grow-1">rightSidebar</div>
     </main>
   </React.StrictMode>,
   document.getElementById("root")

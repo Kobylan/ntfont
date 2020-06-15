@@ -5,20 +5,24 @@ import * as axios from "axios";
 const FindOrder = () => {
   const [orders, setOrders] = useState("loading");
 
-  useEffect(async () => {
-    const result = await axios.default(
-      "https://nateste.herokuapp.com/api/orders"
-    );
-    setOrders(result.data);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios("https://nateste.herokuapp.com/api/orders");
+      setOrders(result.data);
+    };
+    fetchData();
   }, []);
-  console.log(orders);
+
   return (
-    <div className="mt-5">
-      {orders === "loading"
-        ? "loading..."
-        : orders === []
-        ? "No orders"
-        : orders.map((order) => <Order order={order} />)}
+    <div className="middle-content ">
+      <div>FILTER ELEMENT</div>
+      <div className="">
+        {orders === "loading"
+          ? "loading..."
+          : orders === []
+          ? "No orders"
+          : orders.map((order, i) => <Order key={i} order={order} />)}
+      </div>
     </div>
   );
 };

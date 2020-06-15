@@ -1,17 +1,135 @@
 @import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "reuseble.css";
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
-html, body {
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+html,
+body {
   height: 100%;
   margin: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-#root{
+#root {
   display: flex;
   height: 100%;
+}
+
+/* LEFTSIDE: HEADER AND IN SIDE OF IT */ /* LEFTSIDE: HEADER AND IN SIDE OF IT */ /* LEFTSIDE: HEADER AND IN SIDE OF IT */
+header {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-end;
+}
+
+.left-side-container {
+  height: 100%;
+  width: 275px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.left-side-content {
+  height: 100%;
+  width: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: fixed;
+}
+/* SIDE_BAR CONTENT */ /* SIDE_BAR CONTENT */ /* SIDE_BAR CONTENT */ /* SIDE_BAR CONTENT */
+.logo {
+  padding: 10px;
+}
+
+.side-bar-item {
+  padding: 10px;
+}
+
+.side-bar-title {
+  padding-top: 2px;
+  font-size: 19px;
+  margin-left: 20px;
+  margin-right: 15px;
+  line-height: 1.3125;
+}
+@media screen and (max-width: 1265px) {
+  header {
+    flex-grow: 0;
+  }
+  .logo {
+    display: none;
+  }
+  .side-bar-title {
+    display: none;
+  }
+  .left-side-container {
+    width: 88px;
+  }
+  .left-side-content {
+    width: 88px;
+  }
+}
+/* MIDDLE+RIGHT: MAIN AND IN SIDE OF IT */ /* MIDDLE+RIGHT: MAIN AND IN SIDE OF IT */ /* MIDDLE+RIGHT: MAIN AND IN SIDE OF IT */
+main {
+  display: flex;
+  align-items: flex-start;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.main-container {
+  width: 990px;
+  display: flex;
+}
+.main-content {
+  display: flex;
+  align-items: stretch;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+/* MIDDLE */ /* MIDDLE */ /* MIDDLE */ /* MIDDLE */ /* MIDDLE */ /* MIDDLE */ /* MIDDLE */ /* MIDDLE */
+.middle-content {
+  min-width: 600px;
+}
+@media screen and (max-width: 1100px) {
+  .main-container {
+    width: 600px;
+  }
+}
+/* CARD ITEM */ /* CARD ITEM */ /* CARD ITEM */ /* CARD ITEM */ /* CARD ITEM */ /* CARD ITEM */
+.card-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.29), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  height: 150px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.card-button {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px;
+}
+/* RIGHT */ /* RIGHT */ /* RIGHT */ /* RIGHT */ /* RIGHT */ /* RIGHT */ /* RIGHT */ /* RIGHT */
+.right-side {
+  width: 350px;
+  height: 100%;
+  background-color: grey;
+}
+.right-side-content {
+}
+@media screen and (max-width: 1000px) {
+  .right-side {
+    width: 0px;
+    display: none;
+  }
 }
