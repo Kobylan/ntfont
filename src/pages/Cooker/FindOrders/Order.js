@@ -18,8 +18,8 @@ const Order = (props) => {
               width={30}
               className="rounded-circle border border-success "
               src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
-              alt="Adil"
-            ></img>
+              alt="Adil dalbaeb"
+            />
           </div>
           <div className="pt-1">{order.user.name}</div>
         </div>

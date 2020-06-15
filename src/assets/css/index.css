@@ -58,6 +58,7 @@ header {
   margin-right: 15px;
   line-height: 1.3125;
 }
+
 @media screen and (max-width: 1265px) {
   header {
     flex-grow: 0;

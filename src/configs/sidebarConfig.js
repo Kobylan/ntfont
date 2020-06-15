@@ -9,25 +9,25 @@ export const sidebarConfig = [
     id: "1",
     title: "Аккаунт",
     icon: <img width={size} src={profile} alt="Аккаунт" />,
-    link: "/profile",
+    path: "/profile",
   },
   {
     id: "orde2rs",
     title: "Заказы",
     icon: <img width={size} src={orders} alt="Заказы" />,
-    link: "/orders",
+    path: "/orders",
   },
 
   {
     id: "3",
     title: "Найти заказ",
     icon: <img width={size} src={findOrder} alt="Найти заказ" />,
-    link: "/find-order",
+    path: "/find-order",
   },
   {
     id: "4",
     title: "Список дел",
     icon: <img width={size} src={todoList} alt="Список дел" />,
-    link: "/todo-list",
+    path: "/todo-list",
   },
 ];

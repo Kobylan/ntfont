@@ -2,6 +2,7 @@ import React from "react";
 import { sidebarConfig } from "../../configs/sidebarConfig";
 import logout from "../../assets/icons/logout.svg";
 import logo from "../../assets/icons/logo.svg";
+import { history } from "../../history";
 const Sidebar = () => {
   return (
     <div className="left-side-container ">
@@ -12,24 +13,31 @@ const Sidebar = () => {
           </div>
           {sidebarConfig.map((item) => (
             <div
-              key={item.id}
-              className="side-bar-item d-flex align-items-start pointer hover "
+              className="side-bar-item"
+              onClick={() => history.push(item.path)}
             >
-              <div className="side-bar-icon">{item.icon}</div>
-              <div className="side-bar-title">{item.title}</div>
+              <div
+                key={item.id}
+                className="d-flex align-items-start pointer max-content hover p-1"
+              >
+                <div className="side-bar-icon">{item.icon}</div>
+                <div className="side-bar-title">{item.title}</div>
+              </div>
             </div>
           ))}
         </div>
-        <div className="d-flex align-items-center m-2 pointer hover max-content">
-          <div>
-            <img
-              src={logout}
-              width={30}
-              alt="Выйти"
-              className="side-bar-icon"
-            />
+        <div className="side-bar-item">
+          <div className="d-flex align-items-center pointer max-content hover p-1">
+            <div>
+              <img
+                src={logout}
+                width={30}
+                alt="Выйти"
+                className="side-bar-icon"
+              />
+            </div>
+            <div className="side-bar-title">Выйти</div>
           </div>
-          <div className="side-bar-title">Выйти</div>
         </div>
       </div>
     </div>
