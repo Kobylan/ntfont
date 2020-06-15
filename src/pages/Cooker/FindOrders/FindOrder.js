@@ -18,15 +18,15 @@ const FindOrder = () => {
   }, []);
   function fetchMoreListItems() {
     setTimeout(() => {
-      fetchData();
+      fetchData().then();
       setIsFetching(false);
-    }, 2000);
+    }, 3000);
   }
 
   return (
-    <div className="middle-content " style={{ height: "1000px" }}>
+    <div className="middle-content ">
       <div>FILTER ELEMENT</div>
-      <div className="">
+      <div>
         {
           (console.log(orders),
           orders === {} ? (
@@ -35,7 +35,7 @@ const FindOrder = () => {
             orders.map((order, i) => <Order key={i} order={order} />)
           ))
         }
-        {isFetching && "Fetching more list items..."}
+        {isFetching ? <Loading /> : null}
       </div>
     </div>
   );
