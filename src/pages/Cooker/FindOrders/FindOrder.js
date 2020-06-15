@@ -10,7 +10,7 @@ const FindOrder = () => {
 
   const fetchData = async () => {
     const result = await axios("https://nateste.herokuapp.com/api/orders");
-    setOrders((prevState) => Object.assign(prevState, result.data));
+    setOrders((prevState) => prevState.concat(result.data));
   };
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const FindOrder = () => {
     setTimeout(() => {
       fetchData();
       setIsFetching(false);
-    }, 5000);
+    }, 2000);
   }
 
   return (
@@ -29,7 +29,7 @@ const FindOrder = () => {
       <div className="">
         {
           (console.log(orders),
-          orders === [] ? (
+          orders === {} ? (
             <Loading />
           ) : (
             orders.map((order, i) => <Order key={i} order={order} />)
