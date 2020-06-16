@@ -1,41 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import Order from "./Order";
-import * as axios from "axios";
 import Loading from "../../../store/components/Loading";
-import useInfiniteScroll from "../../../store/components/useInfiniteScroll";
+import { useOrdersSearch } from "../../../store/hooks/useOrdersSearch";
 
 const FindOrder = () => {
-  const [orders, setOrders] = useState([]);
-  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
+  const [query, setQuery] = useState({
+    page_num: 1,
+    page_size: 1,
+    filter: {
+      price: [0, 1234567890],
+      weight: [],
+    },
+  });
+  const { loading, error, orders, hasMore } = useOrdersSearch(query);
 
-  const fetchData = async () => {
-    const result = await axios("https://nateste.herokuapp.com/api/orders");
-    setOrders((prevState) => prevState.concat(result.data));
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-  function fetchMoreListItems() {
-    setTimeout(() => {
-      fetchData().then();
-      setIsFetching(false);
-    }, 3000);
-  }
-
+  const observer = useRef();
+  const lastOrderElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setQuery({
+            ...query,
+            page_num: query.page_num + 1,
+          });
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore]
+  );
   return (
-    <div className="middle-content ">
+    <div className="middle-content pb-5">
       <div>FILTER ELEMENT</div>
       <div>
-        {
-          (console.log(orders),
-          orders === {} ? (
-            <Loading />
+        {orders.map((order, index) =>
+          order.user ? (
+            <div ref={lastOrderElementRef}>
+              <Order key={order.order_id} order={order} />
+            </div>
           ) : (
-            orders.map((order, i) => <Order key={i} order={order} />)
-          ))
-        }
-        {isFetching ? <Loading /> : null}
+            "Пока нет заказов"
+          )
+        )}
+        {loading && <Loading />}
+        {error && "Error"}
       </div>
     </div>
   );
