@@ -12,7 +12,7 @@ export const sidebarConfig = [
     path: "/profile",
   },
   {
-    id: "orde2rs",
+    id: "2",
     title: "Заказы",
     icon: <img width={size} src={orders} alt="Заказы" />,
     path: "/orders",

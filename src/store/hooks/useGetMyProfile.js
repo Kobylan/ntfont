@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const useOrdersSearch = (query) => {
+export const useGetMyProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [orders, setOrders] = useState([]);
-  const [hasMore, setHasMore] = useState(false);
+  const [profile, setProfile] = useState([]);
   useEffect(() => {
     setLoading(true);
     setError(false);
     let cancel;
-    console.log(query);
     axios({
       method: "GET",
-      url: "https://nateste.herokuapp.com/api/orders",
-      params: query,
+      url: "https://nateste.herokuapp.com/api/myprofile",
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
-        setOrders((prevOrders) => prevOrders.concat(res.data));
-        setHasMore(res.data.length > 0);
+        console.log(res.data);
+        setProfile(res.data);
         setLoading(false);
       })
       .catch((e) => {
@@ -28,6 +25,6 @@ export const useOrdersSearch = (query) => {
         setLoading(false);
       });
     return () => cancel();
-  }, [query]);
-  return { loading, error, orders, hasMore };
+  }, []);
+  return { loading, error, profile };
 };

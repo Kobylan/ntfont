@@ -6,11 +6,7 @@ import { useOrdersSearch } from "../../../store/hooks/useOrdersSearch";
 const FindOrder = () => {
   const [query, setQuery] = useState({
     page_num: 1,
-    page_size: 1,
-    filter: {
-      price: [0, 1234567890],
-      weight: [],
-    },
+    page_size: 10,
   });
   const { loading, error, orders, hasMore } = useOrdersSearch(query);
 
@@ -35,10 +31,10 @@ const FindOrder = () => {
     <div className="middle-content pb-5">
       <div>FILTER ELEMENT</div>
       <div>
-        {orders.map((order, index) =>
+        {orders.map((order) =>
           order.user ? (
-            <div ref={lastOrderElementRef}>
-              <Order key={order.order_id} order={order} />
+            <div ref={lastOrderElementRef} key={order.order_id}>
+              <Order order={order} />
             </div>
           ) : (
             "Пока нет заказов"

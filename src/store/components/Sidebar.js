@@ -13,13 +13,11 @@ const Sidebar = () => {
           </div>
           {sidebarConfig.map((item) => (
             <div
+              key={item.id}
               className="side-bar-item"
               onClick={() => history.push(item.path)}
             >
-              <div
-                key={item.id}
-                className="d-flex align-items-start pointer max-content hover p-1"
-              >
+              <div className="d-flex align-items-start pointer max-content hover p-1">
                 <div className="side-bar-icon">{item.icon}</div>
                 <div className="side-bar-title">{item.title}</div>
               </div>
