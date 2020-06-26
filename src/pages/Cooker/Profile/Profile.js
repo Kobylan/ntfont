@@ -3,6 +3,7 @@ import ProfileSocial from "./ProfileSocial";
 import { Reviews } from "./Reviews";
 import { Rating } from "./Rating";
 import { useGetMyProfile } from "../../../store/hooks/useGetMyProfile";
+import "../../../assets/css/profile.css";
 
 const testdata = [
   {
@@ -35,7 +36,7 @@ const Profile = () => {
           <div className="p-2">
             <img
               width={100}
-              className="rounded-circle border border-success "
+              className="rounded-circle"
               src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
               alt="Adil dalbaeb"
             />
@@ -44,7 +45,6 @@ const Profile = () => {
           <div className=" mt-4">
             <div className="d-flex">
               <div className="h4"> Adil Kairolla</div>
-              <Rating />
             </div>
             <div className="info h7">
               Пеку лучште торты в форме влагалищя 😋 Девушкам делаю скидку 😜

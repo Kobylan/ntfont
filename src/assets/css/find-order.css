@@ -1,0 +1,12 @@
+.card-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 3px;
+    height: 150px;
+    padding: 15px;
+    margin-bottom: 7px;
+}
+.card-button {
+    margin-bottom: 15px;
+}

@@ -3,8 +3,8 @@ import axios from "axios";
 
 export const Auth = () => {
   const [auth, setAuth] = useState({
-    number: "",
-    password: "",
+    number: "87077100499",
+    password: "nurislam",
   });
   return (
     <div>
@@ -22,16 +22,14 @@ export const Auth = () => {
       />
       <button
         onClick={(e) => {
-          axios({
-            method: "POST",
-            url: "https://nateste.herokuapp.com/api/login",
-            body: auth,
+          axios.post("https://nateste.herokuapp.com/api/login", {
+            number: auth.number,
+            password: auth.password,
           });
         }}
       >
-        qwe
+        Sign in
       </button>
-      "number": "87077100499", "password": "nurislam"
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Order from "./Order";
 import Loading from "../../../store/components/Loading";
 import { useOrdersSearch } from "../../../store/hooks/useOrdersSearch";
+import "../../../assets/css/find-order.css";
 
 const FindOrder = () => {
   const [query, setQuery] = useState({
