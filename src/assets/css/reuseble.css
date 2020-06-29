@@ -1,10 +1,10 @@
 .hover:hover {
   background: #405368;
   border-radius: 3px;
-  color: rgba(255,255,255, 1);
+  color: rgba(255, 255, 255, 1);
 }
-.active{
-  color: rgba(255,255,255,1) !important;
+.active {
+  color: rgba(255, 255, 255, 1) !important;
 }
 .pointer {
   cursor: pointer;
@@ -16,6 +16,6 @@
   min-width: 600px;
 }
 
-
-
-
+.br-3 {
+  border-radius: 3px;
+}
