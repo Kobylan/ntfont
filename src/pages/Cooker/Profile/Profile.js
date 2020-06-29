@@ -49,15 +49,14 @@ const testdata = [
     avatar:
       "https://i.pinimg.com/736x/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64--youtube.jpg",
     review:
-      "XTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
+      "SOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
   },
   {
     id: "1",
     name: "Adil Kairolla",
     rating: "4.5",
     avatar: "https://download-cs.net/steam/avatars/3412.jpg",
-    review:
-      "XTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
+    review: "meTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
   },
 ];
 
@@ -65,7 +64,7 @@ const Profile = () => {
   const { loading, error, profile } = useGetMyProfile();
   return (
     <div>
-      <div className="profile-card ">
+      <div className="profile-card br-3">
         <div className="d-flex flex-column ">
           <div className="p-2 d-flex">
             <div>
@@ -73,7 +72,7 @@ const Profile = () => {
                 width={120}
                 src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
                 alt="Adil genius"
-                className="profile-avatar shadow"
+                className="br-3 shadow"
               />
             </div>
             <div className="d-flex pl-3 pt-1   flex-column w-100">

@@ -63,8 +63,4 @@ main {
     height: 100%;
     display: none;
   }
-  html,
-  body {
-    margin: 1px;
-  }
 }
