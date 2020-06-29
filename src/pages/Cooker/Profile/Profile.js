@@ -10,20 +10,54 @@ const testdata = [
     id: "1",
     name: "Adil Kairolla",
     rating: "4.5",
-    review: "SOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
-  },
-  {
-    id: "2",
-    name: "Koba Gaziz",
-    rating: "4.5",
+    avatar:
+      "https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg",
     review:
-      "LOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEKLOLKEK",
+      "XTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
   },
   {
-    id: "3",
-    name: "Nurisam Askar",
+    id: "1",
+    name: "Adil Kairolla",
     rating: "4.5",
-    review: "SOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
+    avatar:
+      "https://www.meme-arsenal.com/memes/b5d2ec8e1ffa887b239fb66a8653dfe6.jpg",
+    review:
+      "XTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
+  },
+  {
+    id: "1",
+    name: "Adil Kairolla",
+    rating: "4.5",
+    avatar:
+      "https://avatars.mds.yandex.net/get-pdb/1705881/f8db19d4-c10e-4d27-83a3-db53d4f52430/s600",
+    review:
+      "XTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
+  },
+  {
+    id: "1",
+    name: "Adil Kairolla",
+    rating: "4.5",
+    avatar:
+      "https://i.pinimg.com/736x/4a/bc/c0/4abcc00427dbb86ee5da8270b52204f8.jpg",
+    review:
+      "XTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
+  },
+  {
+    id: "1",
+    name: "Adil Kairolla",
+    rating: "4.5",
+    avatar:
+      "https://i.pinimg.com/736x/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64--youtube.jpg",
+    review:
+      "XTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
+  },
+  {
+    id: "1",
+    name: "Adil Kairolla",
+    rating: "4.5",
+    avatar: "https://download-cs.net/steam/avatars/3412.jpg",
+    review:
+      "XTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXTSOmeTEXT",
   },
 ];
 
@@ -38,8 +72,8 @@ const Profile = () => {
               <img
                 width={120}
                 src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
-                alt="Adil dalbaeb"
-                className="profile-avatar"
+                alt="Adil genius"
+                className="profile-avatar shadow"
               />
             </div>
             <div className="d-flex pl-3 pt-1   flex-column w-100">
