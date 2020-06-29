@@ -39,6 +39,7 @@ const Profile = () => {
                 width={120}
                 src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
                 alt="Adil dalbaeb"
+                className="profile-avatar"
               />
             </div>
             <div className="d-flex pl-3 pt-1   flex-column w-100">
@@ -49,10 +50,10 @@ const Profile = () => {
               <div className="info h6">
                 Пеку лучште торты в форме влагалищя 😋 Девушкам делаю скидку 😜
               </div>
+              <ProfileSocial />
             </div>
           </div>
         </div>
-        <ProfileSocial />
       </div>
 
       <div className="text-light   h5 pt-3">Рейтинг пользователя</div>

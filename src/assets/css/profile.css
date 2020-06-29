@@ -12,6 +12,11 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.profile-avatar {
+  border-radius: 3px;
+}
+
 .review-card {
   margin-bottom: 20px;
   box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.29), 0px 4px 4px rgba(0, 0, 0, 0.25);
