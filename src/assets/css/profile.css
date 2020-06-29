@@ -1,26 +1,43 @@
-
 .profile-card {
-    padding-top: 10px;
-    max-width: 600px;
-    border-radius: 3px 3px 0px 0px;
-    background: rgba(250, 250, 250, 0.8) ;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  padding: 10px;
+  max-width: 600px;
+  border-radius: 3px;
+  background: rgba(250, 250, 250, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .profile-social {
-    max-width: 600px;
-    flex-basis: content;
-    display: flex;
-    justify-content: space-around;
-    background: rgba(250, 250, 250, 0.6) ;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 .review-card {
-    margin-top: 20px;
-    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.29), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    max-width: 600px;
-    height: auto;
-    border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.29), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  max-width: 600px;
+  height: auto;
+  border-radius: 5px;
+  background: rgba(250, 250, 250, 1);
+}
+/* RATING BAR */ /* RATING BAR */ /* RATING BAR */ /* RATING BAR */ /* RATING BAR */ /* RATING BAR */ /* RATING BAR */ /* RATING BAR */ /* RATING BAR */ /* RATING BAR */ /* RATING BAR */
+.profile-rating {
+  padding: 20px;
+  width: 100%;
+  background: rgba(250, 250, 250, 1);
+  border-radius: 3px;
+  margin-top: 5px;
+}
+.profile-rating-bar {
+  margin: 0 10px;
+  width: 90%;
+  height: 15px;
+  border-radius: 9px;
+  background: rgba(0, 0, 0, 0.1);
+}
+.profile-rating-bar-status {
+  border-radius: 9px;
+  width: 50%;
+  height: 100%;
+  background: #49a8d8;
 }

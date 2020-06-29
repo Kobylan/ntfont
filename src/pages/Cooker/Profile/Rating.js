@@ -2,10 +2,39 @@ import React from "react";
 
 export const Rating = (props) => {
   return (
-    <div style={{ width: "50px" }}>
-      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="100,10 40,198 190,78 10,78 160,198" />
-      </svg>
+    <div className="profile-rating">
+      <div>
+        <div className="h1">4,76</div>
+      </div>
+      <div>
+        <div className="d-flex pb-1 align-items-center">
+          <div>5</div>
+          <div className="profile-rating-bar">
+            <div className="profile-rating-bar-status"></div>
+          </div>
+          <div className="pl-1">21</div>
+        </div>
+        <div className="d-flex pb-1">
+          <div className="pr-1\">4</div>
+          <div className="profile-rating-bar"></div>
+          <div className="pl-1">3</div>
+        </div>
+        <div className="d-flex pb-1">
+          <div>3</div>
+          <div className="profile-rating-bar"></div>
+          <div className="pl-1">0</div>
+        </div>
+        <div className="d-flex pb-1">
+          <div>2</div>
+          <div className="profile-rating-bar"></div>
+          <div className="pl-1">1</div>
+        </div>
+        <div className="d-flex pb-1">
+          <div>1</div>
+          <div className="profile-rating-bar"></div>
+          <div className="pl-1">0</div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -45,7 +45,11 @@ main {
 }
 @media screen and (max-width: 1100px) {
   .main-container {
-    width: 600px;
+    min-width: 0px;
+    width: 100%;
+  }
+  .middle-content {
+    min-width: 0px;
   }
 }
 .right-side {
@@ -59,7 +63,8 @@ main {
     height: 100%;
     display: none;
   }
+  html,
+  body {
+    margin: 1px;
+  }
 }
-
-
-
