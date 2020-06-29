@@ -3,14 +3,15 @@ import React from "react";
 export const Rating = (props) => {
   return (
     <div className="profile-rating">
-      <div>
-        <div className="h1">4,76</div>
+      <div className="d-flex align-items-center">
+        <div className="h3 p-2">Средняя оценка:</div>
+        <div className="h1"> 4,76</div>
       </div>
       <div>
         <div className="d-flex pb-1 align-items-center">
           <div>5</div>
           <div className="profile-rating-bar">
-            <div className="profile-rating-bar-status"></div>
+            <div className="profile-rating-bar-status" />
           </div>
           <div className="pl-1">21</div>
         </div>

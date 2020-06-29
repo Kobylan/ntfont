@@ -26,8 +26,8 @@ const ProfileSocial = () => {
         (console.log(socialmediadata),
         socialmediadata.map((e) => (
           <img
-            width={30}
-            height={30}
+            width={35}
+            height={35}
             src={
               e.media === "instagram"
                 ? instagram
@@ -39,7 +39,7 @@ const ProfileSocial = () => {
             }
             alt="Аккаунт"
             onClick={() => window.open(e.link)}
-            className="pointer ml-2"
+            className="pointer ml-2 shadow-sm p-1 rounded"
           />
         )))
       }
