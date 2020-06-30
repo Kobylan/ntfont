@@ -8,6 +8,8 @@ import { Auth } from "./pages/Cooker/auth";
 const AppRouter = () => {
   const FindOrder = lazy(() => import("./pages/Cooker/FindOrders/FindOrder"));
   const Profile = lazy(() => import("./pages/Cooker/Profile/Profile"));
+  const Orders = lazy(() => import("./pages/Cooker/Orders/Orders"));
+  const Chat = lazy(() => import("./pages/Cooker/Orders/Chat/Chat"));
 
   return (
     <Router history={history}>
@@ -25,13 +27,17 @@ const AppRouter = () => {
                 <Route path={"/profile"}>
                   <Profile />
                 </Route>
+                <Route path={"/chat/:userID"}>
+                  <Chat />
+                </Route>
+                <Route path={"/orders"}>
+                  <Orders />
+                </Route>
                 <Route path={"/auth"}>
                   <Auth />
                 </Route>
               </Switch>
             </Suspense>
-            {/*<FindOrder />*/}
-            {/*<div className="right-side">somecontent</div>*/}
           </div>
           <div className="right-side-container">
             <div className="right-side-content">
