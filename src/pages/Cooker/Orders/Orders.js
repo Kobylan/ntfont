@@ -57,7 +57,7 @@ const Orders = () => {
     },
   ];
   return (
-    <div>
+    <div className="middle-content">
       <div className="card-title"> Мои заказы</div>
       {orders.map((order) => (
         <Order order={order} />
