@@ -166,8 +166,8 @@ const Chat = () => {
   ];
   const { userID } = useParams();
   return (
-    <div className="d-flex flex-column flex-grow-1 ">
-      <div>
+    <div className="d-flex flex-column flex-grow-1  chat-container ">
+      <div className="chat-back">
         <div
           className="card-title btn btn-secondary d-flex align-items-center max-content"
           onClick={() => history.push("/orders")}
@@ -177,17 +177,16 @@ const Chat = () => {
         </div>
       </div>
       <div className="chat-body d-flex flex-column justify-content-between">
-        <div>
-          <div className="chat-info flex-column">
-            <div className="chat-info-username">Adil</div>
-            <div className="chat-avatar"></div>
-          </div>
-          <div className="chat-message-content">
-            {messeges.map((message) => (
-              <Message message={message} />
-            ))}
-          </div>
+        <div className="chat-info flex-column">
+          <div className="chat-info-username">Adil</div>
+          <div className="chat-avatar"></div>
         </div>
+        <div className="chat-message-content">
+          {messeges.map((message) => (
+            <Message message={message} />
+          ))}
+        </div>
+
         <div className="chat-send-message">
           <input type="text" className="chat-input" />
           <div className="btn btn-success">send</div>

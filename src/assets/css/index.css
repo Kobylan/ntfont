@@ -32,7 +32,6 @@ main {
 .main-container {
   min-width: 990px;
   display: flex;
-  height: 100%;
 }
 .main-content {
   display: flex;
