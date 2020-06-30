@@ -176,7 +176,7 @@ const Chat = () => {
           <span className="pl-2">Назад</span>
         </div>
       </div>
-      <div className="chat-body d-flex flex-column justify-content-between">
+      <div className="chat-body d-flex flex-column justify-content-between br-3">
         <div className="chat-info flex-column">
           <div className="chat-info-username">Adil</div>
           <div className="chat-avatar"></div>
