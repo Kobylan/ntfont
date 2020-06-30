@@ -8,6 +8,7 @@ body {
   font-family: "Nunito", sans-serif;
   background: #001935;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -28,6 +29,7 @@ main {
   align-items: flex-start;
   flex-grow: 1;
   flex-shrink: 1;
+  overflow-y: scroll;
 }
 .main-container {
   min-width: 990px;
