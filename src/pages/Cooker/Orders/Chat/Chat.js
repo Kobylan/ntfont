@@ -177,18 +177,15 @@ const Chat = () => {
   }, []);
   return (
     <div className="d-flex flex-column flex-grow-1  chat-container ">
-      <div className="chat-back">
-        <div
-          className="card-title btn btn-secondary d-flex align-items-center max-content"
-          onClick={() => history.push("/orders")}
-        >
-          <Back width={30} fill="#fff" />
-          <span className="pl-2">Назад</span>
-        </div>
-      </div>
       <div className="chat-body d-flex flex-column justify-content-between br-3">
-        <div className="chat-info flex-column ">
-          <div className="chat-info-username">Adil</div>
+        <div className="chat-info flex-column border-bottom">
+          <div className="chat-info-username d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center">
+              <Back width={30} onClick={() => history.push("/orders")} />
+              <span className="ml-2">Adil Kairolla</span>
+            </div>
+            <div className="text-muted">в сети</div>
+          </div>
           <div className="chat-avatar" />
         </div>
 

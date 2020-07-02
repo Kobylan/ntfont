@@ -40,7 +40,6 @@ main {
   align-items: stretch;
   flex-grow: 1;
   justify-content: space-between;
-  padding-top: 10px;
 }
 .middle-content {
   min-width: 600px;
