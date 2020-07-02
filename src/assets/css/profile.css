@@ -36,4 +36,12 @@
   height: 100%;
   background: rgb(29, 161, 242);
 }
+.profile-icon{
+  fill: rgb(250,250,250);
+  width: 30px;
+}
+.profile-icon:hover{
+  width: 30px;
+  fill: rgb(29, 161, 242);
+}
 

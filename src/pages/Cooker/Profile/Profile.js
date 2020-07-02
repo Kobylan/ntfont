@@ -64,7 +64,12 @@ const Profile = () => {
   const { loading, error, profile } = useGetMyProfile();
   return (
     <div>
-      <div className="card-title">Мой профиль</div>
+      <div className="card-title">
+        <div>Мой профиль</div>
+        <div className="d-flex align-items-center pointer text-muted">
+          <div>изменить</div>
+        </div>
+      </div>
       <div className="profile-card br-3">
         <div className="d-flex flex-column ">
           <div className="p-2 d-flex">

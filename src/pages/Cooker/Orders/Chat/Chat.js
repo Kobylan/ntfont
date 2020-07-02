@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { history } from "../../../../history";
-import { ReactComponent as Back } from "../../../../assets/icons/chat/arrow_back_ios-24px.svg";
-import { ReactComponent as Send } from "../../../../assets/icons/chat/send-24px.svg";
-import { ReactComponent as AddImage } from "../../../../assets/icons/chat/add_photo_alternate-24px.svg";
+import { ReactComponent as Back } from "../../../../assets/icons/chat/back.svg";
+import { ReactComponent as Send } from "../../../../assets/icons/chat/send.svg";
+import { ReactComponent as AddImage } from "../../../../assets/icons/chat/add-image.svg";
+import { ReactComponent as SendFilled } from "../../../../assets/icons/chat/send-filled.svg";
+import { ReactComponent as AddImageFilled } from "../../../../assets/icons/chat/add-image-filled.svg";
 import "../../../../assets/css/chat.css";
 import Message from "./Message";
 
@@ -169,6 +171,7 @@ const Chat = () => {
   const { userID } = useParams();
   const messagesEndRef = React.createRef();
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
   const scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView();
   };
@@ -186,11 +189,15 @@ const Chat = () => {
               className="chat__icon pointer"
               onClick={() => history.push("/orders")}
             />
+            <img
+              src="https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg"
+              alt="Adil Kairolla"
+              className="chat-avatar br-3"
+            />
             <span className="ml-2">Adil Kairolla</span>
           </div>
           <div className="text-muted">в сети</div>
         </div>
-        <div className="chat-avatar" />
       </div>
 
       <div className={`chat-message-content ${!scrolled && "invisible"}`}>
@@ -202,10 +209,22 @@ const Chat = () => {
 
       <div className="chat-send-message border-top">
         <div className="btn" onClick={() => console.log(messagesEndRef)}>
-          <AddImage
-            onClick={() => history.push("/orders")}
-            className="chat__icon"
-          />
+          <div
+            onMouseEnter={() => setActive("add-image")}
+            onMouseLeave={() => setActive("")}
+          >
+            {active === "add-image" ? (
+              <AddImageFilled
+                className="chat__icon pointer"
+                onClick={() => history.push("/orders")}
+              />
+            ) : (
+              <AddImage
+                className="chat__icon pointer"
+                onClick={() => history.push("/orders")}
+              />
+            )}
+          </div>
         </div>
         <input
           type="text"
@@ -213,10 +232,22 @@ const Chat = () => {
           className="chat-send-message__input br-3"
         />
         <div className="btn" onClick={() => console.log(messagesEndRef)}>
-          <Send
-            onClick={() => history.push("/orders")}
-            className="chat__icon"
-          />
+          <div
+            onMouseEnter={() => setActive("send")}
+            onMouseLeave={() => setActive("")}
+          >
+            {active === "send" ? (
+              <SendFilled
+                className="chat__icon pointer"
+                onClick={() => history.push("/orders")}
+              />
+            ) : (
+              <Send
+                className="chat__icon pointer"
+                onClick={() => history.push("/orders")}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

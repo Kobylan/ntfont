@@ -49,5 +49,10 @@
 .chat__icon:hover{
   width: 30px;
   fill: rgb(29, 161, 242);
+}
 
+.chat-avatar{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
 }
