@@ -20,7 +20,7 @@ const Order = (props) => {
         <div className="pt-2">{props.order.description}</div>
         <div
           className="btn btn-primary"
-          onClick={() => history.push(`/chat/${props.order.id}`)}
+          onClick={() => history.push(`/orders/${props.order.id}`)}
         >
           Перейти к сообщениям
         </div>

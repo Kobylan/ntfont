@@ -1,7 +1,7 @@
 import React from "react";
-import instagram from "../../../assets/icons/instagram.svg";
-import telegram from "../../../assets/icons/telegram.svg";
-import whatsapp from "../../../assets/icons/whatsapp.svg";
+import instagram from "../../../assets/icons/social/instagram.svg";
+import telegram from "../../../assets/icons/social/telegram.svg";
+import whatsapp from "../../../assets/icons/social/whatsapp.svg";
 
 //TEST DATA WHEN NURIS SDELAET IN BD NEED FETCH IT
 const socialmediadata = [

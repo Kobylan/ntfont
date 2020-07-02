@@ -27,10 +27,10 @@ const AppRouter = () => {
                 <Route path={"/profile"}>
                   <Profile />
                 </Route>
-                <Route path={"/chat/:userID"}>
+                <Route path={"/orders/:userID"}>
                   <Chat />
                 </Route>
-                <Route path={"/orders"}>
+                <Route exact path={"/orders"}>
                   <Orders />
                 </Route>
                 <Route path={"/auth"}>

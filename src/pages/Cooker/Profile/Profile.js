@@ -64,6 +64,7 @@ const Profile = () => {
   const { loading, error, profile } = useGetMyProfile();
   return (
     <div>
+      <div className="card-title">Мой профиль</div>
       <div className="profile-card br-3">
         <div className="d-flex flex-column ">
           <div className="p-2 d-flex">
@@ -89,7 +90,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="text-light   h5 pt-3">Рейтинг пользователя</div>
+      <div className="text-light   h5 pt-3">Рейтинг</div>
       <Rating />
       <div className="text-light   h5 pt-3">Отзывы</div>
       {testdata.map((e) => (

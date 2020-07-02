@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { history } from "../../../../history";
-import { ReactComponent as Back } from "../../../../assets/icons/back.svg";
+import { ReactComponent as Back } from "../../../../assets/icons/chat/arrow_back_ios-24px.svg";
+import { ReactComponent as Send } from "../../../../assets/icons/chat/send-24px.svg";
+import { ReactComponent as AddImage } from "../../../../assets/icons/chat/add_photo_alternate-24px.svg";
 import "../../../../assets/css/chat.css";
 import Message from "./Message";
 
@@ -176,34 +178,45 @@ const Chat = () => {
     setScrolled(true);
   }, []);
   return (
-    <div className="d-flex flex-column flex-grow-1  chat-container ">
-      <div className="chat-body d-flex flex-column justify-content-between br-3">
-        <div className="chat-info flex-column border-bottom">
-          <div className="chat-info-username d-flex align-items-center justify-content-between">
-            <div className="d-flex align-items-center">
-              <Back width={30} onClick={() => history.push("/orders")} />
-              <span className="ml-2">Adil Kairolla</span>
-            </div>
-            <div className="text-muted">в сети</div>
+    <div className="chat-body d-flex flex-column justify-content-between br-3">
+      <div className="chat-info flex-column border-bottom">
+        <div className="chat-info-username d-flex align-items-center justify-content-between">
+          <div className="d-flex align-items-center">
+            <Back
+              className="chat__icon pointer"
+              onClick={() => history.push("/orders")}
+            />
+            <span className="ml-2">Adil Kairolla</span>
           </div>
-          <div className="chat-avatar" />
+          <div className="text-muted">в сети</div>
         </div>
+        <div className="chat-avatar" />
+      </div>
 
-        <div className={`chat-message-content ${!scrolled && "invisible"}`}>
-          {messeges.map((message) => (
-            <Message message={message} />
-          ))}
-          <div style={{ float: "left", clear: "both" }} ref={messagesEndRef} />
+      <div className={`chat-message-content ${!scrolled && "invisible"}`}>
+        {messeges.map((message) => (
+          <Message message={message} />
+        ))}
+        <div style={{ float: "left", clear: "both" }} ref={messagesEndRef} />
+      </div>
+
+      <div className="chat-send-message border-top">
+        <div className="btn" onClick={() => console.log(messagesEndRef)}>
+          <AddImage
+            onClick={() => history.push("/orders")}
+            className="chat__icon"
+          />
         </div>
-
-        <div className="chat-send-message">
-          <input type="text" className="chat-input" />
-          <div
-            className="btn btn-success"
-            onClick={() => console.log(messagesEndRef)}
-          >
-            send
-          </div>
+        <input
+          type="text"
+          placeholder="Напишите новое сообщение"
+          className="chat-send-message__input br-3"
+        />
+        <div className="btn" onClick={() => console.log(messagesEndRef)}>
+          <Send
+            onClick={() => history.push("/orders")}
+            className="chat__icon"
+          />
         </div>
       </div>
     </div>

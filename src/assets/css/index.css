@@ -1,12 +1,14 @@
 @import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "reuseble.css";
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+
 html,
 body {
   height: 100%;
   margin: 0;
   font-family: "Nunito", sans-serif;
-  background: #001935;
+  background: rgb(0, 25, 53);
+  color: rgb(0, 25, 53);
 }
 
 code {
