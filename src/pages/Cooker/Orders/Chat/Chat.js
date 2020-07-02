@@ -177,11 +177,27 @@ const Chat = () => {
       date: "15/05/1999",
     },
   ];
+  function readFile(file) {
+    const reader = new FileReader();
+    reader.addEventListener("load", (event) => {
+      const result = event.target.result;
+      setFile(result);
+    });
+
+    reader.addEventListener("progress", (event) => {
+      if (event.loaded && event.total) {
+        const percent = (event.loaded / event.total) * 100;
+        console.log(`Progress: ${Math.round(percent)}`);
+      }
+    });
+    reader.readAsDataURL(file);
+  }
   const { userID } = useParams();
   const messagesEndRef = React.createRef();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [drag, setDrag] = useState(false);
+  const [file, setFile] = useState();
   const scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView();
   };
@@ -190,8 +206,25 @@ const Chat = () => {
     scrollToBottom();
     setScrolled(true);
   }, []);
+
   return (
-    <div className="chat-body d-flex flex-column justify-content-between br-3">
+    <div
+      className="chat-body d-flex flex-column justify-content-between br-3"
+      onDragOver={(e) => {
+        e.preventDefault();
+        setDrag(true);
+      }}
+      onDragLeave={(e) => {
+        e.preventDefault();
+        setDrag(false);
+      }}
+      onDrop={(e) => {
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        readFile(files[0]);
+        setDrag(false);
+      }}
+    >
       <div className="chat-info flex-column border-bottom">
         <div className="chat-info-username d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center">
@@ -211,22 +244,18 @@ const Chat = () => {
         </div>
       </div>
       {drag ? (
-        <div
-          className="chat-message-drag-content"
-          onDragLeave={() => setDrag(false)}
-        >
-          <AddFile className="child" />
-          <div className="child">lol</div>
+        <div className="chat-message-drag-content">
+          <AddFile width={200} />
+          Перетащите сюда изображения чтобы
+          <br /> прикрепить их к сообщению
         </div>
       ) : (
-        <div
-          className={`chat-message-content ${!scrolled && "invisible"}`}
-          onDragOver={() => setDrag(true)}
-        >
+        <div className={`chat-message-content ${!scrolled && "invisible"}`}>
           {messeges.map((message) => (
             <Message message={message} />
           ))}
-          <div style={{ float: "left", clear: "both" }} ref={messagesEndRef} />
+          <img src={file} className="chat-message" />
+          <div ref={messagesEndRef} />
         </div>
       )}
 
