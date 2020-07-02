@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ProfileSocial from "./ProfileSocial";
 import { Reviews } from "./Reviews";
 import { Rating } from "./Rating";
 import { useGetMyProfile } from "../../../store/hooks/useGetMyProfile";
+import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
+import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
 import "../../../assets/css/profile.css";
+import { ReactComponent as AddImageFilled } from "../../../assets/icons/chat/add-image-filled.svg";
+import { history } from "../../../history";
+import { ReactComponent as AddImage } from "../../../assets/icons/chat/add-image.svg";
 
 const testdata = [
   {
@@ -62,12 +67,22 @@ const testdata = [
 
 const Profile = () => {
   const { loading, error, profile } = useGetMyProfile();
+  const [active, setActive] = useState("");
   return (
     <div>
       <div className="card-title">
         <div>Мой профиль</div>
-        <div className="d-flex align-items-center pointer text-muted">
-          <div>изменить</div>
+        <div
+          className="d-flex align-items-center pointer text-muted"
+          onMouseEnter={() => setActive("edit")}
+          onMouseLeave={() => setActive("")}
+          title="Изменить профиль"
+        >
+          {active === "edit" ? (
+            <EditFilled className="profile-icon" />
+          ) : (
+            <Edit className="profile-icon" />
+          )}
         </div>
       </div>
       <div className="profile-card br-3">
