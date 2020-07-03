@@ -5,8 +5,7 @@ const testData = [
   {
     id: 1,
     title: "Хочу пицу в форме сердца",
-    description:
-      "Торт с цветочками и радугой Торт с цветочками и радугой Торт с цветочками и радугой",
+    description: "Торт ",
     date: "15/9/2212",
     owner: {
       name: "Adil Kairolla",

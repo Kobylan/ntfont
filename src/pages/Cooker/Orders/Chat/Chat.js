@@ -255,6 +255,7 @@ const Chat = () => {
             <Message message={message} />
           ))}
           <img src={file} className="chat-message" />
+          {console.log(file)}
           <div ref={messagesEndRef} />
         </div>
       )}

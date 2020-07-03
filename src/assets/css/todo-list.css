@@ -32,3 +32,23 @@
   width: 30px;
   fill: rgb(29, 161, 242);
 }
+
+.todo-item-title__edit{
+  background: transparent;
+  border: 1px solid rgb(29, 161, 242);
+  width: 50%;
+  outline: none;
+  padding: 0.375rem 0.375rem;
+}
+.todo-item-description__edit{
+  background: transparent;
+  border: 1px solid rgb(29, 161, 242);
+  outline: none;
+  resize: none;
+  width: 100%;
+  padding: 0.375rem 0.375rem;
+}
+.todo-list-content{
+  padding-left: 7px;
+  width: 100%;
+}

@@ -13,7 +13,7 @@ export const useOrdersSearch = (query) => {
     console.log(query);
     axios({
       method: "GET",
-      url: "https://nateste.herokuapp.com/api/orders",
+      url: "https://thawing-reef-32246.herokuapp.com/api/orders/",
       params: query,
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })

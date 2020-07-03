@@ -10,7 +10,7 @@ const FindOrder = () => {
     page_size: 10,
   });
   const { loading, error, orders, hasMore } = useOrdersSearch(query);
-
+  console.log("======", orders[0]);
   const observer = useRef();
   const lastOrderElementRef = useCallback(
     (node) => {
@@ -32,8 +32,8 @@ const FindOrder = () => {
     <div className="middle-content pb-5">
       <div>FILTER ELEMENT</div>
       <div>
-        {orders.map((order) =>
-          order.user ? (
+        {orders[0]?.results.map((order) =>
+          order.customer ? (
             <div ref={lastOrderElementRef} key={order.order_id}>
               <Order order={order} />
             </div>

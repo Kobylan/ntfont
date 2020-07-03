@@ -22,7 +22,7 @@ const Order = (props) => {
                 alt="Adil dalbaeb"
               />
             </div>
-            <div className="pt-1">{order.user.name}</div>
+            <div className="pt-1">{order.customer}</div>
           </div>
           <div className="text-muted ">{timeAgoUnix(order.creation_date)}</div>
         </div>
