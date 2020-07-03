@@ -10,6 +10,7 @@ const AppRouter = () => {
   const Profile = lazy(() => import("./pages/Cooker/Profile/Profile"));
   const Orders = lazy(() => import("./pages/Cooker/Orders/Orders"));
   const Chat = lazy(() => import("./pages/Cooker/Orders/Chat/Chat"));
+  const TodoList = lazy(() => import("./pages/Cooker/TodoList/TodoList.js"));
 
   return (
     <Router history={history}>
@@ -35,6 +36,9 @@ const AppRouter = () => {
                 </Route>
                 <Route path={"/auth"}>
                   <Auth />
+                </Route>
+                <Route path={"/todo-list"}>
+                  <TodoList />
                 </Route>
               </Switch>
             </Suspense>
