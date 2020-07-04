@@ -6,9 +6,9 @@ import { useGetMyProfile } from "../../../hooks/useGetMyProfile";
 import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
 import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
 import "../../../assets/css/profile.css";
-import { ReactComponent as AddImageFilled } from "../../../assets/icons/chat/add-image-filled.svg";
-import { history } from "../../../history";
-import { ReactComponent as AddImage } from "../../../assets/icons/chat/add-image.svg";
+import { ReactComponent as Save } from "../../../assets/icons/todo/save.svg";
+import { ReactComponent as SaveFilled } from "../../../assets/icons/todo/save-filled.svg";
+import ProfileInfo from "./ProfileInfo";
 
 const testdata = [
   {
@@ -68,6 +68,7 @@ const testdata = [
 const Profile = () => {
   const { loading, error, profile } = useGetMyProfile();
   const [active, setActive] = useState("");
+  const [edit, setEdit] = useState(false);
   return (
     <div>
       <div className="card-title">
@@ -76,37 +77,20 @@ const Profile = () => {
           className="d-flex align-items-center pointer text-muted"
           onMouseEnter={() => setActive("edit")}
           onMouseLeave={() => setActive("")}
+          onClick={() => setEdit(true)}
           title="Изменить профиль"
         >
-          {active === "edit" ? (
-            <EditFilled className="profile-icon" />
-          ) : (
-            <Edit className="profile-icon" />
-          )}
+          {!edit &&
+            (active === "edit" ? (
+              <EditFilled className="profile-icon" />
+            ) : (
+              <Edit className="profile-icon" />
+            ))}
         </div>
       </div>
       <div className="profile-card br-3">
         <div className="d-flex flex-column ">
-          <div className="p-2 d-flex">
-            <div>
-              <img
-                width={120}
-                src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
-                alt="Adil genius"
-                className="br-3 shadow"
-              />
-            </div>
-            <div className="d-flex pl-3 pt-1   flex-column w-100">
-              <div className="d-flex  justify-content-between">
-                <div className=" h4"> Adil Kairolla</div>
-                <div className="pr-2 text-muted">Онлайн</div>
-              </div>
-              <div className="info h6">
-                Пеку лучште торты в форме влагалищя 😋 Девушкам делаю скидку 😜
-              </div>
-              <ProfileSocial />
-            </div>
-          </div>
+          <ProfileInfo edit={edit} setEdit={(e) => setEdit(e)} />
         </div>
       </div>
 

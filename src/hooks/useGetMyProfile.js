@@ -11,7 +11,7 @@ export const useGetMyProfile = () => {
     let cancel;
     axios({
       method: "GET",
-      url: "https://nateste.herokuapp.com/api/myprofile",
+      url: "https://thawing-reef-32246.herokuapp.com/api/myprofile",
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
