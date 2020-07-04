@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { sidebarConfig } from "../../configs/sidebarConfig";
-import { ReactComponent as Logout } from "../../assets/icons/sidebar/logout.svg";
-import { ReactComponent as Logo } from "../../assets/icons/sidebar/logo.svg";
+import { sidebarConfig } from "../configs/sidebarConfig";
+import { ReactComponent as Logout } from "../assets/icons/sidebar/logout.svg";
+import { ReactComponent as Logo } from "../assets/icons/sidebar/logo.svg";
 import { NavLink } from "react-router-dom";
-import "../../assets/css/sidebar.css";
+import "../assets/css/sidebar.css";
 const Sidebar = () => {
   const [pathname, setPathname] = useState("");
   const [active, setActive] = useState("");

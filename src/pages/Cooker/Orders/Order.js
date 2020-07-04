@@ -1,7 +1,7 @@
 import React from "react";
 import { history } from "../../../history";
-import { timeAgoUnix } from "../../../store/components/timeAgoUnix";
-import { timeToUnix } from "../../../store/components/timeToUnix";
+import { timeAgoUnix } from "../../../components/timeAgoUnix";
+import { timeToUnix } from "../../../components/timeToUnix";
 
 const Order = (props) => {
   const { order } = props;
