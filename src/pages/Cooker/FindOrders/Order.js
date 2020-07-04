@@ -1,6 +1,6 @@
 import React from "react";
-import { timeAgoUnix } from "../../../store/components/timeAgoUnix";
-import { timeToUnix } from "../../../store/components/timeToUnix";
+import { timeAgoUnix } from "../../../components/timeAgoUnix";
+import { timeToUnix } from "../../../components/timeToUnix";
 import { history } from "../../../history";
 
 const Order = (props) => {

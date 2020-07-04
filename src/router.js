@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { history } from "./history";
-import Sidebar from "./store/components/Sidebar";
+import Sidebar from "./components/Sidebar";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { Auth } from "./pages/Cooker/auth";
 

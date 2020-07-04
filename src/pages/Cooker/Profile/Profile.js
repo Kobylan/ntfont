@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProfileSocial from "./ProfileSocial";
 import { Reviews } from "./Reviews";
 import { Rating } from "./Rating";
-import { useGetMyProfile } from "../../../store/hooks/useGetMyProfile";
+import { useGetMyProfile } from "../../../hooks/useGetMyProfile";
 import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
 import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
 import "../../../assets/css/profile.css";
