@@ -1,5 +1,6 @@
 import React from "react";
 import ProfileSocial from "./ProfileSocial";
+import Skeleton from "../../../components/Skeleton";
 
 const ProfileInfo = (props) => {
   const { profile } = props;
@@ -7,24 +8,21 @@ const ProfileInfo = (props) => {
   return (
     <div className="p-2 d-flex">
       <div>
-        <img
-          width={120}
-          src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
-          alt="Adil genius"
-          className="br-3 shadow"
-        />
+        <Skeleton width={120} height={120} />
       </div>
       <div className="d-flex pl-3 flex-column w-100">
         <div className="d-flex  justify-content-between">
           <div className="h4">
-            {profile?.first_name} {profile?.last_name}
+            <Skeleton width={250} height={"1.5rem"} />
           </div>
           <div className="pr-2 text-muted">
-            {profile?.is_active ? "В сети" : "Не в сети"}
+            <Skeleton width={50} height={"1rem"} />
           </div>
         </div>
-        <div>{profile?.profile.bio}</div>
-        <ProfileSocial />
+        <Skeleton width={300} height={"4.5rem"} />
+        <div className="profile-social pr-2">
+          <Skeleton width={100} height={35} />
+        </div>
       </div>
     </div>
   );
