@@ -1,8 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { history } from "./history";
 import Sidebar from "./store/components/Sidebar";
-import { Route, Router, Switch } from "react-router-dom";
-import Loading from "./store/components/Loading";
+import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { Auth } from "./pages/Cooker/auth";
 
 const AppRouter = () => {
@@ -22,6 +21,9 @@ const AppRouter = () => {
           <div className="main-content">
             <Suspense fallback={""}>
               <Switch>
+                <Route exact path={"/"}>
+                  <Redirect to={"/orders"} />
+                </Route>
                 <Route path={"/find-order"}>
                   <FindOrder />
                 </Route>

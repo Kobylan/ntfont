@@ -3,9 +3,9 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 3px;
-    height: 150px;
     padding: 15px;
     margin-bottom: 7px;
+    max-width: 600px;
 }
 .card-button {
     margin-bottom: 15px;

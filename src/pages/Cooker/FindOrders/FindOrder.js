@@ -5,12 +5,9 @@ import { useOrdersSearch } from "../../../store/hooks/useOrdersSearch";
 import "../../../assets/css/find-order.css";
 
 const FindOrder = () => {
-  const [query, setQuery] = useState({
-    page_num: 1,
-    page_size: 10,
-  });
-  const { loading, error, orders, hasMore } = useOrdersSearch(query);
-  console.log("======", orders[0]);
+  const [page, setPage] = useState(1);
+  const { loading, error, orders, hasMore } = useOrdersSearch(page);
+  console.log("======", orders);
   const observer = useRef();
   const lastOrderElementRef = useCallback(
     (node) => {
@@ -18,10 +15,7 @@ const FindOrder = () => {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          setQuery({
-            ...query,
-            page_num: query.page_num + 1,
-          });
+          setPage(page + 1);
         }
       });
       if (node) observer.current.observe(node);
@@ -30,9 +24,10 @@ const FindOrder = () => {
   );
   return (
     <div className="middle-content pb-5">
+      <div className="card-title">Поиск заказов</div>
       <div>FILTER ELEMENT</div>
       <div>
-        {orders[0]?.results.map((order) =>
+        {orders?.map((order) =>
           order.customer ? (
             <div ref={lastOrderElementRef} key={order.order_id}>
               <Order order={order} />

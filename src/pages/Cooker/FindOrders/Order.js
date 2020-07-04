@@ -1,50 +1,43 @@
 import React from "react";
 import { timeAgoUnix } from "../../../store/components/timeAgoUnix";
 import { timeToUnix } from "../../../store/components/timeToUnix";
+import { history } from "../../../history";
 
 const Order = (props) => {
   const { order } = props;
   return (
-    <div>
-      <div
-        className="card-item"
-        style={{
-          background: `hsl(${Math.random() * 359 + 1},100%,99%)`,
-        }}
-      >
-        <div className="d-flex justify-content-between">
-          <div className="d-flex">
-            <div className="pr-2">
-              <img
-                width={30}
-                className="rounded-circle border border-success "
-                src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
-                alt="Adil dalbaeb"
-              />
-            </div>
-            <div className="pt-1">{order.customer}</div>
-          </div>
-          <div className="text-muted ">{timeAgoUnix(order.creation_date)}</div>
-        </div>
-        <div className="pl-1">
-          <p>{order.body}</p>
-        </div>
-        <div className="d-flex justify-content-between align-items-center pl-1">
-          <div className="d-flex ">
-            <div className=" text-muted ">
-              Нужен {timeToUnix(order.deadline)}
-            </div>
-          </div>
-          <div className="d-flex ">
-            <div className="col-auto text-muted">Вес: {order.weight}кг</div>
-            <div className="col-auto text-muted">
-              Цена: {order.price}тг
-            </div>{" "}
-          </div>
-        </div>
+    <div className="avatar-card d-flex align-items-start mb-3">
+      <div className="avatar mr-2">
+        <img
+          width="100%"
+          className="br-3"
+          src={
+            "https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg"
+          }
+          alt="Adil genius"
+        />
       </div>
-      <div className=" d-flex justify-content-end card-button">
-        <div className="btn btn-outline-success ">Взять заказ</div>
+      <div className="avatar-content br-3 p-3 d-flex flex-column text-break">
+        <div className="d-flex align-items-start justify-content-between">
+          <span className="h5">{order.title}</span>
+          <span className="text-muted align-items-center">
+            {timeAgoUnix(order.created_at)}
+          </span>
+        </div>
+        <div className="p-2">{order.description}</div>
+        <div className="d-flex align-items-center justify-content-between mt-2 ">
+          <div>Цена: {order.price}тг</div>
+          <div>Вес: {order.weight}кг</div>
+        </div>
+        <div className="d-flex align-items-center justify-content-between text-muted mt-2">
+          <div>нужен {timeToUnix(order.deadline)}</div>
+          <div
+            className="btn btn-primary"
+            onClick={() => history.push(`/orders/${order.id}`)}
+          >
+            Взять заказ
+          </div>
+        </div>
       </div>
     </div>
   );
