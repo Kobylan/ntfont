@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const useMyProfile = (request, method) => {
+  console.log(request, method);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [profile, setProfile] = useState([]);
+  const [user, setUser] = useState([]);
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -17,7 +18,7 @@ export const useMyProfile = (request, method) => {
           cancelToken: new axios.CancelToken((c) => (cancel = c)),
         })
           .then((res) => {
-            setProfile(res.data);
+            setUser(res.data);
             setLoading(false);
           })
           .catch((e) => {
@@ -25,8 +26,26 @@ export const useMyProfile = (request, method) => {
             setError(true);
             setLoading(false);
           });
+        break;
+      case "PUT":
+        axios({
+          method: "PUT",
+          url: "https://thawing-reef-32246.herokuapp.com/api/myprofile/",
+          data: request,
+          cancelToken: new axios.CancelToken((c) => (cancel = c)),
+        })
+          .then((res) => {
+            setUser(res.data);
+            setLoading(false);
+          })
+          .catch((e) => {
+            if (axios.isCancel(e)) return;
+            setError(true);
+            setLoading(false);
+          });
+        break;
     }
     return () => cancel();
-  }, [request]);
-  return { loading, error, profile };
+  }, [method]);
+  return { loading, error, user };
 };
