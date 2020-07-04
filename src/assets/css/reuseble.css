@@ -78,3 +78,6 @@
 .skeleton {
   background: rgb(199, 204, 210);
 }
+.rotate180deg{
+  transform: rotate(180deg);
+}

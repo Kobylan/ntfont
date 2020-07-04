@@ -3,6 +3,7 @@ import { history } from "./history";
 import Sidebar from "./components/Sidebar";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { Auth } from "./pages/Cooker/auth";
+import RightSideContent from "./components/Right-side-content";
 
 const AppRouter = () => {
   const FindOrder = lazy(() => import("./pages/Cooker/FindOrders/FindOrder"));
@@ -45,10 +46,8 @@ const AppRouter = () => {
               </Switch>
             </Suspense>
           </div>
-          <div className="right-side-container">
-            <div className="right-side-content">
-              <div className="right-side">123</div>
-            </div>
+          <div className="right-side">
+            <RightSideContent />
           </div>
         </div>
       </main>
