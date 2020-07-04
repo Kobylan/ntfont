@@ -74,3 +74,6 @@
 .line-through {
   text-decoration: line-through;
 }
+.rotate180deg{
+  transform: rotate(180deg);
+}

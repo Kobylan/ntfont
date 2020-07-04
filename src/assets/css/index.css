@@ -58,7 +58,7 @@ main {
 .right-side {
   width: 350px;
   height: 100%;
-  background-color: grey;
+  min-height: 776px;
 }
 @media screen and (max-width: 1000px) {
   .right-side {
