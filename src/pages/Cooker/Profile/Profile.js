@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import ProfileSocial from "./ProfileSocial";
 import { Reviews } from "./Reviews";
 import { Rating } from "./Rating";
-import { useGetMyProfile } from "../../../hooks/useGetMyProfile";
 import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
 import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
 import "../../../assets/css/profile.css";
-import { ReactComponent as Save } from "../../../assets/icons/todo/save.svg";
-import { ReactComponent as SaveFilled } from "../../../assets/icons/todo/save-filled.svg";
 import ProfileInfo from "./ProfileInfo";
 
 const testdata = [
@@ -66,7 +63,6 @@ const testdata = [
 ];
 
 const Profile = () => {
-  const { loading, error, profile } = useGetMyProfile();
   const [active, setActive] = useState("");
   const [edit, setEdit] = useState(false);
   return (
