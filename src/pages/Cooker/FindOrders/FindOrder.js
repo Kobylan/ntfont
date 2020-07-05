@@ -23,8 +23,8 @@ const FindOrder = () => {
     [loading, hasMore]
   );
   return (
-    <div className="middle-content pb-5">
-      <div className="card-title">Поиск заказов</div>
+    <div className="maxw-600px">
+      <div className="d-flex font-size-20 mt-20 text-white">Поиск заказов</div>
       <div>FILTER ELEMENT</div>
       <div>
         {orders?.map((order) =>

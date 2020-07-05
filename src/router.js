@@ -14,12 +14,12 @@ const AppRouter = () => {
 
   return (
     <Router history={history}>
-      <header>
+      <div className="d-flex flex-column flex-grow-1 align-items-end text-white-opacity">
         <Sidebar />
-      </header>
-      <main>
-        <div className="main-container">
-          <div className="main-content">
+      </div>
+      <div className="d-flex align-items-start flex-grow-1 flex-shrink-1 overflow-scroll">
+        <div className="minw-990px d-flex">
+          <div className="d-flex align-items-stretch flex-grow-1 justify-content-between">
             <Suspense fallback={""}>
               <Switch>
                 <Route exact path={"/"}>
@@ -46,11 +46,11 @@ const AppRouter = () => {
               </Switch>
             </Suspense>
           </div>
-          <div className="right-side">
+          <div className="w-350px h-100">
             <RightSideContent />
           </div>
         </div>
-      </main>
+      </div>
     </Router>
   );
 };
