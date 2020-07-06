@@ -70,8 +70,8 @@ const EditProfileInfo = (props) => {
             <input
               className="bg-transparent border w-100 outline-none p-5 rounded border-box"
               type="text"
-              name="login"
-              value={profile.login}
+              name="username"
+              value={profile.username}
               onChange={handleChange}
             />
           </label>
@@ -96,7 +96,7 @@ const EditProfileInfo = (props) => {
             onChange={handleChange}
           />
         </label>
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end mt-15">
           <input
             value="Отмена"
             type="button"
