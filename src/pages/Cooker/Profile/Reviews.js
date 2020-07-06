@@ -13,7 +13,7 @@ export const Reviews = (props) => {
           <span>{props.data.name}</span>
           <span>{props.data.rating}</span>
         </div>
-        <div className="p-15 maxw-470px">{props.data.review}</div>
+        <div className="p-15 max-width-470px">{props.data.review}</div>
       </div>
     </div>
   );

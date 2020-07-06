@@ -1,10 +1,9 @@
 import React from "react";
-import ProfileSocial from "./ProfileSocial";
 
 const ProfileInfo = (props) => {
   const { profile } = props;
   return (
-    <div className="p-10 d-flex">
+    <div className="d-flex">
       <div>
         <img
           width={120}
@@ -18,12 +17,33 @@ const ProfileInfo = (props) => {
           <div className="font-size-24">
             {profile?.first_name} {profile?.last_name}
           </div>
-          <div className="pr-10 text-muted">
+          <div className=" text-muted">
             {profile?.is_active ? "В сети" : "Не в сети"}
           </div>
         </div>
         <div>{profile?.profile.bio}</div>
-        <ProfileSocial />
+        <div className="d-flex mt-15">
+          <div className="text-muted">instagram:</div>
+          <div
+            className="ml-5 text-blue cursor-pointer"
+            onClick={() => {
+              window.open("//instagram.com/adilkairolla");
+            }}
+          >
+            adilkairolla
+          </div>
+        </div>
+        <div className="d-flex mt-15 ">
+          <div className="text-muted">Email:</div>
+          <div
+            className="ml-5 text-blue cursor-pointer"
+            onClick={() => {
+              window.open(`mailto:${profile.email}`);
+            }}
+          >
+            {profile.email}
+          </div>
+        </div>
       </div>
     </div>
   );

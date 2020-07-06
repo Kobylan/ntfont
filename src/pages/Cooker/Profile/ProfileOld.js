@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ProfileSocial from "./ProfileSocial";
 import { Reviews } from "./Reviews";
 import { Rating } from "./Rating";
 import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
@@ -73,49 +74,48 @@ const Profile = () => {
     setProfile(user);
   }, [user]);
   return (
-    <>
-      <div className="w-100 ">
-        <div className="min-height-30px border-box text-white w-100 mb-10 font-size-20 mt-20 d-flex justify-content-between">
-          <div>Мой профиль</div>
-          <div
-            className="d-flex align-items-center cursor-pointer"
-            onMouseEnter={() => setActive("edit")}
-            onMouseLeave={() => setActive("")}
-            onClick={() => setEdit(true)}
-            title="Изменить профиль"
-          >
-            {!loading &&
-              !edit &&
-              (active === "edit" ? (
-                <EditFilled
-                  className="icon-30 fill-blue"
-                  onClick={() => setActive("")}
-                />
-              ) : (
-                <Edit className="icon-30 fill-white" />
-              ))}
-          </div>
-        </div>
-        <div className="p-15 max-width-600px bg-white d-flex flex-column justify-content-end rounded">
-          <div className="d-flex flex-column ">
-            {edit ? (
-              <EditProfileInfo
-                setEdit={(e) => setEdit(e)}
-                profile={profile}
-                setProfile={(e) => setProfile(e)}
-                setMethod={(e) => setMethod(e)}
-              />
-            ) : loading ? (
-              <ProfileInfoSkeleton />
+    <div>
+      <div className="text-white font-size-20 mt-20 d-flex justify-content-between">
+        <div>Мой профиль</div>
+        <div
+          className="d-flex align-items-center cursor-pointer"
+          onMouseEnter={() => setActive("edit")}
+          onMouseLeave={() => setActive("")}
+          onClick={() => setEdit(true)}
+          title="Изменить профиль"
+        >
+          {!edit &&
+            (active === "edit" ? (
+              <EditFilled className="icon-30 fill-blue" />
             ) : (
-              <ProfileInfo profile={profile} />
-            )}
-          </div>
+              <Edit className="icon-30 fill-white" />
+            ))}
         </div>
       </div>
-      <div>rating</div>
-      <div>revies</div>
-    </>
+      <div className="p-10 max-width-600px bg-white d-flex flex-column justify-content-end rounded">
+        <div className="d-flex flex-column ">
+          {edit ? (
+            <EditProfileInfo
+              setEdit={(e) => setEdit(e)}
+              profile={profile}
+              setProfile={(e) => setProfile(e)}
+              setMethod={(e) => setMethod(e)}
+            />
+          ) : loading ? (
+            <ProfileInfoSkeleton />
+          ) : (
+            <ProfileInfo profile={profile} />
+          )}
+        </div>
+      </div>
+
+      <div className="text-white font-size-20 mt-20 ">Рейтинг</div>
+      <Rating />
+      <div className="text-white font-size-20 mt-20">Отзывы</div>
+      {testdata.map((e) => (
+        <Reviews key={e.id} data={e} />
+      ))}
+    </div>
   );
 };
 export default Profile;

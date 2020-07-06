@@ -2,9 +2,28 @@ import React from "react";
 
 const EditProfileInfo = (props) => {
   const { profile, setProfile, setEdit, setMethod } = props;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "bio") {
+      setProfile({
+        ...profile,
+        profile: { ...profile.profile, bio: value },
+      });
+      return;
+    }
+    setProfile({ ...profile, [name]: value });
+  };
+  const handleSubmit = (event) => {
+    console.log(event);
+    event.preventDefault();
+    setMethod("PUT");
+    setEdit(false);
+  };
+
   return (
-    <div className="p-10">
-      <div className="d-flex justify-content-start">
+    <>
+      <div className="d-flex">
         <div>
           <img
             width={120}
@@ -13,111 +32,85 @@ const EditProfileInfo = (props) => {
             className="rounded"
           />
         </div>
-        <div className="w-100 ml-15">
-          <div className="font-size-24">
-            {profile.first_name} {profile.last_name}
+        <div className="d-flex pl-15 flex-column w-100">
+          <div className="d-flex">
+            <div className="font-size-24">
+              {profile.first_name} {profile.last_name}
+            </div>
           </div>
-          <div className="w-100">{profile.profile.bio}</div>
+          <div>{profile.profile.bio}</div>
         </div>
       </div>
-      <div className="d-flex justify-content-start">
-        <div className="w-100">
-          <div>Имя</div>
-          <div className="w-100">
+      <form onSubmit={handleSubmit}>
+        <div className="d-flex w-100 mt-15">
+          <label className="flex-50">
+            Имя
             <input
+              className="bg-transparent border w-100 outline-none p-5 rounded border-box"
               type="text"
-              className="bg-transparent border w-100 outline-none p-5 rounded"
+              name="first_name"
               value={profile.first_name}
-              onChange={(e) =>
-                setProfile({
-                  ...profile,
-                  first_name: e.target.value,
-                })
-              }
+              onChange={handleChange}
             />
-          </div>
-        </div>
-        <div className="w-100 ml-15">
-          <div>Фамилия</div>
-          <div className="w-100">
+          </label>
+          <label className="flex-50 ml-15">
+            Фамилия
             <input
+              className="bg-transparent border w-100 outline-none p-5 rounded border-box"
               type="text"
-              className="bg-transparent border w-100 outline-none p-5 rounded"
+              name="last_name"
               value={profile.last_name}
-              onChange={(e) =>
-                setProfile({
-                  ...profile,
-                  last_name: e.target.value,
-                })
-              }
+              onChange={handleChange}
             />
-          </div>
+          </label>
         </div>
-      </div>
-      <div className="d-flex justify-content-start">
-        <div className="w-100">
-          <div>Логин</div>
-          <div className="w-100">
+        <div className="d-flex justify-content-between">
+          <label className="flex-50">
+            Instagram
             <input
+              className="bg-transparent border w-100 outline-none p-5 rounded border-box"
               type="text"
-              className="bg-transparent border w-100 outline-none p-5 rounded"
-              value={profile.username}
-              onChange={(e) =>
-                setProfile({
-                  ...profile,
-                  username: e.target.value,
-                })
-              }
+              name="login"
+              value={profile.login}
+              onChange={handleChange}
             />
-          </div>
-        </div>
-        <div className="w-100 ml-15">
-          <div>Электронный адрес</div>
-          <div className="w-100">
+          </label>
+          <label className="flex-50 ml-15">
+            Email
             <input
+              className="bg-transparent border w-100 outline-none p-5 rounded border-box"
               type="text"
-              className="bg-transparent border w-100 outline-none p-5 rounded"
+              name="email"
               value={profile.email}
-              onChange={(e) =>
-                setProfile({
-                  ...profile,
-                  email: e.target.value,
-                })
-              }
+              onChange={handleChange}
             />
-          </div>
+          </label>
         </div>
-      </div>
-      <div>
-        <div>Описание</div>
-        <div className="w-100">
+        <label>
+          Описание
           <textarea
-            className="bg-transparent border w-100 outline-none p-5 rounded"
+            rows={7}
+            className="bg-transparent border w-100 outline-none p-5 rounded border-box"
+            name="bio"
             value={profile.profile.bio}
-            onChange={(e) =>
-              setProfile({
-                ...profile,
-                profile: {
-                  ...profile.profile,
-                  bio: e.target.value,
-                },
-              })
-            }
+            onChange={handleChange}
+          />
+        </label>
+        <div className="d-flex justify-content-end">
+          <input
+            value="Отмена"
+            type="button"
+            className="btn-secondary align-self-end"
+            onClick={() => setEdit(false)}
+          />
+          <input
+            type="submit"
+            value="Отправить"
+            className=" ml-5 btn align-self-end "
           />
         </div>
-      </div>
-      <div className="d-flex justify-content-end mt-10">
-        <div
-          className="btn"
-          onClick={() => {
-            setMethod("PUT");
-            setEdit(false);
-          }}
-        >
-          submit
-        </div>
-      </div>
-    </div>
+      </form>
+    </>
   );
 };
 

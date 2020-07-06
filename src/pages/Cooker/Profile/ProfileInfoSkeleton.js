@@ -1,5 +1,4 @@
 import React from "react";
-import ProfileSocial from "./ProfileSocial";
 import Skeleton from "../../../components/Skeleton";
 
 const ProfileInfo = (props) => {

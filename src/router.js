@@ -18,33 +18,35 @@ const AppRouter = () => {
         <Sidebar />
       </div>
       <div className="d-flex align-items-start flex-grow-1 flex-shrink-1 overflow-scroll">
-        <div className="minw-990px d-flex">
-          <div className="d-flex align-items-stretch flex-grow-1 justify-content-between">
-            <Suspense fallback={""}>
-              <Switch>
-                <Route exact path={"/"}>
-                  <Redirect to={"/orders"} />
-                </Route>
-                <Route path={"/find-order"}>
-                  <FindOrder />
-                </Route>
-                <Route path={"/profile"}>
-                  <Profile />
-                </Route>
-                <Route path={"/orders/:userID"}>
-                  <Chat />
-                </Route>
-                <Route exact path={"/orders"}>
-                  <Orders />
-                </Route>
-                <Route path={"/auth"}>
-                  <Auth />
-                </Route>
-                <Route path={"/todo-list"}>
-                  <TodoList />
-                </Route>
-              </Switch>
-            </Suspense>
+        <div className="min-width-990px d-flex">
+          <div className="d-flex flex-grow-1">
+            <div className="w-600px ">
+              <Suspense fallback={""}>
+                <Switch>
+                  <Route exact path={"/"}>
+                    <Redirect to={"/orders"} />
+                  </Route>
+                  <Route path={"/find-order"}>
+                    <FindOrder />
+                  </Route>
+                  <Route path={"/profile"}>
+                    <Profile />
+                  </Route>
+                  <Route path={"/orders/:userID"}>
+                    <Chat />
+                  </Route>
+                  <Route exact path={"/orders"}>
+                    <Orders />
+                  </Route>
+                  <Route path={"/auth"}>
+                    <Auth />
+                  </Route>
+                  <Route path={"/todo-list"}>
+                    <TodoList />
+                  </Route>
+                </Switch>
+              </Suspense>
+            </div>
           </div>
           <div className="w-350px h-100">
             <RightSideContent />

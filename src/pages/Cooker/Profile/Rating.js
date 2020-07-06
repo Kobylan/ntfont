@@ -2,7 +2,7 @@ import React from "react";
 
 export const Rating = (props) => {
   return (
-    <div className="rounded p-20 w-100 bg-white mt-5">
+    <div className="rounded p-20 bg-white mt-5">
       <div className="d-flex align-items-center">
         <div className="font-size-28 p-10">Средняя оценка:</div>
         <div className="font-size-36"> 4,76</div>
