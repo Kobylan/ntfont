@@ -209,7 +209,7 @@ const Chat = () => {
 
   return (
     <div
-      className="chat-body d-flex flex-column justify-content-between br-3"
+      className="chat-body d-flex flex-column justify-content-between rounded"
       onDragOver={(e) => {
         e.preventDefault();
         setDrag(true);
@@ -236,9 +236,9 @@ const Chat = () => {
             <img
               src="https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg"
               alt="Adil Kairolla"
-              className="chat-avatar br-3"
+              className="chat-avatar rounded"
             />
-            <span className="ml-2">Adil Kairolla</span>
+            <span className="ml-10">Adil Kairolla</span>
           </div>
           <div className="text-muted">в сети</div>
         </div>
@@ -283,7 +283,7 @@ const Chat = () => {
         <input
           type="text"
           placeholder="Напишите новое сообщение"
-          className="chat-send-message__input br-3"
+          className="chat-send-message__input rounded"
         />
         <div className="btn" onClick={() => console.log(messagesEndRef)}>
           <div

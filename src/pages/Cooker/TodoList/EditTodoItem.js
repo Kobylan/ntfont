@@ -69,7 +69,7 @@ const EditTodoItem = (props) => {
         <div>
           <div>Название</div>
           <input
-            className="todo-item-title__edit mb-1 br-3"
+            className="todo-item-title__edit mb-5 rounded"
             type="text"
             maxLength={55}
             value={item.title}
@@ -85,7 +85,7 @@ const EditTodoItem = (props) => {
         <div>Описание</div>
         <textarea
           value={item.description}
-          className="todo-item-description__edit br-3"
+          className="todo-item-description__edit rounded"
           rows={rows}
           maxLength={255}
           onChange={onChangeDescription}

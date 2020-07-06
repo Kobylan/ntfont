@@ -3,32 +3,30 @@ import React from "react";
 const EditProfileInfo = (props) => {
   const { profile, setProfile, setEdit, setMethod } = props;
   return (
-    <div className="p-2">
-      <div className="profile-info__section">
+    <div className="p-10">
+      <div className="d-flex justify-content-start">
         <div>
           <img
             width={120}
             src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
             alt="Adil genius"
-            className="br-3 shadow"
+            className="rounded"
           />
         </div>
-        <div className="profile-info__right-section">
-          <div className="profile-info__section-title h4">
+        <div className="w-100 ml-15">
+          <div className="font-size-24">
             {profile.first_name} {profile.last_name}
           </div>
-          <div className="profile-info__section-body">
-            {profile.profile.bio}
-          </div>
+          <div className="w-100">{profile.profile.bio}</div>
         </div>
       </div>
-      <div className="profile-info__section">
-        <div className="profile-info__left-section">
-          <div className="profile-info__section-title">Имя</div>
-          <div className="profile-info__section-body">
+      <div className="d-flex justify-content-start">
+        <div className="w-100">
+          <div>Имя</div>
+          <div className="w-100">
             <input
               type="text"
-              className="profile-info__section-input br-3"
+              className="bg-transparent border w-100 outline-none p-5 rounded"
               value={profile.first_name}
               onChange={(e) =>
                 setProfile({
@@ -39,12 +37,12 @@ const EditProfileInfo = (props) => {
             />
           </div>
         </div>
-        <div className="profile-info__right-section">
-          <div className="profile-info__section-title">Фамилия</div>
-          <div className="profile-info__section-body">
+        <div className="w-100 ml-15">
+          <div>Фамилия</div>
+          <div className="w-100">
             <input
               type="text"
-              className="profile-info__section-input br-3"
+              className="bg-transparent border w-100 outline-none p-5 rounded"
               value={profile.last_name}
               onChange={(e) =>
                 setProfile({
@@ -56,13 +54,13 @@ const EditProfileInfo = (props) => {
           </div>
         </div>
       </div>
-      <div className="profile-info__section">
-        <div className="profile-info__left-section">
-          <div className="profile-info__section-title">Логин</div>
-          <div className="profile-info__section-body">
+      <div className="d-flex justify-content-start">
+        <div className="w-100">
+          <div>Логин</div>
+          <div className="w-100">
             <input
               type="text"
-              className="profile-info__section-input br-3"
+              className="bg-transparent border w-100 outline-none p-5 rounded"
               value={profile.username}
               onChange={(e) =>
                 setProfile({
@@ -73,12 +71,12 @@ const EditProfileInfo = (props) => {
             />
           </div>
         </div>
-        <div className="profile-info__right-section">
-          <div className="profile-info__section-title">Электронный адрес</div>
-          <div className="profile-info__section-body">
+        <div className="w-100 ml-15">
+          <div>Электронный адрес</div>
+          <div className="w-100">
             <input
               type="text"
-              className="profile-info__section-input br-3"
+              className="bg-transparent border w-100 outline-none p-5 rounded"
               value={profile.email}
               onChange={(e) =>
                 setProfile({
@@ -91,10 +89,10 @@ const EditProfileInfo = (props) => {
         </div>
       </div>
       <div>
-        <div className="profile-info__section-title">Описание</div>
-        <div className="profile-info__section-body">
+        <div>Описание</div>
+        <div className="w-100">
           <textarea
-            className="profile-info__section-textarea br-3"
+            className="bg-transparent border w-100 outline-none p-5 rounded"
             value={profile.profile.bio}
             onChange={(e) =>
               setProfile({
@@ -108,9 +106,9 @@ const EditProfileInfo = (props) => {
           />
         </div>
       </div>
-      <div className="d-flex justify-content-end mt-2">
+      <div className="d-flex justify-content-end mt-10">
         <div
-          className="btn btn-primary"
+          className="btn"
           onClick={() => {
             setMethod("PUT");
             setEdit(false);

@@ -127,7 +127,7 @@ const RightSideContent = () => {
               item.status && `line-through`
             }`}
           >
-            <div className={`todo-item__${item.status} mr-2`} />
+            <div className={`todo-item__${item.status} mr-10`} />
             <div className="todo-item-title  text-uppercase th">
               {item.title}
             </div>

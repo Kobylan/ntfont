@@ -3,7 +3,8 @@
 $blue: rgb(29, 161, 242);
 $white: rgb(255, 255, 255);
 $dark: rgb(0, 25, 53);
-$gray: rgb(221, 221, 221);
+$white-gray: rgb(221, 221, 221);
+$gray: rgb(136, 136, 136);
 $blue-gray: rgb(64, 83, 104);
 $blue-hover: rgb(45, 137, 179);
 $text-white: rgba(250, 250, 250, 1);
@@ -92,6 +93,9 @@ body {
 }
 
 .maxw {
+  &-470px {
+    max-width: 470px;
+  }
   &-600px {
     max-width: 600px;
   }
@@ -130,6 +134,9 @@ body {
     &-2 {
       height: calc(100% - 32px);
     }
+  }
+  &-15px {
+    height: 15px;
   }
   &-auto {
     height: auto;
@@ -345,7 +352,7 @@ body {
     background-color: $dark;
   }
   &-gray {
-    background-color: $gray;
+    background-color: $white-gray;
   }
   &-transparent {
     background-color: transparent;
@@ -402,6 +409,9 @@ body {
       color: $text-white-08;
       text-decoration: none;
     }
+  }
+  &-break {
+    word-wrap: break-word;
   }
 }
 
@@ -466,6 +476,9 @@ body {
   &-scroll {
     overflow-y: scroll;
   }
+  &-hidden {
+    overflow: hidden;
+  }
 }
 
 .outline {
@@ -483,5 +496,11 @@ body {
   }
   &-gray {
     fill: $text-white-08;
+  }
+}
+
+.top {
+  &-10 {
+    top: 10px;
   }
 }

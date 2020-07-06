@@ -48,7 +48,7 @@ const TodoList = () => {
       </div>
 
       {testData.map((item) => (
-        <div className="card mb-3">
+        <div className="card mb-15">
           <TodoItem item={item} />
         </div>
       ))}

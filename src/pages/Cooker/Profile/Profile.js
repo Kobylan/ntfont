@@ -4,11 +4,9 @@ import { Reviews } from "./Reviews";
 import { Rating } from "./Rating";
 import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
 import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
-import "../../../assets/css/profile.css";
 import ProfileInfo from "./ProfileInfo";
 import EditProfileInfo from "./EditProfileInfo";
 import { useMyProfile } from "../../../hooks/useMyProfile";
-import Loading from "../../../components/Loading";
 import ProfileInfoSkeleton from "./ProfileInfoSkeleton";
 
 const testdata = [
@@ -72,16 +70,15 @@ const Profile = () => {
   const [profile, setProfile] = useState();
   const [method, setMethod] = useState("GET");
   const { loading, error, user } = useMyProfile(profile, method);
-  console.log("profile", profile);
   useEffect(() => {
     setProfile(user);
   }, [user]);
   return (
     <div>
-      <div className="card-title">
+      <div className="text-white font-size-20 mt-20 d-flex justify-content-between">
         <div>Мой профиль</div>
         <div
-          className="d-flex align-items-center pointer text-muted"
+          className="d-flex align-items-center cursor-pointer"
           onMouseEnter={() => setActive("edit")}
           onMouseLeave={() => setActive("")}
           onClick={() => setEdit(true)}
@@ -89,13 +86,13 @@ const Profile = () => {
         >
           {!edit &&
             (active === "edit" ? (
-              <EditFilled className="profile-icon" />
+              <EditFilled className="icon-30 fill-blue" />
             ) : (
-              <Edit className="profile-icon" />
+              <Edit className="icon-30 fill-white" />
             ))}
         </div>
       </div>
-      <div className="profile-card br-3">
+      <div className="p-10 maxw-600px bg-white d-flex flex-column justify-content-end rounded">
         <div className="d-flex flex-column ">
           {edit ? (
             <EditProfileInfo
@@ -112,9 +109,9 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="text-light   h5 pt-3">Рейтинг</div>
+      <div className="text-white font-size-20 mt-20 ">Рейтинг</div>
       <Rating />
-      <div className="text-light   h5 pt-3">Отзывы</div>
+      <div className="text-white font-size-20 mt-20">Отзывы</div>
       {testdata.map((e) => (
         <Reviews key={e.id} data={e} />
       ))}

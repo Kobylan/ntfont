@@ -7,7 +7,6 @@ import "../../../assets/css/find-order.css";
 const FindOrder = () => {
   const [page, setPage] = useState(1);
   const { loading, error, orders, hasMore } = useOrdersSearch(page);
-  console.log("======", orders);
   const observer = useRef();
   const lastOrderElementRef = useCallback(
     (node) => {
@@ -24,7 +23,7 @@ const FindOrder = () => {
   );
   return (
     <div className="maxw-600px">
-      <div className="d-flex font-size-20 mt-20 text-white">Поиск заказов</div>
+      <div className="font-size-20 mt-20 text-white">Поиск заказов</div>
       <div>FILTER ELEMENT</div>
       <div>
         {orders?.map((order) =>
