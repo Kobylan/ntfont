@@ -23,14 +23,14 @@ const ProfileInfo = (props) => {
         </div>
         <div>{profile?.profile.bio}</div>
         <div className="d-flex mt-15">
-          <div className="text-muted">instagram:</div>
+          <div className="text-muted">Instagram:</div>
           <div
             className="ml-5 text-blue cursor-pointer"
             onClick={() => {
-              window.open("//instagram.com/adilkairolla");
+              window.open(`//instagram.com/${profile.username}`);
             }}
           >
-            adilkairolla
+            {profile.username}
           </div>
         </div>
         <div className="d-flex mt-15 ">
