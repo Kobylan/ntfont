@@ -4,94 +4,73 @@ import { ReactComponent as Save } from "../../../assets/icons/todo/save.svg";
 import { ReactComponent as SaveFilled } from "../../../assets/icons/todo/save-filled.svg";
 import { ReactComponent as Delete } from "../../../assets/icons/todo/delete.svg";
 import { ReactComponent as DeleteFilled } from "../../../assets/icons/todo/delete-filled.svg";
+import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
+import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
 
 const EditTodoItem = (props) => {
   const [item, setItem] = useState(props.item);
-  const [status, setStatus] = useState(item.status);
   const [active, setActive] = useState("");
-  const [rows, setRows] = useState(
-    Math.ceil(item.description.length / 58) < 10
-      ? Math.ceil(item.description.length / 58)
-      : 10
-  );
-  const onChangeDescription = (event) => {
-    const textareaLineHeight = 24;
-    const minRows = 1;
-    const maxRows = 10;
-    const previousRows = event.target.rows;
-    event.target.rows = minRows;
-    const currentRows = ~~(event.target.scrollHeight / textareaLineHeight);
-    if (currentRows === previousRows) {
-      event.target.rows = currentRows;
-    }
-    if (currentRows >= maxRows) {
-      event.target.rows = maxRows;
-      event.target.scrollTop = event.target.scrollHeight;
-    }
-    setItem({
-      ...item,
-      description: event.target.value,
-    });
-    setRows(currentRows < maxRows ? currentRows : maxRows);
-  };
   return (
-    <div className="todo-item-body ">
-      <div className="d-flex justify-content-between">
-        <div className="h5">Редактирование</div>
+    <div className="d-flex flex-column">
+      <div className="d-flex justify-content-between align-items-center">
+        <input
+          className="w-350px bg-transparent border  outline-none p-5 rounded border-box"
+          type="text"
+          name="email"
+          value={item.title}
+          onChange={(e) => setItem({ ...item, title: e.target.value })}
+        />
+
         <div>
           {active === "edit" ? (
             <SaveFilled
               onMouseLeave={() => setActive("")}
-              className="todo-item-icon pointer"
               onClick={() => props.setEdit(false)}
+              className="cursor-pointer fill-blue w-30px"
             />
           ) : (
             <Save
               onMouseEnter={() => setActive("edit")}
-              className="todo-item-icon pointer"
               onClick={() => props.setEdit(false)}
+              className="cursor-pointer fill-gray08 w-30px"
             />
           )}
           {active === "delete" ? (
             <DeleteFilled
               onMouseLeave={() => setActive("")}
-              className="todo-item-icon pointer"
+              className="cursor-pointer fill-blue w-30px"
             />
           ) : (
             <Delete
               onMouseEnter={() => setActive("delete")}
-              className="todo-item-icon pointer"
+              className="cursor-pointer fill-gray08 w-30px"
             />
           )}
         </div>
       </div>
-      <div className={`todo-list-content`}>
-        <div>
-          <div>Название</div>
-          <input
-            className="todo-item-title__edit mb-5 rounded"
-            type="text"
-            maxLength={55}
-            value={item.title}
-            onChange={(e) =>
-              setItem({
-                ...item,
-                title: e.target.value,
-              })
-            }
-          />
+      <textarea
+        rows={5}
+        className="mt-5 bg-transparent border w-100 outline-none p-5 rounded border-box"
+        name="bio"
+        value={item.description}
+        onChange={(e) =>
+          setItem({
+            ...item,
+            description: e.target.value,
+          })
+        }
+      />
+      <div className="d-flex justify-content-between text-muted ">
+        <div
+          onClick={() => history.push(`/orders/${item.owner.id}`)}
+          className="cursor-pointer"
+        >
+          {item.owner.name}
         </div>
-
-        <div>Описание</div>
-        <textarea
-          value={item.description}
-          className="todo-item-description__edit rounded"
-          rows={rows}
-          maxLength={255}
-          onChange={onChangeDescription}
-        />
+        <div>{item.date}</div>
       </div>
     </div>
   );
 };
+
 export default EditTodoItem;

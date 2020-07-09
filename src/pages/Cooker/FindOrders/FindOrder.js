@@ -22,7 +22,7 @@ const FindOrder = () => {
     [loading, hasMore]
   );
   return (
-    <div className="max-width-600px">
+    <div className="w-100">
       <div className="font-size-20 mt-20 text-white">Поиск заказов</div>
       <div>FILTER ELEMENT</div>
       <div>

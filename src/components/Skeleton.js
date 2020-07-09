@@ -4,7 +4,7 @@ const Skeleton = (props) => {
   const { width, height } = props;
   return (
     <div
-      className="skeleton rounded"
+      className="animation-skeleton"
       style={{ width: width, height: height }}
     />
   );

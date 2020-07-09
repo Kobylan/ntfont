@@ -6,22 +6,22 @@ import { history } from "../../../history";
 const Order = (props) => {
   const { order } = props;
   return (
-    <div className="max-width-600px d-flex align-items-start mb-15">
+    <div className="d-flex align-items-start mb-15">
       <img
-        className="w-80px rounded position-sticky top-10 mr-10"
+        className="mr-10 top-10 position-sticky w-80px rounded"
         src={
           "https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg"
         }
         alt="Adil genius"
       />
-      <div className="h-auto rounded bg-white p-15 d-flex flex-column w-100 text-break">
+      <div className="w-100 border-box rounded bg-white p-15 d-flex flex-column w-100  text-break overflow-hidden">
         <div className="d-flex align-items-start justify-content-between">
           <span className="font-size-20">{order.title}</span>
           <span className="text-muted align-items-center">
             {timeAgoUnix(order.created_at)}
           </span>
         </div>
-        <div className="p-10 max-width-470px">{order.description}</div>
+        <div className="p-5">{order.description}</div>
         <div className="d-flex align-items-center justify-content-between mt-10">
           <div>Цена: {order.price}тг</div>
           <div>Вес: {order.weight}кг</div>
