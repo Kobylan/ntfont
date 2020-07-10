@@ -47,7 +47,7 @@ const TodoList = () => {
         <div className="btn"> Добавить</div>
       </div>
       {testData.map((item) => (
-        <div className="bg-white rounded w-100 padding p-15 border-box mb-15">
+        <div className="bg-white rounded w-100 padding p-15  mb-15">
           <TodoItem item={item} />
         </div>
       ))}

@@ -44,6 +44,10 @@ html {
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .d {
   &-flex {
     display: flex;
@@ -666,7 +670,7 @@ html {
 
 .animation {
   &-rating {
-    animation: width 2s;
+    animation: width 1s ease;
   }
   &-rotate {
     animation: rotate 1s linear infinite;

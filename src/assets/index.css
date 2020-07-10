@@ -28,6 +28,10 @@ html input {
   outline: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .d-flex {
   display: flex;
 }
@@ -545,7 +549,7 @@ html input {
 }
 
 .animation-rating {
-  animation: width 2s;
+  animation: width 1s ease;
 }
 .animation-rotate {
   animation: rotate 1s linear infinite;

@@ -14,7 +14,7 @@ const EditTodoItem = (props) => {
     <div className="d-flex flex-column">
       <div className="d-flex justify-content-between align-items-center">
         <input
-          className="w-350px bg-transparent border  outline-none p-5 rounded border-box"
+          className="w-350px bg-transparent border  outline-none p-5 rounded "
           type="text"
           name="email"
           value={item.title}
@@ -50,7 +50,7 @@ const EditTodoItem = (props) => {
       </div>
       <textarea
         rows={5}
-        className="mt-5 bg-transparent border w-100 outline-none p-5 rounded border-box"
+        className="mt-5 bg-transparent border w-100 outline-none p-5 rounded "
         name="bio"
         value={item.description}
         onChange={(e) =>

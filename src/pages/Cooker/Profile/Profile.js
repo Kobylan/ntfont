@@ -69,15 +69,15 @@ const Profile = () => {
   const [edit, setEdit] = useState(false);
   const [profile, setProfile] = useState();
   const [method, setMethod] = useState("GET");
-  const { error, user } = useMyProfile(profile, method);
-  const loading = true;
+  const { loading, error, user } = useMyProfile(profile, method);
+  // const loading = true;
   useEffect(() => {
     setProfile(user);
   }, [user]);
   return (
     <>
       <div className="w-100">
-        <div className="min-height-30px border-box text-white w-100 mb-5 font-size-20 mt-20 d-flex justify-content-between">
+        <div className="min-height-30px text-white w-100 mb-5 font-size-20 mt-20 d-flex justify-content-between">
           <div>Мой профиль</div>
           <div
             className="d-flex align-items-center cursor-pointer"
@@ -114,15 +114,11 @@ const Profile = () => {
         </div>
       </div>
       <div>
-        <div className="border-box text-white w-100 mt-20 mb-5 font-size-20">
-          Рейтинг
-        </div>
+        <div className="text-white w-100 mt-20 mb-5 font-size-20">Рейтинг</div>
         <Rating loading={loading} />
       </div>
 
-      <div className="border-box text-white w-100 mt-20 mb-5 font-size-20">
-        Отзывы
-      </div>
+      <div className="text-white w-100 mt-20 mb-5 font-size-20">Отзывы</div>
       {loading ? (
         <Loading />
       ) : (

@@ -20,7 +20,7 @@ const AppRouter = () => {
       <div className="d-flex align-items-start flex-grow-1 flex-shrink-1">
         <div className="min-width-990px d-flex">
           <div className="d-flex flex-grow-1">
-            <div className="w-100 max-width-600px">
+            <div className="w-100 max-width-600px ">
               <Suspense fallback={""}>
                 <Switch>
                   <Route exact path={"/"}>

@@ -46,7 +46,7 @@ const EditProfileInfo = (props) => {
           <label className="flex-50">
             Имя
             <input
-              className="bg-transparent border w-100 outline-none p-5 rounded border-box"
+              className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
               name="first_name"
               value={profile.first_name}
@@ -56,7 +56,7 @@ const EditProfileInfo = (props) => {
           <label className="flex-50 ml-15">
             Фамилия
             <input
-              className="bg-transparent border w-100 outline-none p-5 rounded border-box"
+              className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
               name="last_name"
               value={profile.last_name}
@@ -68,7 +68,7 @@ const EditProfileInfo = (props) => {
           <label className="flex-50">
             Instagram
             <input
-              className="bg-transparent border w-100 outline-none p-5 rounded border-box"
+              className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
               name="username"
               value={profile.username}
@@ -78,7 +78,7 @@ const EditProfileInfo = (props) => {
           <label className="flex-50 ml-15">
             Email
             <input
-              className="bg-transparent border w-100 outline-none p-5 rounded border-box"
+              className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
               name="email"
               value={profile.email}
@@ -90,7 +90,7 @@ const EditProfileInfo = (props) => {
           Описание
           <textarea
             rows={7}
-            className="bg-transparent border w-100 outline-none p-5 rounded border-box"
+            className="bg-transparent border w-100 outline-none p-5 rounded "
             name="bio"
             value={profile.profile.bio}
             onChange={handleChange}

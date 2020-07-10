@@ -135,7 +135,7 @@ const RightSideContent = () => {
         </div>
         {testData.map((item) => (
           <div
-            className={`bg-white w-100 br p-10 mb-5 d-flex border-box rounded ${
+            className={`bg-white w-100 br p-10 mb-5 d-flex rounded ${
               item.status && `text-through`
             }`}
           >
@@ -144,7 +144,7 @@ const RightSideContent = () => {
           </div>
         ))}
       </div>
-      <div className="bg-white p-5 w-100 rounded cursor-select border-box">
+      <div className="bg-white p-5 w-100 rounded cursor-select ">
         <div className="pl-20 pr-20 d-flex justify-content-between font-size-20">
           <div>
             <Back

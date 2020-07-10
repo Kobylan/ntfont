@@ -8,7 +8,7 @@ const Skeleton = (props) => {
   const keyframes = `@keyframes ${name} {
   from{background-position: ${-width}px;}
   to {
-    background-position: ${width}px;
+    background-position: calc(-100% + ${width * 2}px);
   }
 }`;
   styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
@@ -17,11 +17,11 @@ const Skeleton = (props) => {
     height: `${height}px`,
     background: `linear-gradient(
         90deg,
-        rgba(224, 224, 224, 1) 15%,
-        rgba(255, 255, 255, 1) 50%,
-        rgba(224, 224, 224, 1) 85%
+        rgba(224, 224, 224, 1) 0px,
+        rgba(255, 255, 255, 1) ${width / 2}px,
+        rgba(224, 224, 224, 1) ${width}px
   )`,
-    animation: `${name} ${0.75 + width / 100}s infinite linear`,
+    animation: `${name} 3s infinite linear`,
   };
 
   return (

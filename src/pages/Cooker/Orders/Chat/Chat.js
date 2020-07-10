@@ -203,7 +203,7 @@ const Chat = () => {
 
   return (
     <div
-      className="overflow-Yauto h-100 bg-white position-absolute w-100 max-width-600px d-flex flex-column justify-content-between rounded"
+      className="h-100 bg-white position-absolute w-100 max-width-600px d-flex flex-column justify-content-between rounded"
       onDragOver={(e) => {
         e.preventDefault();
         setDrag(true);

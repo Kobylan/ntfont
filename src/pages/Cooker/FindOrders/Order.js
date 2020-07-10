@@ -14,7 +14,7 @@ const Order = (props) => {
         }
         alt="Adil genius"
       />
-      <div className="w-100 border-box rounded bg-white p-15 d-flex flex-column w-100  text-break overflow-hidden">
+      <div className="w-100 rounded bg-white p-15 d-flex flex-column w-100  text-break overflow-hidden">
         <div className="d-flex align-items-start justify-content-between">
           <span className="font-size-20">{order.title}</span>
           <span className="text-muted align-items-center">
