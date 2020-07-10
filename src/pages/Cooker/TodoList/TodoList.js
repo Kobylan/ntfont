@@ -5,7 +5,8 @@ const testData = [
   {
     id: 1,
     title: "Хочу пицу в форме сердца",
-    description: "Торт ",
+    description:
+      "casserole Faith at the radiation dome that is when terrifying particles die.",
     date: "15/9/2212",
     owner: {
       name: "Adil Kairolla",
@@ -17,7 +18,7 @@ const testData = [
     id: 2,
     title: "Торт малочная девочка",
     description:
-      "Торт с телефоном и радугойТорт с телефоном и радугойТорт с телефоном и радугойТорт с телефоном и радугой",
+      "Everything we do is connected with solitude: heaven, suffering, grace, acceptance.",
     date: "15/9/2212",
     owner: {
       name: "Adil Kairolla",
@@ -40,15 +41,13 @@ const testData = [
 ];
 const TodoList = () => {
   return (
-    <div className="todo-list">
-      <div className="card-title">
+    <div className="w-100">
+      <div className="d-flex justify-content-between align-items-start text-white w-100 mt-20 mb-15 font-size-20">
         <div className="">Мой список дел</div>
-
-        <div className="btn btn-primary"> Добавить</div>
+        <div className="btn"> Добавить</div>
       </div>
-
       {testData.map((item) => (
-        <div className="card mb-3">
+        <div className="bg-white rounded w-100 padding p-15 border-box mb-15">
           <TodoItem item={item} />
         </div>
       ))}

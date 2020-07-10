@@ -14,54 +14,53 @@ const TodoItem = (props) => {
   return edit ? (
     <EditTodoItem item={item} setEdit={(e) => setEdit(e)} />
   ) : (
-    <div className="todo-item-body ">
-      <div className="d-flex ">
-        <div>
+    <div className="d-flex flex-column">
+      <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex">
           <div
-            className={`todo-item__${status} pointer`}
+            className={`checkbox-${status} pointer`}
             onClick={(e) => setStatus(!status)}
           />
-        </div>
-        <div className={`todo-list-content ${status && `line-through`}`}>
-          <div className="d-flex justify-content-between ">
-            <div className="todo-item-title h5 text-uppercase th">
-              {item.title}
-            </div>
-            <div>
-              {active === "edit" ? (
-                <EditFilled
-                  onMouseLeave={() => setActive("")}
-                  onClick={() => setEdit(true)}
-                  className="todo-item-icon pointer"
-                />
-              ) : (
-                <Edit
-                  onMouseEnter={() => setActive("edit")}
-                  onClick={() => setEdit(true)}
-                  className="todo-item-icon pointer"
-                />
-              )}
-              {active === "delete" ? (
-                <DeleteFilled
-                  onMouseLeave={() => setActive("")}
-                  className="todo-item-icon pointer"
-                />
-              ) : (
-                <Delete
-                  onMouseEnter={() => setActive("delete")}
-                  className="todo-item-icon pointer"
-                />
-              )}
-            </div>
+          <div
+            className={`ml-5 text-uppercase ${
+              item.status ? `text-through` : null
+            }`}
+          >
+            {item.title}
           </div>
-
-          <div>{item.description}</div>
+        </div>
+        <div>
+          {active === "edit" ? (
+            <EditFilled
+              onMouseLeave={() => setActive("")}
+              onClick={() => setEdit(true)}
+              className="cursor-pointer fill-blue w-30px"
+            />
+          ) : (
+            <Edit
+              onMouseEnter={() => setActive("edit")}
+              onClick={() => setEdit(true)}
+              className="cursor-pointer fill-gray08 w-30px"
+            />
+          )}
+          {active === "delete" ? (
+            <DeleteFilled
+              onMouseLeave={() => setActive("")}
+              className="cursor-pointer fill-blue w-30px"
+            />
+          ) : (
+            <Delete
+              onMouseEnter={() => setActive("delete")}
+              className="cursor-pointer fill-gray08 w-30px"
+            />
+          )}
         </div>
       </div>
+      <div className="p-5 mb-5">{item.description}</div>
       <div className="d-flex justify-content-between text-muted ">
         <div
           onClick={() => history.push(`/orders/${item.owner.id}`)}
-          className="pointer"
+          className="cursor-pointer"
         >
           {item.owner.name}
         </div>

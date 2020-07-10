@@ -8,11 +8,11 @@ const Sidebar = () => {
   const [pathname, setPathname] = useState("");
   const [active, setActive] = useState("");
   return (
-    <div className="left-side-container">
-      <div className="left-side-content">
+    <div className="d-flex flex-column align-items-end h-100 w-275px">
+      <div className="d-flex flex-column justify-content-between position-fixed pg-20 h-100 w-275">
         <div>
           <div>
-            <Logo width={180} alt="na|teste" className="logo" />
+            <Logo width={180} alt="na|teste" className="m-10" />
           </div>
           {sidebarConfig.map((item) => (
             <div>
@@ -20,17 +20,19 @@ const Sidebar = () => {
                 onMouseEnter={() => setActive(item.path)}
                 onMouseLeave={() => setActive("")}
                 key={item.id}
-                className="side-bar-item d-flex align-items-start max-content hover p-1"
+                className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
+                  active === item.path && "hover"
+                }`}
                 isActive={(match, location) => {
                   setPathname(location.pathname);
                 }}
                 to={item.path}
               >
                 <div
-                  className={`sidebar-icon__${
+                  className={`icon-30 ${
                     pathname === item.path || active === item.path
-                      ? "active"
-                      : ""
+                      ? "fill-white"
+                      : "fill-gray"
                   }`}
                 >
                   {pathname === item.path || active === item.path
@@ -38,8 +40,8 @@ const Sidebar = () => {
                     : item.icon}
                 </div>
                 <div
-                  className={`side-bar-title ${
-                    pathname === item.path && "active"
+                  className={`mg-20 font-size-20 ${
+                    pathname === item.path && "text-white"
                   }`}
                 >
                   {item.title}
@@ -48,22 +50,27 @@ const Sidebar = () => {
             </div>
           ))}
         </div>
-        <div className="side-bar-item">
+        <NavLink
+          onMouseEnter={() => setActive("/logout")}
+          onMouseLeave={() => setActive("")}
+          className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
+            active === "/logout" && "hover"
+          }`}
+          to={"/logout"}
+        >
+          <Logout
+            className={`icon-30 ${
+              active === "/logout" ? "fill-white" : "fill-gray"
+            }`}
+          />
           <div
-            className="d-flex align-items-center pointer max-content hover p-1"
-            onMouseEnter={() => setActive("/logout")}
-            onMouseLeave={() => setActive("")}
+            className={`mg-20 font-size-20 ${
+              active === "/logout" && "text-white"
+            }`}
           >
-            <div
-              className={`sidebar-icon__${
-                active === "/logout" ? "active" : ""
-              }`}
-            >
-              <Logout />
-            </div>
-            <div className="side-bar-title">Выйти</div>
+            Выйти
           </div>
-        </div>
+        </NavLink>
       </div>
     </div>
   );

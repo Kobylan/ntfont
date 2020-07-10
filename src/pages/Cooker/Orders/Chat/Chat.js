@@ -15,165 +15,159 @@ const Chat = () => {
     {
       id: 1,
       type: "start",
-      message: "Привет, как дела?",
+      message: "Cur bursa cadunt?",
       date: "15/05/1999",
     },
     {
       id: 2,
       type: "end",
-      message: "Привет",
+      message: "Saucepan ",
       date: "15/05/1999",
     },
     {
       id: 3,
       type: "end",
-      message: "хорошо ты как?",
+      message: "the thing loves?",
       date: "15/05/1999",
     },
     {
       id: 4,
       type: "start",
-      message: "хорошо, спасибо",
+      message: "with carrots drink rice vinegar. ",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
-      message: "Иди нахуй!!!",
+      message: "Ho-ho-ho! punishment of hunger!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
-      message: "Иди нахуй!!!",
+      message: "Quickly infiltrate a planet!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
-      message: "Иди нахуй!!!",
+      message: "With truffels drink triple sec!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
-      message: "Иди нахуй!!!",
+      message: "Always command a nanomachine!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
-      message: "Иди нахуй!!!",
+      message: "Be calm!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
-      message: "Иди нахуй!!!",
+      message: "Wind, friendship, and peace!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
-      message: "Иди нахуй!!!",
+      message: "Collectives warp with pressure!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
+      message: "Be united!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "start",
       message:
-        "Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!",
+        "Per guest prepare a dozen pounds of BBQ sauce with sliced peanut butter for dessert.",
+      date: "15/05/1999",
+    },
+    {
+      id: 1,
+      type: "start",
+      message: "Cur bursa cadunt?",
+      date: "15/05/1999",
+    },
+    {
+      id: 2,
+      type: "end",
+      message: "Saucepan ",
+      date: "15/05/1999",
+    },
+    {
+      id: 3,
+      type: "end",
+      message: "the thing loves?",
+      date: "15/05/1999",
+    },
+    {
+      id: 4,
+      type: "start",
+      message: "with carrots drink rice vinegar. ",
+      date: "15/05/1999",
+    },
+    {
+      id: 5,
+      type: "end",
+      message: "Ho-ho-ho! punishment of hunger!",
+      date: "15/05/1999",
+    },
+    {
+      id: 5,
+      type: "start",
+      message: "Quickly infiltrate a planet!",
+      date: "15/05/1999",
+    },
+    {
+      id: 5,
+      type: "start",
+      message: "With truffels drink triple sec!",
+      date: "15/05/1999",
+    },
+    {
+      id: 5,
+      type: "start",
+      message: "Always command a nanomachine!",
+      date: "15/05/1999",
+    },
+    {
+      id: 5,
+      type: "end",
+      message: "Be calm!",
+      date: "15/05/1999",
+    },
+    {
+      id: 5,
+      type: "end",
+      message: "Wind, friendship, and peace!",
+      date: "15/05/1999",
+    },
+    {
+      id: 5,
+      type: "start",
+      message: "Collectives warp with pressure!",
+      date: "15/05/1999",
+    },
+    {
+      id: 5,
+      type: "start",
+      message: "Be united!",
       date: "15/05/1999",
     },
     {
       id: 5,
       type: "end",
       message:
-        "Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
-      date: "15/05/1999",
-    },
-    {
-      id: 5,
-      type: "start",
-      message: "Иди нахуй!!!",
+        "Per guest prepare a dozen pounds of BBQ sauce with sliced peanut butter for dessert.",
       date: "15/05/1999",
     },
   ];
@@ -209,7 +203,7 @@ const Chat = () => {
 
   return (
     <div
-      className="chat-body d-flex flex-column justify-content-between br-3"
+      className="overflow-Yauto h-100 bg-white position-absolute w-100 max-width-600px d-flex flex-column justify-content-between rounded"
       onDragOver={(e) => {
         e.preventDefault();
         setDrag(true);
@@ -225,43 +219,47 @@ const Chat = () => {
         setDrag(false);
       }}
     >
-      <div className="chat-info flex-column border-bottom">
-        <div className="chat-info-username d-flex align-items-center justify-content-between">
+      <div className="p-5 flex-column border-bottom">
+        <div className="d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center">
             <Back
-              className="chat__icon pointer"
+              className="w-30px fill-dark cursor-pointer"
               onClick={() => history.push("/orders")}
               title="Назад"
             />
             <img
               src="https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg"
               alt="Adil Kairolla"
-              className="chat-avatar br-3"
+              className="w-30px h-30px rounded"
             />
-            <span className="ml-2">Adil Kairolla</span>
+            <span className="ml-10">Adil Kairolla</span>
           </div>
           <div className="text-muted">в сети</div>
         </div>
       </div>
       {drag ? (
-        <div className="chat-message-drag-content">
+        <div className="h-100 bg-blue align-items-center d-flex flex-column justify-content-center text-align-center text-white fill-white cursor-events">
           <AddFile width={200} />
-          Перетащите сюда изображения чтобы
-          <br /> прикрепить их к сообщению
+          <div>
+            Перетащите сюда изображения чтобы
+            <br /> прикрепить их к сообщению
+          </div>
         </div>
       ) : (
-        <div className={`chat-message-content ${!scrolled && "invisible"}`}>
+        <div className={`overflow-auto p-10 h-100`}>
           {messeges.map((message) => (
             <Message message={message} />
           ))}
-          <img src={file} className="chat-message" />
-          {console.log(file)}
+          <img src={file} className="m-5 max-width-80 bg-blue text-white " />
           <div ref={messagesEndRef} />
         </div>
       )}
 
-      <div className="chat-send-message border-top">
-        <div className="btn" onClick={() => console.log(messagesEndRef)}>
+      <div className="d-flex align-items-center border-top">
+        <div
+          className="text-align-center p-5"
+          onClick={() => console.log(messagesEndRef)}
+        >
           <div
             onMouseEnter={() => setActive("add-image")}
             onMouseLeave={() => setActive("")}
@@ -269,12 +267,12 @@ const Chat = () => {
           >
             {active === "add-image" ? (
               <AddImageFilled
-                className="chat__icon pointer"
+                className="fill-blue w-30px cursor-pointer"
                 onClick={() => history.push("/orders")}
               />
             ) : (
               <AddImage
-                className="chat__icon pointer"
+                className="fill-dark w-30px cursor-pointer"
                 onClick={() => history.push("/orders")}
               />
             )}
@@ -283,9 +281,12 @@ const Chat = () => {
         <input
           type="text"
           placeholder="Напишите новое сообщение"
-          className="chat-send-message__input br-3"
+          className="w-100 pl-5 pr-5 pt-10 pb-10 outline-none bg-white-gray border-transparent rounded"
         />
-        <div className="btn" onClick={() => console.log(messagesEndRef)}>
+        <div
+          className="text-align-center p-5"
+          onClick={() => console.log(messagesEndRef)}
+        >
           <div
             onMouseEnter={() => setActive("send")}
             onMouseLeave={() => setActive("")}
@@ -293,12 +294,12 @@ const Chat = () => {
           >
             {active === "send" ? (
               <SendFilled
-                className="chat__icon pointer"
+                className="fill-blue w-30px cursor-pointer"
                 onClick={() => history.push("/orders")}
               />
             ) : (
               <Send
-                className="chat__icon pointer"
+                className="fill-dark w-30px cursor-pointer"
                 onClick={() => history.push("/orders")}
               />
             )}

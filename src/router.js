@@ -14,43 +14,45 @@ const AppRouter = () => {
 
   return (
     <Router history={history}>
-      <header>
+      <div className="d-flex flex-column flex-grow-1 align-items-end text-white-opacity">
         <Sidebar />
-      </header>
-      <main>
-        <div className="main-container">
-          <div className="main-content">
-            <Suspense fallback={""}>
-              <Switch>
-                <Route exact path={"/"}>
-                  <Redirect to={"/orders"} />
-                </Route>
-                <Route path={"/find-order"}>
-                  <FindOrder />
-                </Route>
-                <Route path={"/profile"}>
-                  <Profile />
-                </Route>
-                <Route path={"/orders/:userID"}>
-                  <Chat />
-                </Route>
-                <Route exact path={"/orders"}>
-                  <Orders />
-                </Route>
-                <Route path={"/auth"}>
-                  <Auth />
-                </Route>
-                <Route path={"/todo-list"}>
-                  <TodoList />
-                </Route>
-              </Switch>
-            </Suspense>
+      </div>
+      <div className="d-flex align-items-start flex-grow-1 flex-shrink-1">
+        <div className="min-width-990px d-flex">
+          <div className="d-flex flex-grow-1">
+            <div className="w-100 max-width-600px">
+              <Suspense fallback={""}>
+                <Switch>
+                  <Route exact path={"/"}>
+                    <Redirect to={"/orders"} />
+                  </Route>
+                  <Route path={"/find-order"}>
+                    <FindOrder />
+                  </Route>
+                  <Route path={"/profile"}>
+                    <Profile />
+                  </Route>
+                  <Route path={"/orders/:userID"}>
+                    <Chat />
+                  </Route>
+                  <Route exact path={"/orders"}>
+                    <Orders />
+                  </Route>
+                  <Route path={"/auth"}>
+                    <Auth />
+                  </Route>
+                  <Route path={"/todo-list"}>
+                    <TodoList />
+                  </Route>
+                </Switch>
+              </Suspense>
+            </div>
           </div>
-          <div className="right-side">
+          <div className="w-350px h-100">
             <RightSideContent />
           </div>
         </div>
-      </main>
+      </div>
     </Router>
   );
 };

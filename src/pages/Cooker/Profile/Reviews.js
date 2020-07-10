@@ -2,21 +2,17 @@ import React from "react";
 
 export const Reviews = (props) => {
   return (
-    <div className="d-flex align-items-start mb-3 review-card">
-      <div className="avatar mr-2">
-        <img
-          width="100%"
-          className="br-3"
-          src={props.data.avatar}
-          alt="Adil genius"
-        />
-      </div>
-      <div className="avatar-content br-3 p-3 d-flex flex-column text-break">
-        <div className="d-flex align-items-center justify-content-between border-bottom h5">
-          <span>{props.data.name}</span>
-          <span>{props.data.rating}</span>
+    <div className="d-flex w-100 mb-15 align-items-start">
+      <img
+        className="mr-10 top-10 position-sticky w-80px rounded"
+        src={props.data.avatar}
+      />
+      <div className="w-100 rounded bg-white p-15 d-flex flex-column text-break overflow-hidden">
+        <div className="d-flex justify-content-between border-bottom font-size-20">
+          <div>{props.data.name}</div>
+          <div>{props.data.rating}</div>
         </div>
-        <div className="pt-2">{props.data.review}</div>
+        <div className="mt-10 p-10">{props.data.review}</div>
       </div>
     </div>
   );
