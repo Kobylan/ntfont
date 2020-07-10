@@ -18,7 +18,7 @@ export const Rating = (props) => {
   return (
     <div className="rounded p-15 bg-white ">
       {loading ? (
-        <Skeleton height={35} width="60%" className="mb-10" />
+        <Skeleton height={35} width="330" className="mb-10" />
       ) : (
         <div className="d-flex align-items-center">
           <div className="font-size-28">Средняя оценка:</div>
@@ -29,7 +29,7 @@ export const Rating = (props) => {
         {ratingdata.rating.map((e) => (
           <div className="d-flex pb-5 align-items-center ">
             {loading ? (
-              <Skeleton height={25} className="mg-10" />
+              <Skeleton height={25} width="570" className="mg-10" />
             ) : (
               <>
                 <div className="w-10 d-flex justify-content-end">

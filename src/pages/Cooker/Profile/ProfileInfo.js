@@ -7,7 +7,7 @@ const ProfileInfo = (props) => {
     <div className="d-flex">
       <div>
         {loading ? (
-          <Skeleton width={120} height={120} />
+          <Skeleton width="120" height={120} />
         ) : (
           <img
             width={120}
@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
       </div>
       <div className="d-flex pl-15 flex-column w-100">
         {loading ? (
-          <Skeleton height={30} />
+          <Skeleton width="435" height={30} />
         ) : (
           <div className="d-flex justify-content-between">
             <div className="font-size-24">
@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
           </div>
         )}
         {loading ? (
-          <Skeleton height={80} className="mt-10" />
+          <Skeleton width="435" height={80} className="mt-10" />
         ) : (
           <>
             <div>{profile.profile.bio}</div>

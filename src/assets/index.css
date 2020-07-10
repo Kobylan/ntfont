@@ -1,9 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
-@keyframes move-gradient {
-  to {
-    background-position: 600px;
-  }
-}
 @keyframes width {
   from {
     width: 0;
@@ -549,10 +544,6 @@ html input {
   transform: rotate(180deg);
 }
 
-.animation-skeleton {
-  background: linear-gradient(90deg, #e0e0e0 0%, white 50%, #e0e0e0 100%);
-  animation: move-gradient 3s infinite linear;
-}
 .animation-rating {
   animation: width 2s;
 }
