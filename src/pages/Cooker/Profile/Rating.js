@@ -1,47 +1,38 @@
 import React from "react";
 import Skeleton from "../../../components/Skeleton";
-const ratingdata = {
-  sum: 61,
-  avarage: 4.45,
-  rating: [
-    { number: 5, value: 35 },
-    { number: 4, value: 8 },
-    { number: 3, value: 15 },
-    { number: 2, value: 2 },
-    { number: 1, value: 1 },
-  ],
-};
+import useMyProfileRating from "../../../hooks/useMyProfileRating";
 
-export const Rating = (props) => {
-  const { rating, loading } = props;
-  console.log(ratingdata[1]);
+export const Rating = () => {
+  const { loadingRating, rating } = useMyProfileRating();
   return (
     <div className="rounded p-15 bg-white ">
-      {loading ? (
+      {loadingRating ? (
         <Skeleton height={35} width="330" className="mb-10" />
       ) : (
         <div className="d-flex align-items-center">
           <div className="font-size-28">Средняя оценка:</div>
-          <div className="font-size-36"> {ratingdata.avarage}</div>
+          <div className="font-size-36"> {rating.average}</div>
         </div>
       )}
       <div>
-        {ratingdata.rating.map((e) => (
+        {rating.counts?.map((count) => (
           <div className="d-flex pb-5 align-items-center ">
-            {loading ? (
+            {loadingRating ? (
               <Skeleton height={25} width="570" className="mg-10" />
             ) : (
               <>
                 <div className="w-10 d-flex justify-content-end">
-                  <div>{e.number}</div>
+                  <div>{count.number}</div>
                 </div>
                 <div className="mg-10 bg-gray w-80 h-15px rounded overflow-hidden">
                   <div
                     className="h-100 bg-blue animation-rating"
-                    style={{ width: `${(e.value / ratingdata.sum) * 100}%` }}
+                    style={{
+                      width: `${(count.value / rating.quantity) * 100}%`,
+                    }}
                   />
                 </div>
-                <div className="align-self-end w-10 pl-5">{e.value}</div>
+                <div className="align-self-end w-10 pl-5">{count.value}</div>
               </>
             )}
           </div>

@@ -3,12 +3,12 @@ import axios from "axios";
 
 export const useMyProfile = (request, method) => {
   console.log(request, method);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [loadingMyProfile, setLoadingMyProfile] = useState(true);
+  const [errorMyProfile, setErrorMyProfile] = useState(false);
   const [user, setUser] = useState([]);
   useEffect(() => {
-    setLoading(true);
-    setError(false);
+    setLoadingMyProfile(true);
+    setErrorMyProfile(false);
     let cancel;
     switch (method) {
       case "GET":
@@ -19,12 +19,12 @@ export const useMyProfile = (request, method) => {
         })
           .then((res) => {
             setUser(res.data);
-            setLoading(false);
+            setLoadingMyProfile(false);
           })
           .catch((e) => {
             if (axios.isCancel(e)) return;
-            setError(true);
-            setLoading(false);
+            setErrorMyProfile(true);
+            setLoadingMyProfile(false);
           });
         break;
       case "PUT":
@@ -36,16 +36,16 @@ export const useMyProfile = (request, method) => {
         })
           .then((res) => {
             setUser(res.data);
-            setLoading(false);
+            setLoadingMyProfile(false);
           })
           .catch((e) => {
             if (axios.isCancel(e)) return;
-            setError(true);
-            setLoading(false);
+            setErrorMyProfile(true);
+            setLoadingMyProfile(false);
           });
         break;
     }
     return () => cancel();
   }, [method]);
-  return { loading, error, user };
+  return { loadingMyProfile, errorMyProfile, user };
 };

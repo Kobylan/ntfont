@@ -1,8 +1,6 @@
 import React from "react";
 
-const EditProfileInfo = (props) => {
-  const { profile, setProfile, setEdit, setMethod } = props;
-
+const EditProfileInfo = ({ profile, setProfile, setEdit, setMethod }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "bio") {
@@ -71,7 +69,7 @@ const EditProfileInfo = (props) => {
               className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
               name="username"
-              value={profile.username}
+              value={profile.bio.instagram}
               onChange={handleChange}
             />
           </label>

@@ -11,7 +11,9 @@ const Skeleton = (props) => {
     background-position: calc(-100% + ${width * 2}px);
   }
 }`;
-  styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+  try {
+    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+  } catch (e) {}
   const style = {
     width: `${width}px`,
     height: `${height}px`,
