@@ -1,10 +1,10 @@
 import React from "react";
 
 const Skeleton = (props) => {
-  const { width, height } = props;
+  const { width = "100%", height, className } = props;
   return (
     <div
-      className="animation-skeleton"
+      className={`animation-skeleton rounded ${className}`}
       style={{ width: width, height: height }}
     />
   );

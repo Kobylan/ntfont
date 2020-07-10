@@ -58,11 +58,11 @@
   }
 }
 
-.sidebar-icon__{
-  fill: rgba(250,250,250,0.8);
+.sidebar-icon__ {
+  fill: rgba(250, 250, 250, 0.8);
   width: 30px;
 }
 .sidebar-icon__active {
-  fill: rgb(250,250,250);
+  fill: rgb(250, 250, 250);
   width: 30px;
 }

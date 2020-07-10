@@ -6,7 +6,7 @@ import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit
 import ProfileInfo from "./ProfileInfo";
 import EditProfileInfo from "./EditProfileInfo";
 import { useMyProfile } from "../../../hooks/useMyProfile";
-import ProfileInfoSkeleton from "./ProfileInfoSkeleton";
+import Loading from "../../../components/Loading";
 
 const testdata = [
   {
@@ -69,7 +69,8 @@ const Profile = () => {
   const [edit, setEdit] = useState(false);
   const [profile, setProfile] = useState();
   const [method, setMethod] = useState("GET");
-  const { loading, error, user } = useMyProfile(profile, method);
+  const { error, user } = useMyProfile(profile, method);
+  const loading = true;
   useEffect(() => {
     setProfile(user);
   }, [user]);
@@ -106,10 +107,8 @@ const Profile = () => {
                 setProfile={(e) => setProfile(e)}
                 setMethod={(e) => setMethod(e)}
               />
-            ) : loading ? (
-              <ProfileInfoSkeleton />
             ) : (
-              <ProfileInfo profile={profile} />
+              <ProfileInfo profile={profile} loading={loading} />
             )}
           </div>
         </div>
@@ -118,15 +117,17 @@ const Profile = () => {
         <div className="border-box text-white w-100 mt-20 mb-5 font-size-20">
           Рейтинг
         </div>
-        <Rating />
+        <Rating loading={loading} />
       </div>
 
       <div className="border-box text-white w-100 mt-20 mb-5 font-size-20">
         Отзывы
       </div>
-      {testdata.map((e) => (
-        <Reviews key={e.id} data={e} />
-      ))}
+      {loading ? (
+        <Loading />
+      ) : (
+        testdata.map((e) => <Reviews key={e.id} data={e} loading={loading} />)
+      )}
     </>
   );
 };
