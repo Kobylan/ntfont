@@ -13,6 +13,7 @@ export const Reviews = (props) => {
           <div>{props.data.rating}</div>
         </div>
         <div className="mt-10 p-10">{props.data.review}</div>
+        <div className="text-muted align-self-end">12 дней назад</div>
       </div>
     </div>
   );
