@@ -48,6 +48,9 @@ html input {
 .position-sticky {
   position: sticky;
 }
+.position-relative {
+  position: relative;
+}
 
 .flex-column {
   flex-direction: column;
@@ -465,9 +468,6 @@ html input {
 }
 .border-bottom {
   border-bottom: 1px solid #888888;
-}
-.border-box {
-  box-sizing: border-box;
 }
 .border-transparent {
   border: 1px solid transparent;

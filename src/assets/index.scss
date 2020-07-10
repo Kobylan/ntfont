@@ -67,6 +67,9 @@ html {
   &-sticky {
     position: sticky;
   }
+  &-relative {
+    position: relative;
+  }
 }
 
 .flex {
@@ -567,9 +570,6 @@ html {
   }
   &-bottom {
     border-bottom: 1px solid $gray;
-  }
-  &-box {
-    box-sizing: border-box;
   }
   &-transparent {
     border: 1px solid transparent;

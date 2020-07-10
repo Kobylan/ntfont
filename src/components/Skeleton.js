@@ -12,7 +12,7 @@ const Skeleton = (props) => {
   }
 }`;
   styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-  let style = {
+  const style = {
     width: `${width}px`,
     height: `${height}px`,
     background: `linear-gradient(

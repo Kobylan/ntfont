@@ -203,7 +203,10 @@ const Chat = () => {
 
   return (
     <div
-      className="h-100 bg-white position-absolute w-100 max-width-600px d-flex flex-column justify-content-between rounded"
+      className="bg-white position-absolute mv-20 w-100 max-width-600px d-flex flex-column justify-content-between rounded"
+      style={{
+        height: "calc(100% - 40px)",
+      }}
       onDragOver={(e) => {
         e.preventDefault();
         setDrag(true);
