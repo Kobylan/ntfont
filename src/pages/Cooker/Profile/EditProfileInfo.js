@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useAPI from "../../../hooks/useAPI";
 
-const EditProfileInfo = ({ profile, setProfile, setEdit }) => {
+const EditProfileInfo = ({ user, setUser, setEdit }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setProfile({ ...profile, [name]: value });
+    setUser({ ...user, [name]: value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    setProfile("myprofile", "PUT", "", { profile });
+    const newProfile = useAPI("myprofile", "PUT", "", { user });
+    useEffect(() => {
+      setUser(newProfile.data);
+    }, [newProfile.data]);
     setEdit(false);
   };
 
@@ -26,10 +29,10 @@ const EditProfileInfo = ({ profile, setProfile, setEdit }) => {
         <div className="d-flex pl-15 flex-column w-100">
           <div className="d-flex">
             <div className="font-size-24">
-              {profile.first_name} {profile.last_name}
+              {user.first_name} {user.last_name}
             </div>
           </div>
-          <div>{profile.bio}</div>
+          <div>{user.bio}</div>
         </div>
       </div>
       <form onSubmit={handleSubmit}>
@@ -40,7 +43,7 @@ const EditProfileInfo = ({ profile, setProfile, setEdit }) => {
               className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
               name="first_name"
-              value={profile.first_name}
+              value={user.first_name}
               onChange={handleChange}
             />
           </label>
@@ -50,7 +53,7 @@ const EditProfileInfo = ({ profile, setProfile, setEdit }) => {
               className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
               name="last_name"
-              value={profile.last_name}
+              value={user.last_name}
               onChange={handleChange}
             />
           </label>
@@ -62,7 +65,7 @@ const EditProfileInfo = ({ profile, setProfile, setEdit }) => {
               className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
               name="instagram"
-              value={profile.instagram}
+              value={user.instagram}
               onChange={handleChange}
             />
           </label>
@@ -72,7 +75,7 @@ const EditProfileInfo = ({ profile, setProfile, setEdit }) => {
               className="bg-transparent border w-100 outline-none p-5 rounded "
               type="email"
               name="email"
-              value={profile.email}
+              value={user.email}
               onChange={handleChange}
             />
           </label>
@@ -83,7 +86,7 @@ const EditProfileInfo = ({ profile, setProfile, setEdit }) => {
             rows={7}
             className="bg-transparent border w-100 outline-none p-5 rounded "
             name="bio"
-            value={profile.bio}
+            value={user.bio}
             onChange={handleChange}
           />
         </label>
