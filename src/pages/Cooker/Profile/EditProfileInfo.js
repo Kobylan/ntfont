@@ -3,13 +3,6 @@ import React from "react";
 const EditProfileInfo = ({ profile, setProfile, setEdit, setMethod }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "bio") {
-      setProfile({
-        ...profile,
-        profile: { ...profile.profile, bio: value },
-      });
-      return;
-    }
     setProfile({ ...profile, [name]: value });
   };
   const handleSubmit = (event) => {
@@ -36,7 +29,7 @@ const EditProfileInfo = ({ profile, setProfile, setEdit, setMethod }) => {
               {profile.first_name} {profile.last_name}
             </div>
           </div>
-          <div>{profile.profile.bio}</div>
+          <div>{profile.bio}</div>
         </div>
       </div>
       <form onSubmit={handleSubmit}>
@@ -68,8 +61,8 @@ const EditProfileInfo = ({ profile, setProfile, setEdit, setMethod }) => {
             <input
               className="bg-transparent border w-100 outline-none p-5 rounded "
               type="text"
-              name="username"
-              value={profile.bio.instagram}
+              name="instagram"
+              value={profile.instagram}
               onChange={handleChange}
             />
           </label>
@@ -77,7 +70,7 @@ const EditProfileInfo = ({ profile, setProfile, setEdit, setMethod }) => {
             Email
             <input
               className="bg-transparent border w-100 outline-none p-5 rounded "
-              type="text"
+              type="email"
               name="email"
               value={profile.email}
               onChange={handleChange}
@@ -90,7 +83,7 @@ const EditProfileInfo = ({ profile, setProfile, setEdit, setMethod }) => {
             rows={7}
             className="bg-transparent border w-100 outline-none p-5 rounded "
             name="bio"
-            value={profile.profile.bio}
+            value={profile.bio}
             onChange={handleChange}
           />
         </label>

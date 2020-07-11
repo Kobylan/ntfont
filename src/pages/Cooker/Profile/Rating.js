@@ -32,7 +32,7 @@ export const Rating = () => {
                     }}
                   />
                 </div>
-                <div className="align-self-end w-10 pl-5">{count.value}</div>
+                <div className="align-self-end w-10">{count.value}</div>
               </>
             )}
           </div>
