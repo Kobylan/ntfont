@@ -1,14 +1,14 @@
 import React from "react";
-import useAPI from "../../../hooks/useAPI";
 
-const EditProfileInfo = ({ profile, setProfile, setEdit }) => {
+const EditProfileInfo = ({ profile, setProfile, setEdit, setMethod }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setProfile({ ...profile, [name]: value });
   };
   const handleSubmit = (event) => {
+    console.log(event);
     event.preventDefault();
-    setProfile("myprofile", "PUT", "", { profile });
+    setMethod("PUT");
     setEdit(false);
   };
 
