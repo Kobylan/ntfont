@@ -447,6 +447,9 @@ html {
   &-white-gray {
     background: $white-gray;
   }
+  &-contain {
+    background-size: contain;
+  }
 }
 
 .btn {
@@ -674,5 +677,14 @@ html {
   }
   &-rotate {
     animation: rotate 1s linear infinite;
+  }
+}
+
+.opacity {
+  &-0 {
+    opacity: 0%;
+  }
+  &-100 {
+    opacity: 100%;
   }
 }

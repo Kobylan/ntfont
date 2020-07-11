@@ -361,6 +361,9 @@ html input {
 .bg-white-gray {
   background: #dddddd;
 }
+.bg-contain {
+  background-size: contain;
+}
 
 .btn {
   text-align: center;
@@ -553,6 +556,13 @@ html input {
 }
 .animation-rotate {
   animation: rotate 1s linear infinite;
+}
+
+.opacity-0 {
+  opacity: 0%;
+}
+.opacity-100 {
+  opacity: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */
