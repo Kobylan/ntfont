@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import useAPI from "../../../hooks/useAPI";
 
-const EditProfileInfo = ({ user, setUser, setEdit }) => {
+const EditProfileInfo = ({ user, setEdit }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
+    // setUser({ ...user, [name]: value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newProfile = useAPI("myprofile", "PUT", "", { user });
-    useEffect(() => {
-      setUser(newProfile.data);
-    }, [newProfile.data]);
+    // const newProfile = useAPI("myprofile", "PUT", "", { user });
+    // useEffect(() => {
+    //   setUser(newProfile.data);
+    // }, [newProfile.data]);
     setEdit(false);
   };
 
