@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Reviews } from "./Reviews";
 import { Rating } from "./Rating";
 import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
@@ -13,27 +7,18 @@ import ProfileInfo from "./ProfileInfo";
 import EditProfileInfo from "./EditProfileInfo";
 import Loading from "../../../components/Loading";
 import useMyProfileReview from "../../../hooks/useMyProfileReview";
-import MyProfileInfoReducer from "../../../store/MyProfileInfoReducer";
-const initialState = {
-  loading: true,
-  data: [],
-};
+import useAPI from "../../../hooks/useAPI";
+
 const Profile = () => {
   const [active, setActive] = useState("");
   const [edit, setEdit] = useState(false);
+  const [user, setUser] = useState();
+  const profile = useAPI("myprofile");
   const [reviewsPage, setReviewsPage] = useState(1);
   const { loadingReview, reviews, hasMore } = useMyProfileReview(reviewsPage);
-  const [profile, dispatchProfile] = useReducer(
-    MyProfileInfoReducer,
-    initialState
-  );
-
   useEffect(() => {
-    dispatchProfile({
-      type: "GET",
-    });
-  }, []);
-
+    setUser(profile.data);
+  }, [profile.data]);
   const observer = useRef();
   const lastOrderElementRef = useCallback(
     (node) => {
@@ -54,9 +39,6 @@ const Profile = () => {
       <div className="w-100">
         <div className="min-height-30px text-white w-100 mb-5 font-size-20 mt-20 d-flex justify-content-between">
           <div>Мой профиль</div>
-          <button onClick={() => console.log(profile, "tserguvyb")}>
-            asferbgrgew
-          </button>
           <div
             className="d-flex align-items-center cursor-pointer"
             onMouseEnter={() => setActive("edit")}
@@ -79,7 +61,11 @@ const Profile = () => {
         <div className="p-15 max-width-600px bg-white d-flex flex-column justify-content-end rounded">
           <div className="d-flex flex-column ">
             {edit ? (
-              <EditProfileInfo setEdit={(e) => setEdit(e)} user={profile} />
+              <EditProfileInfo
+                setEdit={(e) => setEdit(e)}
+                user={user}
+                setUser={(e) => setUser(e)}
+              />
             ) : (
               <ProfileInfo profile={profile} loading={profile.loading} />
             )}
