@@ -12,13 +12,11 @@ import useAPI from "../../../hooks/useAPI";
 const Profile = () => {
   const [active, setActive] = useState("");
   const [edit, setEdit] = useState(false);
-  const [user, setUser] = useState();
-  const profile = useAPI("myprofile");
+  const [profile, setProfile] = useState(useAPI("myprofile"));
+  console.log(profile);
   const [reviewsPage, setReviewsPage] = useState(1);
   const { loadingReview, reviews, hasMore } = useMyProfileReview(reviewsPage);
-  useEffect(() => {
-    setUser(profile.data);
-  }, [profile.data]);
+
   const observer = useRef();
   const lastOrderElementRef = useCallback(
     (node) => {
@@ -63,8 +61,8 @@ const Profile = () => {
             {edit ? (
               <EditProfileInfo
                 setEdit={(e) => setEdit(e)}
-                user={user}
-                setUser={(e) => setUser(e)}
+                profile={profile}
+                setProfile={(e) => setProfile(useAPI(e))}
               />
             ) : (
               <ProfileInfo profile={profile} loading={profile.loading} />
