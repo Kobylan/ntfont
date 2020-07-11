@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const useApi = (request) => {
-  const { url, method = "GET", params, body, infScroll = false } = request;
+const useAPI = (url, method = "GET", params, body, infScroll = false) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [hasMore, setHasMore] = useState(false);
-  const trigger = infScroll ? request : "";
+  const trigger = infScroll ? params : "";
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -35,6 +34,6 @@ const useApi = (request) => {
   return { loading, error, data, hasMore };
 };
 
-export default useApi;
+export default useAPI;
 // GET params:{}
 // PUT data:

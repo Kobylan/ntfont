@@ -5,22 +5,17 @@ import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
 import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
 import ProfileInfo from "./ProfileInfo";
 import EditProfileInfo from "./EditProfileInfo";
-import { useMyProfile } from "../../../hooks/useMyProfile";
 import Loading from "../../../components/Loading";
 import useMyProfileReview from "../../../hooks/useMyProfileReview";
-import useMyProfileRating from "../../../hooks/useMyProfileRating";
+import useAPI from "../../../hooks/useAPI";
 
 const Profile = () => {
   const [active, setActive] = useState("");
   const [edit, setEdit] = useState(false);
-  const [profile, setProfile] = useState();
-  const [method, setMethod] = useState("GET");
+  const [profile, setProfile] = useState(useAPI("myprofile"));
+  console.log(profile);
   const [reviewsPage, setReviewsPage] = useState(1);
-  const { loadingMyProfile, user } = useMyProfile(profile, method);
   const { loadingReview, reviews, hasMore } = useMyProfileReview(reviewsPage);
-  useEffect(() => {
-    setProfile(user);
-  }, [user]);
 
   const observer = useRef();
   const lastOrderElementRef = useCallback(
@@ -49,7 +44,7 @@ const Profile = () => {
             onClick={() => setEdit(true)}
             title="Изменить профиль"
           >
-            {!loadingMyProfile &&
+            {!profile.loading &&
               !edit &&
               (active === "edit" ? (
                 <EditFilled
@@ -67,11 +62,10 @@ const Profile = () => {
               <EditProfileInfo
                 setEdit={(e) => setEdit(e)}
                 profile={profile}
-                setProfile={(e) => setProfile(e)}
-                setMethod={(e) => setMethod(e)}
+                setProfile={(e) => setProfile(useAPI(e))}
               />
             ) : (
-              <ProfileInfo profile={profile} loading={loadingMyProfile} />
+              <ProfileInfo profile={profile} loading={profile.loading} />
             )}
           </div>
         </div>
@@ -85,7 +79,7 @@ const Profile = () => {
 
       {reviews.map((review) => (
         <div ref={lastOrderElementRef} key={review.id}>
-          <Reviews review={review} loading={loadingMyProfile} />
+          <Reviews review={review} />
         </div>
       ))}
       {loadingReview && <Loading />}
