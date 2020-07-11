@@ -1,29 +1,35 @@
-import React from "react";
-import { timeAgoUnix } from "../../../components/timeAgoUnix";
+import React, { useCallback, useRef, useState } from "react";
+import useMyProfileReview from "../../../hooks/useMyProfileReview";
+import { Review } from "./Review";
+import Loading from "../../../components/Loading";
 
-export const Reviews = (props) => {
-  const { review } = props;
+const Reviews = () => {
+  const [reviewsPage, setReviewsPage] = useState(1);
+  const reviews = useMyProfileReview(reviewsPage);
+  const observer = useRef();
+  const lastOrderElementRef = useCallback(
+    (node) => {
+      if (reviews.loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && reviews.hasMore) {
+          setReviewsPage(reviewsPage + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [reviews.loading, reviews.hasMore]
+  );
   return (
-    <div className="d-flex w-100 mb-15 align-items-start">
-      <img
-        className="mr-10 top-10 position-sticky w-80px rounded"
-        src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
-      />
-      <div className="w-100 rounded bg-white p-15 d-flex flex-column text-break overflow-hidden">
-        <div className="d-flex justify-content-between border-bottom font-size-20">
-          <div>{review.title}</div>
-          <div>{review.rating}</div>
+    <>
+      {reviews.data.map((review) => (
+        <div ref={lastOrderElementRef}>
+          <Review review={review} />
         </div>
-        <div className="mt-10 p-10">{review.description}</div>
-        <div className="d-flex justify-content-between">
-          <div className="text-muted align-self-end">
-            {review.customer.first_name} {review.customer.last_name}
-          </div>
-          <div className="text-muted align-self-end">
-            {timeAgoUnix(review.created_at)}
-          </div>
-        </div>
-      </div>
-    </div>
+      ))}
+      {reviews.loading && <Loading />}
+    </>
   );
 };
+
+export default Reviews;

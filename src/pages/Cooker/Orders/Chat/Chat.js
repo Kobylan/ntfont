@@ -9,6 +9,7 @@ import { ReactComponent as SendFilled } from "../../../../assets/icons/chat/send
 import { ReactComponent as AddImageFilled } from "../../../../assets/icons/chat/add-image-filled.svg";
 import "../../../../assets/css/chat.css";
 import Message from "./Message";
+import * as axios from "axios";
 
 const Chat = () => {
   const messeges = [
@@ -171,7 +172,7 @@ const Chat = () => {
       date: "15/05/1999",
     },
   ];
-  function readFile(file) {
+  const readFile = (file) => {
     const reader = new FileReader();
     reader.addEventListener("load", (event) => {
       const result = event.target.result;
@@ -185,13 +186,23 @@ const Chat = () => {
       }
     });
     reader.readAsDataURL(file);
-  }
+  };
   const { userID } = useParams();
   const messagesEndRef = React.createRef();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [drag, setDrag] = useState(false);
   const [file, setFile] = useState();
+  const handleClick = () => {
+    const data = new FormData();
+    data.append("file", file);
+    console.log(typeof data);
+    axios.post("https://thawing-reef-32246.herokuapp.com/api/avatar", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  };
   const scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView();
   };
@@ -218,7 +229,8 @@ const Chat = () => {
       onDrop={(e) => {
         e.preventDefault();
         const files = e.dataTransfer.files;
-        readFile(files[0]);
+        // readFile(files[0]);
+        setFile(files[0]);
         setDrag(false);
       }}
     >
@@ -298,7 +310,7 @@ const Chat = () => {
             {active === "send" ? (
               <SendFilled
                 className="fill-blue w-30px cursor-pointer"
-                onClick={() => history.push("/orders")}
+                onClick={() => handleClick()}
               />
             ) : (
               <Send

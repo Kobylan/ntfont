@@ -1,14 +1,20 @@
 import React from "react";
 
-const EditProfileInfo = ({ profile, setProfile, setEdit, setMethod }) => {
+const EditProfileInfo = ({
+  profile,
+  setProfile,
+  setEdit,
+  setMethod,
+  setTrigger,
+}) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setProfile({ ...profile, [name]: value });
   };
   const handleSubmit = (event) => {
-    console.log(event);
     event.preventDefault();
     setMethod("PUT");
+    setTrigger((prevState) => !prevState);
     setEdit(false);
   };
 

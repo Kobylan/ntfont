@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const useMyProfile = (request, method) => {
+export const useMyProfile = (request, method, trigger) => {
   console.log(request, method);
-  const [loadingMyProfile, setLoadingMyProfile] = useState(true);
-  const [errorMyProfile, setErrorMyProfile] = useState(false);
-  const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [data, setData] = useState([]);
   useEffect(() => {
-    setLoadingMyProfile(true);
-    setErrorMyProfile(false);
+    setLoading(true);
+    setError(false);
     let cancel;
     switch (method) {
       case "GET":
@@ -18,13 +18,13 @@ export const useMyProfile = (request, method) => {
           cancelToken: new axios.CancelToken((c) => (cancel = c)),
         })
           .then((res) => {
-            setUser(res.data);
-            setLoadingMyProfile(false);
+            setData(res.data);
+            setLoading(false);
           })
           .catch((e) => {
             if (axios.isCancel(e)) return;
-            setErrorMyProfile(true);
-            setLoadingMyProfile(false);
+            setError(true);
+            setLoading(false);
           });
         break;
       case "PUT":
@@ -35,17 +35,17 @@ export const useMyProfile = (request, method) => {
           cancelToken: new axios.CancelToken((c) => (cancel = c)),
         })
           .then((res) => {
-            setUser(res.data);
-            setLoadingMyProfile(false);
+            setData(res.data);
+            setLoading(false);
           })
           .catch((e) => {
             if (axios.isCancel(e)) return;
-            setErrorMyProfile(true);
-            setLoadingMyProfile(false);
+            setError(true);
+            setLoading(false);
           });
         break;
     }
     return () => cancel();
-  }, [method]);
-  return { loadingMyProfile, errorMyProfile, user };
+  }, [trigger]);
+  return { loading, error, data };
 };

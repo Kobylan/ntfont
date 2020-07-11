@@ -1,41 +1,22 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Reviews } from "./Reviews";
+import React, { useEffect, useState } from "react";
+import Reviews from "./Reviews";
 import { Rating } from "./Rating";
 import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
 import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
 import ProfileInfo from "./ProfileInfo";
 import EditProfileInfo from "./EditProfileInfo";
 import { useMyProfile } from "../../../hooks/useMyProfile";
-import Loading from "../../../components/Loading";
-import useMyProfileReview from "../../../hooks/useMyProfileReview";
-import useMyProfileRating from "../../../hooks/useMyProfileRating";
 
 const Profile = () => {
   const [active, setActive] = useState("");
   const [edit, setEdit] = useState(false);
-  const [profile, setProfile] = useState();
+  const [trigger, setTrigger] = useState(false);
+  const [profile, setProfile] = useState({});
   const [method, setMethod] = useState("GET");
-  const [reviewsPage, setReviewsPage] = useState(1);
-  const { loadingMyProfile, user } = useMyProfile(profile, method);
-  const { loadingReview, reviews, hasMore } = useMyProfileReview(reviewsPage);
+  const user = useMyProfile(profile, method, trigger);
   useEffect(() => {
-    setProfile(user);
+    setProfile(user.data);
   }, [user]);
-
-  const observer = useRef();
-  const lastOrderElementRef = useCallback(
-    (node) => {
-      if (loadingReview) return;
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          setReviewsPage(reviewsPage + 1);
-        }
-      });
-      if (node) observer.current.observe(node);
-    },
-    [loadingReview, hasMore]
-  );
 
   return (
     <>
@@ -49,7 +30,7 @@ const Profile = () => {
             onClick={() => setEdit(true)}
             title="Изменить профиль"
           >
-            {!loadingMyProfile &&
+            {!user.loading &&
               !edit &&
               (active === "edit" ? (
                 <EditFilled
@@ -69,9 +50,10 @@ const Profile = () => {
                 profile={profile}
                 setProfile={(e) => setProfile(e)}
                 setMethod={(e) => setMethod(e)}
+                setTrigger={(e) => setTrigger(e)}
               />
             ) : (
-              <ProfileInfo profile={profile} loading={loadingMyProfile} />
+              <ProfileInfo profile={profile} loading={user.loading} />
             )}
           </div>
         </div>
@@ -83,12 +65,7 @@ const Profile = () => {
 
       <div className="text-white w-100 mt-20 mb-5 font-size-20">Отзывы</div>
 
-      {reviews.map((review) => (
-        <div ref={lastOrderElementRef} key={review.id}>
-          <Reviews review={review} loading={loadingMyProfile} />
-        </div>
-      ))}
-      {loadingReview && <Loading />}
+      <Reviews />
     </>
   );
 };
