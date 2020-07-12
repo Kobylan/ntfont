@@ -43,10 +43,9 @@ const EditProfileInfo = ({
           <div
             className="rounded"
             style={{
-              background: `url(${image}) 0% 0% / contain`,
+              background: `url(${image}) no-repeat 0% 0% / contain`,
               width: "120px",
               height: "120px",
-              // backgroundSize: "contain",
             }}
             onMouseEnter={() => setEditAvatar(true)}
             onMouseLeave={() => setEditAvatar(false)}
