@@ -43,7 +43,7 @@ const EditProfileInfo = ({
           <div
             className="rounded overflow-hidden position-relative"
             style={{
-              background: `url(${image}) no-repeat 0% 0% / contain`,
+              background: `url(${image}) no-repeat 50% 50% / cover`,
               width: "120px",
               height: "120px",
             }}

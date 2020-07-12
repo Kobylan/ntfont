@@ -9,7 +9,14 @@ const ProfileInfo = (props) => {
         {loading ? (
           <Skeleton width="120" height={120} />
         ) : (
-          <img width={120} src={image} alt="Adil genius" className="rounded" />
+          <div
+            className="rounded"
+            style={{
+              background: `url(${image}) no-repeat 50% 50% / cover`,
+              width: "120px",
+              height: "120px",
+            }}
+          />
         )}
       </div>
       <div className="d-flex pl-15 flex-column w-100">
