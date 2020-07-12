@@ -182,7 +182,6 @@ const Chat = () => {
     reader.addEventListener("progress", (event) => {
       if (event.loaded && event.total) {
         const percent = (event.loaded / event.total) * 100;
-        console.log(`Progress: ${Math.round(percent)}`);
       }
     });
     reader.readAsDataURL(file);
@@ -196,7 +195,6 @@ const Chat = () => {
   const handleClick = () => {
     const data = new FormData();
     data.append("file", file);
-    console.log(typeof data);
     axios.post("https://thawing-reef-32246.herokuapp.com/api/avatar", data, {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -271,10 +269,7 @@ const Chat = () => {
       )}
 
       <div className="d-flex align-items-center border-top">
-        <div
-          className="text-align-center p-5"
-          onClick={() => console.log(messagesEndRef)}
-        >
+        <div className="text-align-center p-5">
           <div
             onMouseEnter={() => setActive("add-image")}
             onMouseLeave={() => setActive("")}
@@ -298,10 +293,7 @@ const Chat = () => {
           placeholder="Напишите новое сообщение"
           className="w-100 pl-5 pr-5 pt-10 pb-10 outline-none bg-white-gray border-transparent rounded"
         />
-        <div
-          className="text-align-center p-5"
-          onClick={() => console.log(messagesEndRef)}
-        >
+        <div className="text-align-center p-5">
           <div
             onMouseEnter={() => setActive("send")}
             onMouseLeave={() => setActive("")}

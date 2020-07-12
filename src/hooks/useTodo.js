@@ -17,7 +17,6 @@ const useTodo = ({ params, method }) => {
       },
     })
       .then((res) => {
-        console.log(res.data.results);
         setOrders((prevOrders) => prevOrders.concat(res.data.results));
         setHasMore(res.data.next !== null);
         setLoading(false);

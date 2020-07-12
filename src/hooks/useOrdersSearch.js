@@ -19,7 +19,6 @@ export const useOrdersSearch = (page) => {
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
-        console.log(res.data.results);
         setOrders((prevOrders) => prevOrders.concat(res.data.results));
         setHasMore(res.data.next !== null);
         setLoading(false);

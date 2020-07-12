@@ -13,10 +13,13 @@ const Profile = () => {
   const [trigger, setTrigger] = useState(false);
   const [profile, setProfile] = useState({});
   const [method, setMethod] = useState("GET");
+  const [image, setImage] = useState();
   const user = useMyProfile(profile, method, trigger);
+
   useEffect(() => {
     setProfile(user.data);
-  }, [user]);
+    image === undefined && setImage(user.data.avatar);
+  }, [user.data]);
 
   return (
     <>
@@ -51,9 +54,15 @@ const Profile = () => {
                 setProfile={(e) => setProfile(e)}
                 setMethod={(e) => setMethod(e)}
                 setTrigger={(e) => setTrigger(e)}
+                image={image}
+                setImage={(e) => setImage(e)}
               />
             ) : (
-              <ProfileInfo profile={profile} loading={user.loading} />
+              <ProfileInfo
+                profile={profile}
+                loading={user.loading}
+                image={image}
+              />
             )}
           </div>
         </div>

@@ -6,7 +6,7 @@ export const Review = ({ review }) => {
     <div className="d-flex w-100 mb-15 align-items-start">
       <img
         className="mr-10 top-10 position-sticky w-80px rounded"
-        src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
+        src={review.customer.avatar.file}
       />
       <div className="w-100 rounded bg-white p-15 d-flex flex-column text-break overflow-hidden">
         <div className="d-flex justify-content-between border-bottom font-size-20">

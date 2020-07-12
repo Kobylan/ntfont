@@ -9,21 +9,20 @@ const EditProfileInfo = ({
   setEdit,
   setMethod,
   setTrigger,
+  image,
+  setImage,
 }) => {
   const [editAvatar, setEditAvatar] = useState(false);
   const [file, setFile] = useState();
-  const [image, setImage] = useState(profile.avatar);
-  const handleImageUpload = (e) => {
-    console.log(image);
+
+  const handleImageUpload = () => {
     const data = new FormData();
     data.append("file", file);
-    axios
-      .post("https://thawing-reef-32246.herokuapp.com/api/avatar", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((respond) => console.log(respond.data.file));
+    axios.post("https://thawing-reef-32246.herokuapp.com/api/avatar", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -32,6 +31,7 @@ const EditProfileInfo = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     setMethod("PUT");
+    file && handleImageUpload();
     setTrigger((prevState) => !prevState);
     setEdit(false);
   };
@@ -41,35 +41,36 @@ const EditProfileInfo = ({
       <div className="d-flex">
         <div>
           <div
-            className="rounded"
+            className="rounded overflow-hidden position-relative"
             style={{
               background: `url(${image}) no-repeat 0% 0% / contain`,
               width: "120px",
               height: "120px",
             }}
-            onMouseEnter={() => setEditAvatar(true)}
+            onMouseOver={() => setEditAvatar(true)}
             onMouseLeave={() => setEditAvatar(false)}
           >
-            <div className={`${editAvatar ? `opcacity-0` : `opacity-100`}`}>
-              <input
-                type="file"
-                onChange={(e) => {
-                  setFile(e.target.files[0]);
-                  setImage(window.URL.createObjectURL(e.target.files[0]));
-                  // setImage(readFile(e.target.files[0]));
-                }}
-              />
-              <div onClick={() => handleImageUpload()}>KEK</div>
+            <input
+              id="image_uploads"
+              accept=".jpg, .jpeg, .png"
+              className="opacity-0"
+              type="file"
+              onChange={(e) => {
+                setFile(e.target.files[0]);
+                setImage(() => window.URL.createObjectURL(e.target.files[0]));
+              }}
+            />
+            <div
+              style={{ bottom: "0", fontSize: "14px" }}
+              className={`${
+                editAvatar ? `opacity-100` : `opacity-0`
+              } position-absolute bg-dark text-white text-align-center w-100 pv-5`}
+            >
+              <label htmlFor="image_uploads" className=" cursor-pointer ">
+                Изменить аватар
+              </label>
             </div>
           </div>
-          {/*<img*/}
-          {/*  width={120}*/}
-          {/*  src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"*/}
-          {/*  alt="Adil genius"*/}
-          {/*  className="rounded"*/}
-          {/*  onMouseEnter={() => setEditAvatar(true)}*/}
-          {/*  onMouseLeave={() => setEditAvatar(false)}*/}
-          {/*/>*/}
         </div>
         <div className="d-flex pl-15 flex-column w-100">
           <div className="d-flex">

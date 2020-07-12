@@ -40,7 +40,6 @@ const RightSideContent = () => {
   const [currentMonthDaysNumber, setCurrentMonthDaysNumber] = useState(
     new Date(currentYear, currentMonth, 0).getDate()
   );
-  console.log(new Date(currentYear, currentMonth, 0).getDate());
 
   const [firstDayOfMonth, setFirstDayOfMonth] = useState(
     new Date(currentYear, currentMonth, 1).getDay()
@@ -155,7 +154,7 @@ const RightSideContent = () => {
           <div>
             <span>{monthNames[currentMonth]}</span> <span>{currentYear}</span>
           </div>
-          <div c>
+          <div>
             <Back
               className="fill-dark w-30px cursor-pointer transform-rotate-180"
               onClick={(e) => nextMonth()}

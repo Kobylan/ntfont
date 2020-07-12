@@ -15,7 +15,6 @@ const useMyProfileReview = (page) => {
       params: { page: page },
     })
       .then((res) => {
-        console.log(res.data.results);
         setData((prevOrders) => prevOrders.concat(res.data.results));
         setHasMore(res.data.next !== null);
         setLoading(false);

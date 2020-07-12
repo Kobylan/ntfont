@@ -42,7 +42,6 @@ export const timeAgoUnix = (UNIX_timestamp) => {
   }
 
   interval = Math.floor(seconds / 60);
-  console.log("======", interval);
 
   if (interval > 1) {
     if (interval === 1) {

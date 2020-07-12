@@ -2,19 +2,14 @@ import React from "react";
 import Skeleton from "../../../components/Skeleton";
 
 const ProfileInfo = (props) => {
-  const { profile, loading } = props;
+  const { profile, loading, image } = props;
   return (
     <div className="d-flex">
       <div>
         {loading ? (
           <Skeleton width="120" height={120} />
         ) : (
-          <img
-            width={120}
-            src="https://sun9-17.userapi.com/c846322/v846322123/1ba0c6/VM4FMkSQUz4.jpg?ava=1"
-            alt="Adil genius"
-            className="rounded"
-          />
+          <img width={120} src={image} alt="Adil genius" className="rounded" />
         )}
       </div>
       <div className="d-flex pl-15 flex-column w-100">
