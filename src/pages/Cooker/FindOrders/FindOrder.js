@@ -8,14 +8,11 @@ import Filter from "./Filter";
 const FindOrder = () => {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState({
-    price_lte: 0,
-    price_gte: 99999,
-    weight_lte: 0,
-    weight_gte: 99999,
+    price_gte: 0,
+    price_lte: 50000,
+    weight_gte: 0,
+    weight_lte: 50000,
   });
-  useEffect(() => {
-    console.log(filter);
-  }, [filter]);
   const { loading, error, orders, hasMore } = useOrdersSearch(page, filter);
   const observer = useRef();
   const lastOrderElementRef = useCallback(
@@ -46,7 +43,12 @@ const FindOrder = () => {
           )
         )}
         {loading && <Loading />}
-        {error && "Error"}
+        {error && (
+          <div className="text-white text-align-center m-20">Ошибка!</div>
+        )}
+        {!loading && !error && orders.length === 0 && (
+          <div className="text-white text-align-center m-20">Заказов нет</div>
+        )}
       </div>
     </div>
   );

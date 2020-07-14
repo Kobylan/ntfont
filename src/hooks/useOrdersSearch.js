@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const useOrdersSearch = (page, filterParms) => {
+export const useOrdersSearch = (page, filter) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [orders, setOrders] = useState([]);
   const [hasMore, setHasMore] = useState(false);
+  useEffect(() => {
+    setOrders([]);
+  }, [filter]);
   useEffect(() => {
     setLoading(true);
     setError(false);
@@ -15,10 +18,10 @@ export const useOrdersSearch = (page, filterParms) => {
       url: "https://thawing-reef-32246.herokuapp.com/api/orders/",
       params: {
         page: page,
-        price_lte: filterParms.price_lte,
-        price_gte: filterParms.price_gte,
-        weight_lte: filterParms.weight_lte,
-        weight_gte: filterParms.weight_gte,
+        price__lte: filter.price_lte,
+        price__gte: filter.price_gte,
+        weight__lte: filter.weight_lte,
+        weight__gte: filter.weight_gte,
       },
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
@@ -33,6 +36,6 @@ export const useOrdersSearch = (page, filterParms) => {
         setLoading(false);
       });
     return () => cancel();
-  }, [page]);
+  }, [page, filter]);
   return { loading, error, orders, hasMore };
 };

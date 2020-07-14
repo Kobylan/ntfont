@@ -162,9 +162,11 @@ html {
 .min {
   &-width {
     &-0px {
-      min-width: 0px;
+      min-width: 0;
     }
-
+    &-50px {
+      min-width: 50px;
+    }
     &-990px {
       min-width: 990px;
     }

@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const InputRange = ({ filter, setFilter, type }) => {
   const between = 21;
   const [drag, setDrag] = useState(false);
   const [left, setLeft] = useState(0);
-  const [right, setRight] = useState(between);
+  const [right, setRight] = useState(0);
   const leftRef = useRef();
   const rightRef = useRef();
   const trackRef = useRef();
@@ -12,6 +12,9 @@ const InputRange = ({ filter, setFilter, type }) => {
   let draggingRight = false;
   let offset = left;
   let offsetR = right;
+  useEffect(() => {
+    setRight(trackRef.current?.offsetWidth - rightRef.current?.offsetWidth);
+  }, [trackRef.current?.offsetWidth]);
   const root = document.getElementById("root").style;
   window.addEventListener("mouseup", () => {
     draggingLeft = false;
@@ -26,34 +29,33 @@ const InputRange = ({ filter, setFilter, type }) => {
     if (draggingLeft) {
       offset = e.clientX - 10 - trackRef.current?.offsetLeft;
       if (offset < 0) {
-        setLeft(0);
+        offset = 0;
       } else if (offset >= offsetR - between) {
-        setLeft(offsetR - between);
-      } else {
-        setLeft(offset);
+        offset = offsetR - between;
       }
+      setLeft(offset);
       setFilter({
         ...filter,
-        [type + "_lte"]: (left / trackRef) * filter[type + "_gte"],
+        [type + "_gte"]: Math.floor(
+          (offset / trackRef.current.offsetWidth) * 50000
+        ),
       });
     }
     if (draggingRight) {
       offsetR = e.clientX - 10 - trackRef.current?.offsetLeft;
-      console.log(offsetR, offset);
       if (offsetR <= offset + between) {
-        setRight(offset + between);
+        offsetR = offset + between;
       } else if (
         offsetR >
         trackRef.current?.offsetWidth - rightRef.current?.offsetWidth
       ) {
-        setRight(trackRef.current?.offsetWidth - rightRef.current?.offsetWidth);
-      } else {
-        setRight(offsetR);
+        offsetR = trackRef.current?.offsetWidth - rightRef.current?.offsetWidth;
       }
+      setRight(offsetR);
       setFilter({
         ...filter,
-        [type + "_gte"]: Math.floor(
-          (right / trackRef.current?.offsetWidth) * filter[type + "_gte"]
+        [type + "_lte"]: Math.floor(
+          ((offsetR + 20) / trackRef.current?.offsetWidth) * 50000
         ),
       });
     }
@@ -61,7 +63,7 @@ const InputRange = ({ filter, setFilter, type }) => {
 
   return (
     <div
-      className="h-15px bg-white-gray m-20 d-flex align-items-center rounded position-relative"
+      className="h-15px bg-white-gray m-10 d-flex align-items-center rounded position-relative"
       ref={trackRef}
     >
       <div

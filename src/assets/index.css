@@ -114,7 +114,10 @@ html input {
 }
 
 .min-width-0px {
-  min-width: 0px;
+  min-width: 0;
+}
+.min-width-50px {
+  min-width: 50px;
 }
 .min-width-990px {
   min-width: 990px;
