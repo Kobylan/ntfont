@@ -60,7 +60,12 @@ const RightSideContent = () => {
   for (let i = 0; i < firstDayOfMonth; i++) {
     blanks.push(<td />);
   }
-  let day = new Date().getMonth() == currentMonth ? new Date().getDate() : null;
+  let day =
+    new Date().getFullYear() == currentYear
+      ? new Date().getMonth() == currentMonth
+        ? new Date().getDate()
+        : null
+      : null;
   let daysInMonth = [];
   for (let d = 1; d <= currentMonthDaysNumber; d++) {
     let cd = d == day ? "bg-blue rounded" : "";
