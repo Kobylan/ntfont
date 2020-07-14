@@ -7,14 +7,13 @@ import Filter from "./Filter";
 
 const FindOrder = () => {
   const [page, setPage] = useState(1);
-  const [filterParms, setFilterParms] = useState({
-    koba: "koba",
-    adil: "adil",
+  const [filter, setFilter] = useState({
+    price_lte: 0,
+    price_gte: 99999,
+    weight_lte: 0,
+    weight_gte: 99999,
   });
-  const { loading, error, orders, hasMore } = useOrdersSearch(
-    page,
-    filterParms
-  );
+  const { loading, error, orders, hasMore } = useOrdersSearch(page, filter);
   const observer = useRef();
   const lastOrderElementRef = useCallback(
     (node) => {
@@ -32,7 +31,7 @@ const FindOrder = () => {
   return (
     <div className="w-100">
       <div className="font-size-20 mt-20 text-white">Поиск заказов</div>
-      <Filter filter={filterParms} setFilterParms={(e) => setFilterParms(e)} />
+      <Filter filter={filter} setFilterParms={(e) => setFilter(e)} />
       <div>
         {orders?.map((order) =>
           order.customer ? (

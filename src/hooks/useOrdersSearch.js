@@ -15,7 +15,10 @@ export const useOrdersSearch = (page, filterParms) => {
       url: "https://thawing-reef-32246.herokuapp.com/api/orders/",
       params: {
         page: page,
-        filterParms,
+        price_lte: filterParms.price_lte,
+        price_gte: filterParms.price_gte,
+        weight_lte: filterParms.weight_lte,
+        weight_gte: filterParms.weight_gte,
       },
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })

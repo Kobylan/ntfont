@@ -1,7 +1,16 @@
 import React from "react";
+import InputRange from "../../../components/InputRange";
 
-const Filter = () => {
-  return <div></div>;
+const Filter = ({ filter, setFilter }) => {
+  const onSubmit = (event) => {
+    console.log("submit");
+  };
+  return (
+    <form onSubmit={onSubmit}>
+      <InputRange />
+      <InputRange />
+    </form>
+  );
 };
 
 export default Filter;
