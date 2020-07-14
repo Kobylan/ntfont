@@ -487,6 +487,12 @@ html {
   &-events {
     pointer-events: none;
   }
+  &-grab {
+    cursor: grab;
+  }
+  &-grabbing {
+    cursor: grabbing;
+  }
 }
 
 .text {

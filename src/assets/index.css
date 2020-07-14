@@ -399,6 +399,12 @@ html input {
 .cursor-events {
   pointer-events: none;
 }
+.cursor-grab {
+  cursor: grab;
+}
+.cursor-grabbing {
+  cursor: grabbing;
+}
 
 .text-muted {
   color: #888888;
