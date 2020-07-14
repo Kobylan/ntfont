@@ -3,10 +3,18 @@ import Order from "./Order";
 import Loading from "../../../components/Loading";
 import { useOrdersSearch } from "../../../hooks/useOrdersSearch";
 import "../../../assets/css/find-order.css";
+import Filter from "./Filter";
 
 const FindOrder = () => {
   const [page, setPage] = useState(1);
-  const { loading, error, orders, hasMore } = useOrdersSearch(page);
+  const [filterParms, setFilterParms] = useState({
+    koba: "koba",
+    adil: "adil",
+  });
+  const { loading, error, orders, hasMore } = useOrdersSearch(
+    page,
+    filterParms
+  );
   const observer = useRef();
   const lastOrderElementRef = useCallback(
     (node) => {
@@ -24,7 +32,7 @@ const FindOrder = () => {
   return (
     <div className="w-100">
       <div className="font-size-20 mt-20 text-white">Поиск заказов</div>
-      <div>FILTER ELEMENT</div>
+      <Filter filter={filterParms} setFilterParms={(e) => setFilterParms(e)} />
       <div>
         {orders?.map((order) =>
           order.customer ? (

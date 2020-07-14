@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const useOrdersSearch = (page) => {
+export const useOrdersSearch = (page, filterParms) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [orders, setOrders] = useState([]);
@@ -15,6 +15,7 @@ export const useOrdersSearch = (page) => {
       url: "https://thawing-reef-32246.herokuapp.com/api/orders/",
       params: {
         page: page,
+        filterParms,
       },
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
