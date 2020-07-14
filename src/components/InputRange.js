@@ -8,19 +8,20 @@ const InputRange = () => {
   const trackWidth = trackRef.current?.offsetWidth;
   const trackLeft = trackRef.current?.offsetLeft;
   const leftWidth = leftRef.current?.offsetWidth;
-  const maxRight = trackWidth - leftWidth - 10;
+  const maxRight = trackWidth - leftWidth;
   return (
     <div
       className="h-15px bg-white-gray m-20 d-flex align-items-center rounded position-relative"
       ref={trackRef}
       onMouseMove={(e) => {
         if (draggingLeft) {
-          if (left < 10) {
-            setLeft(10);
-          } else if (left > maxRight) {
+          const offset = e.clientX - trackLeft;
+          if (offset < 0) {
+            setLeft(0);
+          } else if (offset > maxRight) {
             setLeft(maxRight);
           } else {
-            setLeft(e.clientX - trackLeft);
+            setLeft(offset);
           }
         }
       }}
@@ -28,7 +29,7 @@ const InputRange = () => {
       <div
         className="border-radius-50 w-20px h-20px bg-blue position-absolute"
         ref={leftRef}
-        style={{ left: `${left - 10}px` }}
+        style={{ left: `${left}px` }}
         onMouseDown={(e) => {
           setDraggingLeft(true);
         }}
