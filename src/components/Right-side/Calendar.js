@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { ReactComponent as Back } from "../assets/icons/chat/back.svg";
-import { history } from "../history";
+import { ReactComponent as Back } from "../../assets/icons/chat/back.svg";
 let monthNames = [
   "Январь",
   "Февраль",
@@ -16,25 +15,8 @@ let monthNames = [
   "Декабрь",
 ];
 let dayNames = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
-const testData = [
-  {
-    id: 1,
-    title: "Хочу пицу в форме сердца",
-    status: true,
-  },
-  {
-    id: 2,
-    title: "Торт малочная девочка",
-    status: true,
-  },
-  {
-    id: 3,
-    title: "Дамские пальчики",
-    status: false,
-  },
-];
 
-const RightSideContent = () => {
+const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonthDaysNumber, setCurrentMonthDaysNumber] = useState(
@@ -70,7 +52,11 @@ const RightSideContent = () => {
   for (let d = 1; d <= currentMonthDaysNumber; d++) {
     let cd = d == day ? "bg-blue rounded" : "";
     daysInMonth.push(
-      <td key={d} className={`text-dark font-size-20 text-align-center ${cd}`}>
+      <td
+        key={d}
+        className={`text-dark font-size-20 text-align-center ${cd} cursor-pointer`}
+        onClick={() => console.log(d, monthNames[currentMonth])}
+      >
         {d}
       </td>
     );
@@ -132,23 +118,9 @@ const RightSideContent = () => {
     );
   };
   return (
-    <div className="d-flex flex-column h-100">
-      <div>
-        <div className="text-white w-100 mb-5 font-size-20 mt-20">
-          Мои список дел
-        </div>
-        {testData.map((item) => (
-          <div
-            className={`bg-white w-100 br p-10 mb-5 d-flex rounded ${
-              item.status && `text-through`
-            }`}
-          >
-            <div className={`checkbox-${item.status}`} />
-            <div className="ml-5 text-uppercase ">{item.title}</div>
-          </div>
-        ))}
-      </div>
-      <div className="bg-white p-5 w-100 rounded cursor-select ">
+    <div>
+      <div className="text-white w-100 mb-5 font-size-20 mt-20">Календарь</div>
+      <div className="bg-white p-5 w-100 rounded cursor-select">
         <div className="pl-20 pr-20 d-flex justify-content-between font-size-20">
           <div>
             <Back
@@ -175,15 +147,8 @@ const RightSideContent = () => {
           </table>
         </div>
       </div>
-      <footer className="text-white mt-15 w-100 text-align-center">
-        <a> Условия</a>
-        <a> Политика конфиденциальности</a>
-        <a> Файлы cookie</a>
-        <a> Информация о рекламе</a>
-        <a> © NaTeste, Inc., 2020</a>© Twitter, Inc., 2020
-      </footer>
     </div>
   );
 };
 
-export default RightSideContent;
+export default Calendar;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const useTodo = ({ params, method }) => {
+const useTodo = ({ page }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [orders, setOrders] = useState([]);
+  const [todo, setTodo] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -17,7 +17,7 @@ const useTodo = ({ params, method }) => {
       },
     })
       .then((res) => {
-        setOrders((prevOrders) => prevOrders.concat(res.data.results));
+        setTodo((prevOrders) => prevOrders.concat(res.data.results));
         setHasMore(res.data.next !== null);
         setLoading(false);
       })
@@ -27,7 +27,7 @@ const useTodo = ({ params, method }) => {
         setLoading(false);
       });
   }, [page]);
-  return { loading, error, orders, hasMore };
+  return { loading, error, todo, hasMore };
 };
 
 export default useTodo;

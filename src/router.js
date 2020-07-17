@@ -3,7 +3,7 @@ import { history } from "./history";
 import Sidebar from "./components/Sidebar";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { Auth } from "./pages/Cooker/auth";
-import RightSideContent from "./components/Right-side-content";
+import RightSideContent from "./components/Right-side/Right-side-content";
 
 const AppRouter = () => {
   const FindOrder = lazy(() => import("./pages/Cooker/FindOrders/FindOrder"));

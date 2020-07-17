@@ -4,8 +4,6 @@ import { ReactComponent as Save } from "../../../assets/icons/todo/save.svg";
 import { ReactComponent as SaveFilled } from "../../../assets/icons/todo/save-filled.svg";
 import { ReactComponent as Delete } from "../../../assets/icons/todo/delete.svg";
 import { ReactComponent as DeleteFilled } from "../../../assets/icons/todo/delete-filled.svg";
-import { ReactComponent as EditFilled } from "../../../assets/icons/profile/edit-filled.svg";
-import { ReactComponent as Edit } from "../../../assets/icons/profile/edit.svg";
 
 const EditTodoItem = (props) => {
   const [item, setItem] = useState(props.item);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { sidebarConfig } from "../configs/sidebarConfig";
 import { ReactComponent as Logout } from "../assets/icons/sidebar/logout.svg";
 import { ReactComponent as Logo } from "../assets/icons/sidebar/logo.svg";
@@ -15,7 +15,7 @@ const Sidebar = () => {
             <Logo width={180} alt="na|teste" className="m-10" />
           </div>
           {sidebarConfig.map((item) => (
-            <div>
+            <div key={item.id}>
               <NavLink
                 onMouseEnter={() => setActive(item.path)}
                 onMouseLeave={() => setActive("")}
