@@ -1,6 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./assets/index.css";
-import AppRouter from "./router";
+import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
 
-ReactDOM.render(<AppRouter />, document.getElementById("root"));
+import "./index.css";
+import Routes from "./routes";
+import { history } from "./history";
+import Layout from "./components/Layout";
+import { store } from "./store";
+
+const App = () => (
+  <Provider store={store}>
+    <Router history={history}>
+      <Layout>
+        <Routes />
+      </Layout>
+    </Router>
+  </Provider>
+);
+
+ReactDOM.render(<App />, document.getElementById("root"));
