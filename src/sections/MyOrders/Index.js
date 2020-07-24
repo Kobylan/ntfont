@@ -1,44 +1,46 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getMyOrders } from "../../store/actions/MyOrders/Orders";
 import Title from "../../components/Title";
 import InfinityScrollBlock from "../../components/InfinityScrollBlock";
-import { timeAgoUnix } from "../../utils/time";
-import { useDispatch, useSelector } from "react-redux";
-import { getProfileReviews } from "../../store/actions/Profile/profilePreview";
+import { timeAgoUnix, timeToUnix } from "../../utils/time";
 
-const ProfileReviews = () => {
+const Orders = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [newData, setNewData] = useState([]);
-  const reviews = useSelector((state) => state.profile.reviews);
+  const orders = useSelector((state) => state.myOrders);
   useEffect(() => {
-    dispatch(getProfileReviews(page));
+    dispatch(getMyOrders(page));
   }, [page]);
-
+  console.log(orders, "da");
   useEffect(() => {
-    const result = reviews.data?.map((item) => ({
+    const result = orders.data?.map((item) => ({
       field0: item.customer.avatar?.file,
       field1: item.title,
-      field2: item.rating,
+      field2: "нужен " + timeToUnix(item.deadline),
       field3: item.description,
+      field4: "Цена " + item.price + " тг",
+      field5: "Вес " + item.weight + " кг",
       field6: `${item.customer.first_name} ${item.customer.last_name}`,
       field7: timeAgoUnix(item.created_at),
     }));
     setNewData(result);
-  }, [reviews.data]);
+  }, [orders.data]);
   return (
     <>
-      <Title title="Отзывы" />
+      <Title title="Мои заказы" />
       <InfinityScrollBlock
         data={newData}
         page={page}
         setPage={(e) => setPage(e)}
-        loading={reviews.isFetching}
-        error={reviews.error}
-        hasMore={reviews.hasMore}
+        loading={orders.isFetching}
+        error={orders.error}
+        hasMore={orders.hasMore}
         type="avatar-card"
       />
     </>
   );
 };
 
-export default ProfileReviews;
+export default Orders;

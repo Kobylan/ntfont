@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Rating from "../../components/Rating";
-import useMyProfileRating from "../../hooks/useMyProfileRating";
 import Title from "../../components/Title";
 import { getProfileRating } from "../../store/actions/Profile/profileRating";
 import { useDispatch, useSelector } from "react-redux";

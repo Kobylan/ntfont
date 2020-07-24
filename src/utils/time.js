@@ -30,6 +30,7 @@ export const timeAgoUnix = (UNIX_timestamp) => {
   }
 
   interval = Math.floor(seconds / 3600);
+  console.log(interval, "hour");
   if (interval > 1) {
     if (interval === 1) {
       text = `1 час назад`;

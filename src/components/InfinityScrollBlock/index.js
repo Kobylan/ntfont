@@ -11,7 +11,6 @@ const InfinityScrollBlock = ({
   hasMore,
   type,
 }) => {
-  console.log(data, "re");
   const observer = useRef();
   const lastOrderElementRef = useCallback(
     (node) => {

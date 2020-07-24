@@ -4,11 +4,11 @@ import Route from "react-router-dom/es/Route";
 import Redirect from "react-router-dom/es/Redirect";
 
 const Routes = () => {
-  const FindOrder = lazy(() => import("./pages/FindOrder"));
+  const FindOrder = lazy(() => import("./pages/FindOrders"));
   const Profile = lazy(() => import("./pages/Profile"));
-  const Orders = lazy(() => import("./pages/Orders"));
+  const MyOrders = lazy(() => import("./pages/MyOrders"));
   const Chat = lazy(() => import("./pages/Chat"));
-  const TodoList = lazy(() => import("./pages/Calendar"));
+  const TodoList = lazy(() => import("./pages/TodoList"));
 
   return (
     <Suspense fallback={""}>
@@ -26,7 +26,7 @@ const Routes = () => {
           <Chat />
         </Route>
         <Route exact path={"/orders"}>
-          <Orders />
+          <MyOrders />
         </Route>
         <Route path={"/todo-list"}>
           <TodoList />

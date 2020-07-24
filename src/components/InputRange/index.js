@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 const InputRange = ({ filter, setFilter, type }) => {
   const between = 21;
   const [drag, setDrag] = useState(false);
-  const [left, setLeft] = useState(0);
+  const [left, setLeft] = useState(-21);
   const [right, setRight] = useState(0);
   const leftRef = useRef();
   const rightRef = useRef();
@@ -33,7 +33,7 @@ const InputRange = ({ filter, setFilter, type }) => {
       } else if (offset >= offsetR - between) {
         offset = offsetR - between;
       }
-      setLeft(offset);
+      setLeft(offset - 21);
       setFilter({
         ...filter,
         [type + "_gte"]: Math.floor(
@@ -55,45 +55,47 @@ const InputRange = ({ filter, setFilter, type }) => {
       setFilter({
         ...filter,
         [type + "_lte"]: Math.floor(
-          ((offsetR + 20) / trackRef.current?.offsetWidth) * 50000
+          (offsetR / trackRef.current?.offsetWidth) * 50000
         ),
       });
     }
   });
 
   return (
-    <div
-      className="h-15px bg-white-gray m-10 d-flex align-items-center rounded position-relative"
-      ref={trackRef}
-    >
+    <div className="h-15px bg-white-gray w-100 rounded">
       <div
-        className={`rounded w-20px h-20px bg-blue position-absolute cursor-${
-          drag ? `grabbing` : `grab`
-        }`}
-        ref={leftRef}
-        style={{
-          left: `${left}px`,
-        }}
-        onMouseDown={() => {
-          draggingLeft = true;
-          setDrag(true);
-          root.cursor = "grabbing";
-        }}
-      />
-      <div
-        className={`rounded w-20px h-20px bg-blue position-absolute cursor-${
-          drag ? `grabbing` : `grab`
-        }`}
-        ref={rightRef}
-        style={{
-          left: `${right}px`,
-        }}
-        onMouseDown={() => {
-          draggingRight = true;
-          setDrag(true);
-          root.cursor = "grabbing";
-        }}
-      />
+        className="h-15px m-10 d-flex align-items-center rounded position-relative"
+        ref={trackRef}
+      >
+        <div
+          className={`transform-rotate-180 rounded pl-20 w-20px h-20px bg-blue position-absolute cursor-${
+            drag ? `grabbing` : `grab`
+          }`}
+          ref={leftRef}
+          style={{
+            left: `${left}px`,
+          }}
+          onMouseDown={() => {
+            draggingLeft = true;
+            setDrag(true);
+            root.cursor = "grabbing";
+          }}
+        />
+        <div
+          className={`rounded w-20px h-20px bg-blue position-absolute cursor-${
+            drag ? `grabbing` : `grab`
+          }`}
+          ref={rightRef}
+          style={{
+            left: `${right}px`,
+          }}
+          onMouseDown={() => {
+            draggingRight = true;
+            setDrag(true);
+            root.cursor = "grabbing";
+          }}
+        />
+      </div>
     </div>
   );
 };

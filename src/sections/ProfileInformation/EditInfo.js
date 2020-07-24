@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { editProfileInfo } from "../../store/actions/Profile/profileInfo";
 import { editProfileAvatar } from "../../store/actions/Profile/profileAvatar";
-import Skeleton from "../../components/Skeleton";
 
 const EditInfo = ({ avatar, profile, setEdit }) => {
   const dispatch = useDispatch();
@@ -18,7 +17,6 @@ const EditInfo = ({ avatar, profile, setEdit }) => {
     dispatch(editProfileInfo(newProfile));
     setEdit(false);
   };
-  console.log(avatar.data);
   return (
     <>
       <div className="d-flex">

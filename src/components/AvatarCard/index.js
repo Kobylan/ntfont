@@ -16,7 +16,14 @@ const AvatarCard = ({ item }) => {
           <div>{item.field1}</div>
           <div>{item.field2}</div>
         </div>
-        <div className="mt-10 p-10">{item.field3}</div>
+        <div className="p-10">{item.field3}</div>
+        {(item.field4 || item.field5) && (
+          <div className="d-flex justify-content-between">
+            <div className="text-muted align-self-end">{item.field4}</div>
+            <div className="text-muted align-self-end">{item.field5}</div>
+          </div>
+        )}
+
         <div className="d-flex justify-content-between">
           <div className="text-muted align-self-end">{item.field6}</div>
           <div className="text-muted align-self-end">{item.field7}</div>
