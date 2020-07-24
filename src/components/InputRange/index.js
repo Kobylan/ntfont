@@ -31,7 +31,7 @@ const InputRange = ({ filter, setFilter, type }) => {
       if (offset < 0) {
         offset = 0;
       } else if (offset >= offsetR - between) {
-        offset = offsetR - between;
+        offset = offsetR;
       }
       setLeft(offset - 21);
       setFilter({
@@ -62,10 +62,11 @@ const InputRange = ({ filter, setFilter, type }) => {
   });
 
   return (
-    <div className="h-15px bg-white-gray w-100 rounded">
+    <div className="h-15px bg-white-gray w-100 rounded d-flex justify-content-end">
       <div
-        className="h-15px m-10 d-flex align-items-center rounded position-relative"
+        className="h-15px d-flex align-items-center rounded position-relative"
         ref={trackRef}
+        style={{ width: "calc(100% - 21px)" }}
       >
         <div
           className={`transform-rotate-180 rounded pl-20 w-20px h-20px bg-blue position-absolute cursor-${
