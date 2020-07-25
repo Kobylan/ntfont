@@ -33,7 +33,15 @@ const Dialogues = ({
       className="d-flex align-items-center m-10"
       ref={lastOrderElementRef}
       onClick={() => {
-        setDialogue(e.url);
+        setDialogue({
+          url: e.url,
+          author: {
+            username: e.username,
+            firstName: e.first_name,
+            lastName: e.last_name,
+            avatar: e.avatar,
+          },
+        });
         setIsOpen(true);
       }}
     >

@@ -1,9 +1,10 @@
 import React from "react";
+import { timeToUnix } from "../../../utils/time";
 
-const Message = (props) => {
-  const { message } = props;
+const Message = ({ message, from }) => {
+  const position = from === message.username ? "start" : "end";
   return (
-    <div className={`d-flex justify-content-${message.type}`}>
+    <div className={`d-flex justify-content-${position}`}>
       <div
         className="rounded"
         style={{
@@ -14,7 +15,7 @@ const Message = (props) => {
           padding: "0.375rem 0.75rem",
         }}
       >
-        {message.message}
+        {message.content}
         <div
           className="d-flex justify-content-end"
           style={{
@@ -23,7 +24,7 @@ const Message = (props) => {
             color: "rgba(250, 250, 250, 0.5)",
           }}
         >
-          <div>15:00</div>
+          <div>{timeToUnix(message.timestamp)}</div>
         </div>
       </div>
     </div>

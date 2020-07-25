@@ -9,7 +9,7 @@ const Chat = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const chat = useSelector((state) => state.Dialogues);
-  const [currentDilogue, setCurrentDilogue] = useState();
+  const [currentDialogue, setCurrentDialogue] = useState();
   const [dialoguesIsOpen, setDialoguesIsOpen] = useState(false);
   useEffect(() => {
     dispatch(getDialogues(page));
@@ -24,10 +24,10 @@ const Chat = () => {
           loading={chat.isFetching}
           error={chat.error}
           hasMore={chat.hasMore}
-          setDialogue={setCurrentDilogue}
+          setDialogue={setCurrentDialogue}
           setIsOpen={setDialoguesIsOpen}
         />
-        <Dialogue Dialogue={currentDilogue} isOpen={dialoguesIsOpen} />
+        <Dialogue Dialogue={currentDialogue} isOpen={dialoguesIsOpen} />
       </div>
     </ContainerFluid>
   );
