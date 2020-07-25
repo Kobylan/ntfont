@@ -14,7 +14,7 @@ export const getMyDialogues = (
 
     case "GET_DIALOGUES_SUCCESS":
       return {
-        data: state.data.concat(action.payload.results),
+        data: state.data.concat(action.payload),
         hasMore: action.payload.next !== null,
         isFetching: false,
       };

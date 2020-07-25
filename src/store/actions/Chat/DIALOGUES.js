@@ -1,5 +1,4 @@
 const URI = `https://thawing-reef-32246.herokuapp.com/chat/chats/`;
-
 export const getDialogues = (page) => {
   return (dispatch) => {
     dispatch({
