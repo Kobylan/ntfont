@@ -2,7 +2,10 @@ import React from "react";
 
 const DialogueHeader = ({ author }) => {
   return (
-    <div className="h-50px position-absolute bg-white z-1 w-100 rounded-right border-bottom d-flex align-items-center">
+    <div
+      className=" bg-white z-1 w-100 rounded-right border-bottom d-flex align-items-center"
+      style={{ minHeight: "50px" }}
+    >
       <div
         className="ml-20 rounded-circle"
         style={{

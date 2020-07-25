@@ -22,9 +22,12 @@ const Dialogue = ({ Dialogue, isOpen }) => {
     <div className="w-100 h-100 d-flex flex-column justify-content-between position-relative">
       {connected ? (
         <>
-          <DialogueHeader author={Dialogue.author} />
           {messages && (
-            <DialogueBody from={Dialogue.author.username} messages={messages} />
+            <DialogueBody
+              from={Dialogue.author.username}
+              messages={messages}
+              author={Dialogue.author}
+            />
           )}
         </>
       ) : (
