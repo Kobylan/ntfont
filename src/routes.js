@@ -31,6 +31,9 @@ const Routes = () => {
         <Route path={"/todo-list"}>
           <TodoList />
         </Route>
+        <Route path={"/chat"}>
+          <Chat />
+        </Route>
       </Switch>
     </Suspense>
   );

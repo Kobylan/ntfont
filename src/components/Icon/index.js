@@ -24,12 +24,15 @@ import { ReactComponent as TimeAgo } from "../../assets/icons/time-ago.svg";
 import { ReactComponent as Todo } from "../../assets/icons/todo.svg";
 import { ReactComponent as TodoFilled } from "../../assets/icons/todo-filled.svg";
 import { ReactComponent as Weight } from "../../assets/icons/weight.svg";
+import { ReactComponent as Search } from "../../assets/icons/search.svg";
 // Иконки - принимает имя, размеры(не обязательно) и класс
 const Icon = ({ name, width, height, className, onClick }) => {
   const getIcon = () => {
     switch (name) {
       case "add-file":
         return <AddFile width={width} height={height} className={className} />;
+      case "search":
+        return <Search width={width} height={height} className={className} />;
       case "add-image":
         return <AddImage width={width} height={height} className={className} />;
       case "add-image-filled":

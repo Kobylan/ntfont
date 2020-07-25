@@ -12,6 +12,10 @@
     transform: rotate(360deg);
   }
 }
+html {
+  height: 100%;
+  height: 100%;
+}
 html body {
   height: 100%;
   margin: 0;
@@ -159,11 +163,14 @@ html input {
 .w-200px {
   width: 200px;
 }
+.w-275px {
+  width: 275px;
+}
 .w-350px {
   width: 350px;
 }
-.w-275px {
-  width: 275px;
+.w-390px {
+  width: 390px;
 }
 .w-600px {
   width: 600px;
@@ -195,6 +202,16 @@ html input {
 }
 .h-300px {
   height: 300px;
+}
+
+.z-1 {
+  z-index: 1;
+}
+.z-0 {
+  z-index: 0;
+}
+.z-2 {
+  z-index: 2;
 }
 
 .p-5 {
@@ -502,6 +519,12 @@ html input {
 .border-bottom {
   border-bottom: 1px solid #888888;
 }
+.border-right-transparent {
+  border-right: 1px solid white;
+}
+.border-right-grey {
+  border-right: 1px solid #888888;
+}
 .border-transparent {
   border: 1px solid transparent;
 }
@@ -520,12 +543,21 @@ html input {
 .border-grey-right {
   border-right: 1px solid #888888;
 }
+.border-none {
+  border: none;
+}
 
 .rounded {
   border-radius: 3px;
 }
 .rounded-right {
   border-radius: 0px 3px 3px 0px;
+}
+.rounded-left {
+  border-radius: 3px 0px 0px 3px;
+}
+.rounded-circle {
+  border-radius: 50%;
 }
 
 .hover {
