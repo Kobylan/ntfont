@@ -13,8 +13,11 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="mv-20">
-      <div className="d-flex w-100 justify-content-between align-items-center text-white">
+    <div className="mv-20 cursor-select">
+      <div
+        className="d-flex w-100 justify-content-between align-items-center text-white"
+        style={{ marginBottom: "25px" }}
+      >
         <div className="min-width-50px">Цена:</div>
         <div className="d-flex justify-content-center min-width-50px">
           {filter.price_gte}
@@ -30,7 +33,10 @@ const Filter = () => {
           {filter.price_lte}
         </div>
       </div>
-      <div className="d-flex w-100 justify-content-between align-items-center text-white">
+      <div
+        className="d-flex w-100 justify-content-between align-items-center text-white"
+        style={{ marginBottom: "25px" }}
+      >
         <div className="min-width-50px">Вес:</div>
         <div className="d-flex justify-content-center min-width-50px">
           {filter.weight_gte}

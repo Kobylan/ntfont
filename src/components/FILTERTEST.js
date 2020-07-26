@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const InputRange = ({ filter, setFilter, type }) => {
+const Filtertest = ({ filter, setFilter, type }) => {
   let draggingLeft = false;
   let draggingRight = false;
   const [drag, setDrag] = useState(false);
@@ -70,7 +70,7 @@ const InputRange = ({ filter, setFilter, type }) => {
   return (
     <div>
       <div
-        className="bg-white w-100 h-20px position-relative rounded"
+        className="bg-white w-100 h-15px position-relative mr-5 rounded"
         ref={trackRef}
       >
         <div
@@ -93,8 +93,7 @@ const InputRange = ({ filter, setFilter, type }) => {
               marginLeft: "-20px",
               borderStyle: "solid",
               borderWidth: "10px",
-              borderColor:
-                "transparent rgb(29, 161, 242) rgb(29, 161, 242) transparent",
+              borderColor: "transparent red red transparent",
             }}
             onMouseDown={() => {
               draggingLeft = true;
@@ -110,8 +109,7 @@ const InputRange = ({ filter, setFilter, type }) => {
               top: "100%",
               borderStyle: "solid",
               borderWidth: "10px",
-              borderColor:
-                "transparent transparent rgb(29, 161, 242) rgb(29, 161, 242)",
+              borderColor: "transparent transparent red red",
             }}
             onMouseDown={() => {
               draggingRight = true;
@@ -125,4 +123,4 @@ const InputRange = ({ filter, setFilter, type }) => {
   );
 };
 
-export default InputRange;
+export default Filtertest;
