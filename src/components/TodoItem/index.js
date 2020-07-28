@@ -11,7 +11,10 @@ const TodoItem = ({ day, data, index }) => {
       </div>
       <div className="w-100 d-flex overflow-hidden-y">
         {data.map((e) => (
-          <div className="min-width-200px max-width-200px h-150px p-15 cursor-pointer">
+          <div
+            className="min-width-200px max-width-200px h-150px p-15 cursor-pointer"
+            title={e.customer.username}
+          >
             <div className="h-100 bg-white border-blue-left-3px rounded-right p-5 hover-border hover-float text-break">
               <div className="mb-10 text-muted"> для {e.customer.username}</div>
               <div>{e.title}</div>

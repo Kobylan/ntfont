@@ -35,6 +35,7 @@ const DialogueBody = ({ from, messages, author }) => {
         <label
           htmlFor="image_uploads"
           className="cursor-pointer p-10 d-flex align-items-center hover-blue"
+          title="Загрузить изображение"
         >
           <Icon name="add-file" width="40px" height="40px" />
           <input
@@ -54,7 +55,10 @@ const DialogueBody = ({ from, messages, author }) => {
           placeholder="Напишите новое сообщение"
           className="w-100 m-5 outline-none bg-white-gray border-transparent rounded  "
         />
-        <div className="cursor-pointer p-10 d-flex align-items-center hover-blue">
+        <div
+          className="cursor-pointer p-10 d-flex align-items-center hover-blue "
+          title="Отправить сообщение"
+        >
           <Icon name="send" width="40px" height="40px" />
         </div>
       </div>

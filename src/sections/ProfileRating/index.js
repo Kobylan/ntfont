@@ -12,8 +12,12 @@ const ProfileRating = () => {
   }, []);
   return (
     <>
-      <Title title="Рейтинг" />
-      <Rating loading={rating.isFetching} rating={rating.data} />
+      {!rating?.error && (
+        <>
+          <Title title="Рейтинг" />
+          <Rating loading={rating.isFetching} rating={rating.data} />
+        </>
+      )}
     </>
   );
 };

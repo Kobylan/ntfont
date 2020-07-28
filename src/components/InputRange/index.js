@@ -11,6 +11,8 @@ const InputRange = ({ filter, setFilter, type }) => {
   const [right, setRight] = useState(100);
   let offset = left;
   const root = document.getElementById("root").style;
+  useEffect(() => setLeft((filter[type + "_gte"] / 50000) * 100), [filter]);
+  useEffect(() => setRight((filter[type + "_lte"] / 50000) * 100), [filter]);
   window.addEventListener("mousemove", (e) => {
     if (draggingLeft) {
       offset = e.clientX + 10 - trackRef.current?.offsetLeft;

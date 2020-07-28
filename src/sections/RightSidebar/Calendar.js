@@ -125,7 +125,7 @@ const Calendar = () => {
           <div>
             <Icon
               name="back"
-              className="fill-dark w-30px cursor-pointer"
+              className="fill-dark w-30px cursor-pointer hover-blue"
               onClick={() => prevMonth()}
             />
           </div>
@@ -135,7 +135,7 @@ const Calendar = () => {
           <div>
             <Icon
               name="back"
-              className="fill-dark w-30px cursor-pointer transform-rotate-180"
+              className="fill-dark w-30px cursor-pointer transform-rotate-180 hover-blue"
               onClick={() => nextMonth()}
             />
           </div>

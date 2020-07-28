@@ -39,7 +39,7 @@ const TodoList = () => {
   return (
     <div>
       <div className="d-flex justify-content-between h-50px align-items-center pg-20">
-        <div>
+        <div title="Назад">
           <Icon
             name="back"
             className="fill-dark w-30px cursor-pointer hover-blue"
@@ -47,7 +47,7 @@ const TodoList = () => {
           />
         </div>
         <div className="font-size-20">Мои заказы на эту неделю</div>
-        <div>
+        <div title="Вперед">
           <Icon
             name="back"
             className="fill-dark w-30px cursor-pointer transform-rotate-180 hover-blue"

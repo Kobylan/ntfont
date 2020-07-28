@@ -23,6 +23,7 @@ const FindOrder = () => {
       field5: "Вес " + item.weight + " кг",
       field6: `${item.customer?.first_name} ${item.customer?.last_name}`,
       field7: timeAgoUnix(item.created_at),
+      field8: "anyFunc",
     }));
     setNewData(result);
   }, [orders.data]);

@@ -485,6 +485,9 @@ html input {
 .text-break {
   word-wrap: break-word;
 }
+.text-break-word {
+  word-break: break-word;
+}
 .text-blue {
   color: #1da1f2;
 }

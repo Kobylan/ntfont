@@ -60,7 +60,11 @@ const EditInfo = ({ avatar, profile, setEdit }) => {
                     editAvatar ? `opacity-100` : `opacity-0`
                   } position-absolute bg-dark text-white text-align-center w-100 pv-5`}
                 >
-                  <label htmlFor="image_uploads" className=" cursor-pointer ">
+                  <label
+                    htmlFor="image_uploads"
+                    className=" cursor-pointer"
+                    title="Изменить аватар"
+                  >
                     Изменить аватар
                   </label>
                 </div>
@@ -74,7 +78,7 @@ const EditInfo = ({ avatar, profile, setEdit }) => {
               {newProfile.first_name} {newProfile.last_name}
             </div>
           </div>
-          <div>{newProfile.bio}</div>
+          <div className="text-break-word">{newProfile.bio}</div>
         </div>
       </div>
       <form onSubmit={handleSubmit}>

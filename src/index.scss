@@ -575,6 +575,9 @@ html {
   &-break {
     word-wrap: break-word;
   }
+  &-break-word {
+    word-break: break-word;
+  }
   &-blue {
     color: $blue;
   }

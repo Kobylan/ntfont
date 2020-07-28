@@ -11,6 +11,18 @@ const Filter = () => {
     weight_lte: 50000,
   });
   const dispatch = useDispatch();
+  if (filter["price_lte"] < filter["price_gte"]) {
+    setFilter({
+      ...filter,
+      ["price_gte"]: filter["price_lte"],
+    });
+  }
+  if (filter["weight_lte"] < filter["weight_gte"]) {
+    setFilter({
+      ...filter,
+      ["weight_gte"]: filter["weight_lte"],
+    });
+  }
 
   return (
     <div className="mv-20 cursor-select">
@@ -19,9 +31,25 @@ const Filter = () => {
         style={{ marginBottom: "25px" }}
       >
         <div className="min-width-50px">Цена:</div>
-        <div className="d-flex justify-content-center min-width-50px">
-          {filter.price_gte}
-        </div>
+        <input
+          className="bg-transparent w-100 outline-none rounded text-white font-size-16 "
+          style={{
+            borderColor: "transparent",
+            minWidth: "55px",
+            maxWidth: "55px",
+            textAlign: "center",
+            fontFamily: "Nunito, sans-serif",
+          }}
+          value={filter.price_gte}
+          onChange={(e) => {
+            setFilter({
+              ...filter,
+              ["price_gte"]: isNaN(parseInt(e.target.value))
+                ? filter["price_gte"]
+                : parseInt(e.target.value),
+            });
+          }}
+        />
         <div className="w-100">
           <InputRange
             filter={filter}
@@ -29,18 +57,53 @@ const Filter = () => {
             type={"price"}
           />
         </div>
-        <div className="d-flex justify-content-center min-width-50px">
-          {filter.price_lte}
-        </div>
+        <input
+          className="bg-transparent w-100 outline-none rounded text-white font-size-16 "
+          style={{
+            borderColor: "transparent",
+            minWidth: "55px",
+            maxWidth: "55px",
+            textAlign: "center",
+            fontFamily: "Nunito, sans-serif",
+          }}
+          value={filter.price_lte}
+          onChange={(e) => {
+            setFilter({
+              ...filter,
+              ["price_lte"]: isNaN(parseInt(e.target.value))
+                ? filter["price_lte"]
+                : parseInt(e.target.value) >= 50000
+                ? 50000
+                : parseInt(e.target.value),
+            });
+          }}
+        />
       </div>
       <div
         className="d-flex w-100 justify-content-between align-items-center text-white"
         style={{ marginBottom: "25px" }}
       >
         <div className="min-width-50px">Вес:</div>
-        <div className="d-flex justify-content-center min-width-50px">
-          {filter.weight_gte}
-        </div>
+        <input
+          className="bg-transparent w-100 outline-none rounded text-white font-size-16 "
+          style={{
+            borderColor: "transparent",
+            minWidth: "55px",
+            maxWidth: "55px",
+            textAlign: "center",
+            fontFamily: "Nunito, sans-serif",
+          }}
+          value={filter.weight_gte}
+          onChange={(e) => {
+            setFilter({
+              ...filter,
+              ["weight_gte"]: isNaN(parseInt(e.target.value))
+                ? filter["weight_gte"]
+                : parseInt(e.target.value),
+            });
+          }}
+        />
+
         <div className="w-100">
           <InputRange
             filter={filter}
@@ -48,9 +111,27 @@ const Filter = () => {
             type={"weight"}
           />
         </div>
-        <div className="d-flex justify-content-center min-width-50px">
-          {filter.weight_lte}
-        </div>
+        <input
+          className="bg-transparent w-100 outline-none rounded text-white font-size-16 "
+          style={{
+            borderColor: "transparent",
+            minWidth: "55px",
+            maxWidth: "55px",
+            textAlign: "center",
+            fontFamily: "Nunito, sans-serif",
+          }}
+          value={filter.weight_lte}
+          onChange={(e) => {
+            setFilter({
+              ...filter,
+              ["weight_lte"]: isNaN(parseInt(e.target.value))
+                ? filter["weight_lte"]
+                : parseInt(e.target.value) >= 50000
+                ? 50000
+                : parseInt(e.target.value),
+            });
+          }}
+        />
       </div>
       <div className="d-flex justify-content-end mt-5">
         <div className="btn" onClick={() => dispatch(getFindOrder(1, filter))}>

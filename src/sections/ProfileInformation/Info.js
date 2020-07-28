@@ -29,6 +29,7 @@ const Info = ({ avatar, profile, setEdit }) => {
             <div
               className="text-muted cursor-pointer"
               onClick={() => setEdit(true)}
+              title="Изменить"
             >
               Изменить
             </div>
@@ -38,7 +39,7 @@ const Info = ({ avatar, profile, setEdit }) => {
           <Skeleton width="435" height={80} className="mt-10" />
         ) : (
           <>
-            <div>{profile.data?.bio}</div>
+            <div className="text-break-word">{profile.data?.bio}</div>
             <div className="d-flex mt-15">
               <div className="text-muted">Instagram:</div>
               <div
@@ -46,6 +47,7 @@ const Info = ({ avatar, profile, setEdit }) => {
                 onClick={() => {
                   window.open(`//instagram.com/${profile.data?.instagram}`);
                 }}
+                title="Инстаграм"
               >
                 {profile.data?.instagram}
               </div>
@@ -57,6 +59,7 @@ const Info = ({ avatar, profile, setEdit }) => {
                 onClick={() => {
                   window.open(`mailto:${profile.data?.email}`);
                 }}
+                title="Электронная почта"
               >
                 {profile.data?.email}
               </div>
