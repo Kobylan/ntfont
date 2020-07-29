@@ -13,7 +13,7 @@ const Dialogue = ({
 }) => {
   const reduxDispatch = useDispatch();
   useEffect(() => {
-    if (!chatMessageLoading) {
+    if (!chatMessageLoading && dialogue !== undefined) {
       reduxDispatch({
         type: "SET_CHAT_LOADING_TRUE",
       });
@@ -32,6 +32,7 @@ const Dialogue = ({
       data.length !== 0 &&
       data.messages !== undefined ? (
         <DialogueBody
+          id={list_chats.find((e) => e.id === dialogue).user_id}
           from={list_chats.find((e) => e.id === dialogue).username}
           messages={data.messages}
           author={list_chats.find((e) => e.id === dialogue)}

@@ -55,7 +55,10 @@ export function createCtx(defaultValue) {
         const newMessage = JSON.parse(message.data).message;
         dispatch({
           ...store,
-          data: [newMessage, ...store.data.messages],
+          data: {
+            ...store.data,
+            messages: [newMessage, ...store.data.messages],
+          },
         });
         return;
       }

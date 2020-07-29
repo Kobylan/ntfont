@@ -4,7 +4,8 @@ import Message from "./Message";
 import Skeleton from "../../Skeleton";
 import DialogueHeader from "../DialogueHeader";
 import { useDispatch } from "react-redux";
-const DialogueBody = ({ from, messages, author }) => {
+import { socket } from "../../../store/socket";
+const DialogueBody = ({ from, messages, author, id }) => {
   const loading = false;
   //SCROLL TO BOTTOM IN CHAT BODY
   const messagesEndRef = React.createRef();
@@ -13,8 +14,9 @@ const DialogueBody = ({ from, messages, author }) => {
   };
   useEffect(() => {
     scrollToBottom();
-  }, []);
+  }, [messages]);
   //
+  const [newMessage, setNewMessage] = useState("");
   return (
     <div className="h-100 d-flex flex-column position-relative">
       <DialogueHeader author={author} />
@@ -54,11 +56,23 @@ const DialogueBody = ({ from, messages, author }) => {
         <input
           type="text"
           placeholder="Напишите новое сообщение"
-          className="w-100 m-5 outline-none bg-white-gray border-transparent rounded  "
+          className="w-100 m-5 outline-none bg-white-gray border-transparent rounded p-10"
+          onChange={(e) => {
+            setNewMessage(e.target.value);
+          }}
         />
         <div
           className="cursor-pointer p-10 d-flex align-items-center hover-blue "
           title="Отправить сообщение"
+          onClick={() => {
+            socket.send(
+              JSON.stringify({
+                command: "new_message",
+                message: newMessage,
+                recipient: id,
+              })
+            );
+          }}
         >
           <Icon name="send" width="40px" height="40px" />
         </div>
