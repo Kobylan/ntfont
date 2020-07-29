@@ -34,7 +34,7 @@ const Dialogue = ({
         <DialogueBody
           id={list_chats.find((e) => e.id === dialogue).user_id}
           from={list_chats.find((e) => e.id === dialogue).username}
-          messages={data.messages}
+          messages={data.messages.reverse()}
           author={list_chats.find((e) => e.id === dialogue)}
         />
       ) : (

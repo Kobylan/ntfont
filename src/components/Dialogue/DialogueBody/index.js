@@ -27,7 +27,7 @@ const DialogueBody = ({ from, messages, author, id }) => {
         {loading ? (
           <Skeleton height={50} width="235" />
         ) : (
-          messages.reverse().map((e) => <Message message={e} from={from} />)
+          messages.map((e) => <Message message={e} from={from} />)
         )}
         <div ref={messagesEndRef} />
       </div>
@@ -56,6 +56,7 @@ const DialogueBody = ({ from, messages, author, id }) => {
         <input
           type="text"
           placeholder="Напишите новое сообщение"
+          value={newMessage}
           className="w-100 m-5 outline-none bg-white-gray border-transparent rounded p-10"
           onChange={(e) => {
             setNewMessage(e.target.value);
@@ -65,6 +66,7 @@ const DialogueBody = ({ from, messages, author, id }) => {
           className="cursor-pointer p-10 d-flex align-items-center hover-blue "
           title="Отправить сообщение"
           onClick={() => {
+            setNewMessage("");
             socket.send(
               JSON.stringify({
                 command: "new_message",
