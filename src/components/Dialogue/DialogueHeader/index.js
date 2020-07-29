@@ -15,7 +15,7 @@ const DialogueHeader = ({ author }) => {
         }}
       />
       <div className="ml-20">
-        {author.firstName} {author.lastName}
+        {author.first_name} {author.last_name}
       </div>
     </div>
   );

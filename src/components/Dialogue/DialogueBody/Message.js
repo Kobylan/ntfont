@@ -2,7 +2,7 @@ import React from "react";
 import { timeToUnix } from "../../../utils/time";
 
 const Message = ({ message, from }) => {
-  const position = from === message.username ? "start" : "end";
+  const position = from === message.author ? "start" : "end";
   return (
     <div className={`d-flex justify-content-${position}`}>
       <div

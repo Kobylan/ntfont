@@ -1,35 +1,41 @@
 import React, { useEffect, useState } from "react";
 import DialogueHeader from "../../components/Dialogue/DialogueHeader/";
 import DialogueBody from "../../components/Dialogue/DialogueBody";
+import { socket } from "../../store/socket";
+import { useDispatch } from "react-redux";
 
-const Dialogue = ({ Dialogue, isOpen }) => {
-  const [connected, setConnected] = useState(false);
-  const [messages, setMessages] = useState();
+const Dialogue = ({
+  dialogue,
+  data,
+  chatMessageLoading,
+  list_chats,
+  isOpen,
+}) => {
+  const reduxDispatch = useDispatch();
   useEffect(() => {
-    if (isOpen) {
-      const ws = new WebSocket(`${Dialogue.url}`);
-      ws.onopen = () => {
-        ws.send(JSON.stringify({ command: "fetch_messages" }));
-        setConnected(true);
-      };
-      ws.onmessage = (response) => {
-        setMessages(JSON.parse(response.data).messages);
-      };
+    if (!chatMessageLoading) {
+      reduxDispatch({
+        type: "SET_CHAT_LOADING_TRUE",
+      });
+      socket.send(
+        JSON.stringify({
+          command: "fetch_messages",
+          recipient: `${dialogue}`,
+        })
+      );
     }
-  }, [Dialogue]);
+  }, [dialogue]);
 
   return (
     <div className="w-100 h-100 d-flex flex-column justify-content-between position-relative">
-      {connected ? (
-        <>
-          {messages && (
-            <DialogueBody
-              from={Dialogue.author.username}
-              messages={messages}
-              author={Dialogue.author}
-            />
-          )}
-        </>
+      {!chatMessageLoading &&
+      data.length !== 0 &&
+      data.messages !== undefined ? (
+        <DialogueBody
+          from={list_chats.find((e) => e.id === dialogue).username}
+          messages={data.messages}
+          author={list_chats.find((e) => e.id === dialogue)}
+        />
       ) : (
         <div>Найдите заказ и отправьте сообщение заказчику</div>
       )}

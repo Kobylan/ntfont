@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Router } from "react-router-dom";
 import { Provider } from "react-redux";
+import { SocketProvider } from "./store/socket";
 
 import "./index.css";
 import Routes from "./routes";
@@ -11,11 +12,13 @@ import { store } from "./store";
 
 const App = () => (
   <Provider store={store}>
-    <Router history={history}>
-      <Layout>
-        <Routes />
-      </Layout>
-    </Router>
+    <SocketProvider>
+      <Router history={history}>
+        <Layout>
+          <Routes />
+        </Layout>
+      </Router>
+    </SocketProvider>
   </Provider>
 );
 

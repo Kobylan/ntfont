@@ -3,6 +3,7 @@ import Icon from "../../Icon";
 import Message from "./Message";
 import Skeleton from "../../Skeleton";
 import DialogueHeader from "../DialogueHeader";
+import { useDispatch } from "react-redux";
 const DialogueBody = ({ from, messages, author }) => {
   const loading = false;
   //SCROLL TO BOTTOM IN CHAT BODY

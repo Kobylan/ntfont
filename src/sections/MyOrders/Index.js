@@ -13,7 +13,6 @@ const Orders = () => {
   useEffect(() => {
     dispatch(getMyOrders(page));
   }, [page]);
-  console.log(orders, "da");
   useEffect(() => {
     const result = orders.data?.map((item) => ({
       field0: item.customer.avatar?.file,
