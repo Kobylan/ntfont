@@ -15,6 +15,24 @@ const DialogueBody = ({ from, messages, author, id }) => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const handleSendMessage = () => {
+    setNewMessage("");
+    socket.send(
+      JSON.stringify({
+        command: "new_message",
+        message: newMessage,
+        recipient: id,
+      })
+    );
+  };
+
+  const handlePressKey = (e) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
+    }
+  };
+
   //
   const [newMessage, setNewMessage] = useState("");
   return (
@@ -61,20 +79,12 @@ const DialogueBody = ({ from, messages, author, id }) => {
           onChange={(e) => {
             setNewMessage(e.target.value);
           }}
+          onKeyPress={(e) => handlePressKey(e)}
         />
         <div
           className="cursor-pointer p-10 d-flex align-items-center hover-blue "
           title="Отправить сообщение"
-          onClick={() => {
-            setNewMessage("");
-            socket.send(
-              JSON.stringify({
-                command: "new_message",
-                message: newMessage,
-                recipient: id,
-              })
-            );
-          }}
+          onClick={() => handleSendMessage()}
         >
           <Icon name="send" width="40px" height="40px" />
         </div>
