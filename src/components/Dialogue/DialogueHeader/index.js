@@ -1,6 +1,11 @@
 import React from "react";
+import { useSocket } from "../../../store/socket";
 
-const DialogueHeader = ({ author }) => {
+const DialogueHeader = () => {
+  const { store, dispatch } = useSocket();
+  const author = store.listChats.find(
+    (e) => e.user_id === store.currentDialogue
+  );
   return (
     <div
       className=" bg-white z-1 w-100 rounded-right border-bottom d-flex align-items-center"

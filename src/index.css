@@ -120,6 +120,9 @@ html input {
 .max-width-200px {
   max-width: 200px;
 }
+.max-width-150px {
+  max-width: 150px;
+}
 .max-width-80 {
   max-width: 80%;
 }
@@ -599,6 +602,12 @@ html input {
 }
 .hover-border:hover .text {
   color: #001935;
+}
+.hover-whitegray {
+  transition: all 0.1s ease;
+}
+.hover-whitegray:hover {
+  background: #e8e8e8;
 }
 
 .overflow-scroll {

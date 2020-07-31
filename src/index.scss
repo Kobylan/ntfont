@@ -154,6 +154,9 @@ html {
     &-200px {
       max-width: 200px;
     }
+    &-150px {
+      max-width: 150px;
+    }
     &-80 {
       max-width: 80%;
     }
@@ -702,6 +705,12 @@ html {
       .text {
         color: $dark;
       }
+    }
+  }
+  &-whitegray {
+    transition: all 0.1s ease;
+    &:hover {
+      background: #e8e8e8;
     }
   }
 }

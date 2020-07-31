@@ -1,12 +1,31 @@
-import React, { useEffect, useState } from "react";
-import Icon from "../../Icon";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Message from "./Message";
 import Skeleton from "../../Skeleton";
-import DialogueHeader from "../DialogueHeader";
-import { useDispatch } from "react-redux";
-import { socket } from "../../../store/socket";
-const DialogueBody = ({ from, messages, author, id }) => {
-  const loading = false;
+import { socket, useSocket } from "../../../store/socket";
+const DialogueBody = () => {
+  const { store, dispatch } = useSocket();
+  console.log(store.data);
+  const [page, setPage] = useState(1);
+  useEffect(() => console.log(page), [page]);
+  useEffect(() => {
+    if (store.currentDialogue !== 0) {
+      dispatch({
+        ...store,
+        dataLoading: true,
+      });
+      socket.send(
+        JSON.stringify({
+          command: "fetch_messages",
+          recipient: `${store.currentDialogue}`,
+          page: `${page}`,
+        })
+      );
+    }
+  }, [store.currentDialogue && page]);
+  const [messages, setMessages] = useState(store.data?.reverse());
+  useEffect(() => {
+    !store.dataLoading && store.data !== undefined && setMessages(store.data);
+  }, [store.data]);
   //SCROLL TO BOTTOM IN CHAT BODY
   const messagesEndRef = React.createRef();
   const scrollToBottom = () => {
@@ -16,77 +35,87 @@ const DialogueBody = ({ from, messages, author, id }) => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSendMessage = () => {
-    setNewMessage("");
-    socket.send(
-      JSON.stringify({
-        command: "new_message",
-        message: newMessage,
-        recipient: id,
-      })
-    );
-  };
+  //infinite scroll
 
-  const handlePressKey = (e) => {
-    if (e.key === "Enter") {
-      handleSendMessage();
+  const [element, setElement] = useState(null);
+  const observer = useRef(
+    new IntersectionObserver(
+      (entries) => {
+        const last = entries[0];
+        if (last.isIntersecting) {
+          setPage(page + 1);
+        }
+      },
+      { threshold: 1 }
+    )
+  );
+  useEffect(() => {
+    const currentElement = element;
+    const currentObserver = observer.current;
+    if (currentElement) {
+      currentObserver.observe(currentElement);
     }
-  };
-
+    return () => {
+      if (currentElement) {
+        currentObserver.unobserve(currentElement);
+      }
+    };
+  }, [element]);
+  // const lastOrderElementRef = useCallback(
+  //   (node) => {
+  //     if (store.dataLoading) return;
+  //     if (observer.current) observer.current.disconnect();
+  //     observer.current = new IntersectionObserver((entries) => {
+  //       if (entries[0].isIntersecting) {
+  //         setPage(page + 1);
   //
-  const [newMessage, setNewMessage] = useState("");
+  //         dispatch({
+  //           ...store,
+  //           dataLoading: true,
+  //         });
+  //         socket.send(
+  //           JSON.stringify({
+  //             command: "fetch_messages",
+  //             recipient: `${store.currentDialogue}`,
+  //             page: `${page}`,
+  //           })
+  //         );
+  //       }
+  //     });
+  //     if (node) observer.current.observe(node);
+  //   },
+  //   [store.dataLoading, true]
+  // );
+
   return (
-    <div className="h-100 d-flex flex-column position-relative">
-      <DialogueHeader author={author} />
-      <div
-        className="h-100 rounded-left p-20 w-100 "
-        style={{ overflow: "hidden scroll" }}
-      >
-        {loading ? (
-          <Skeleton height={50} width="235" />
-        ) : (
-          messages.map((e) => <Message message={e} from={from} />)
-        )}
-        <div ref={messagesEndRef} />
-      </div>
-      <div
-        className=" rounded-right border-top d-flex justify-content-between"
-        style={{ minHeight: "50px" }}
-      >
-        <label
-          htmlFor="image_uploads"
-          className="cursor-pointer p-10 d-flex align-items-center hover-blue"
-          title="Загрузить изображение"
-        >
-          <Icon name="add-file" width="40px" height="40px" />
-          <input
-            id="image_uploads"
-            accept=".jpg, .jpeg, .png"
-            style={{ width: "0px", height: "0px" }}
-            type="file"
-            onChange={(e) => {
-              // const formData = new FormData();
-              // formData.append("file", e.target.files[0]);
-              // dispatch(editProfileAvatar(formData));
-            }}
-          />
-        </label>
-        <input
-          type="text"
-          placeholder="Напишите новое сообщение"
-          value={newMessage}
-          className="w-100 m-5 outline-none bg-white-gray border-transparent rounded p-10"
-          onChange={(e) => {
-            setNewMessage(e.target.value);
-          }}
-          onKeyPress={(e) => handlePressKey(e)}
-        />
+    <div className="h-100 position-relative">
+      <div className="h-100 position-absolute w-100 d-flex flex-column justify-content-end">
         <div
-          className="cursor-pointer p-10 d-flex align-items-center hover-blue "
-          title="Отправить сообщение"
-          onClick={() => handleSendMessage()}
+          className="h-auto max-height-100 rounded-left p-20 w-100"
+          style={{ overflow: "hidden scroll" }}
         >
-          <Icon name="send" width="40px" height="40px" />
+          {!store.dataLoading && store.data !== undefined ? (
+            store.dataLoading ? (
+              <Skeleton height={50} width="235" />
+            ) : (
+              <>
+                <div className="w-100 h-50px" ref={setElement}></div>
+                {messages?.map((e) => (
+                  <div>
+                    <Message
+                      message={e}
+                      from={store.listChats.find(
+                        (e) => e.user_id === store.currentDialogue
+                      )}
+                    />
+                  </div>
+                ))}
+              </>
+            )
+          ) : (
+            "asd"
+          )}
+          <div ref={messagesEndRef} />
         </div>
       </div>
     </div>

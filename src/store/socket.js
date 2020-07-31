@@ -1,27 +1,34 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AddChatNewMessage } from "./actions/chatNewMessage/ChatNewMessage";
 
 export const socket = new WebSocket(
-  "ws://thawing-reef-32246.herokuapp.com/ws/chat/1/"
+  "ws://thawing-reef-32246.herokuapp.com/ws/chat/3/"
 );
 
 export const responseReducer = (state, action) => {
   return {
-    data: action.data,
     connected: action.connected,
-    list_chats: action.list_chats,
+    listChats: action.listChats,
+    listChatsLoading: action.listChatsLoading,
+    data: action.data,
+    dataLoading: action.dataLoading,
+    currentDialogue: action.currentDialogue,
+    newMessages: action.newMessages,
   };
 };
 const defaultValue = {
-  data: [],
   connected: false,
-  list_chats: [],
+  listChats: [],
+  listChatsLoading: true,
+  data: [],
+  dataLoading: true,
+  currentDialogue: 0,
+  newMessages: [],
 };
 export function createCtx(defaultValue) {
-  const defaultUpdate = () => defaultValue;
   const ctx = React.createContext({
     state: defaultValue,
-    update: defaultUpdate,
   });
   function Provider(props) {
     const reduxDispatch = useDispatch();
@@ -31,41 +38,53 @@ export function createCtx(defaultValue) {
         ...store,
         connected: true,
       });
-      socket.send(JSON.stringify({ command: "list_chats", page: "1" }));
       setInterval(() => {
         socket.send(JSON.stringify({ command: "ping" }));
-      }, 5000);
+      }, 30000);
     };
 
     socket.onmessage = (message) => {
       if (message.data === `{"pong": "pong"}`) {
         return;
       }
-      reduxDispatch({
-        type: "SET_CHAT_LOADING_FALSE",
-      });
       if (JSON.parse(message.data).command === "list_chats") {
+        const list = JSON.parse(message.data).list_chats;
         dispatch({
           ...store,
-          list_chats: JSON.parse(message.data).list_chats,
+          listChats: store.listChats.concat(list),
+          listChatsLoading: false,
         });
         return;
       }
       if (JSON.parse(message.data).command === "new_message") {
-        const newMessage = JSON.parse(message.data).message;
-        dispatch({
-          ...store,
-          data: {
-            ...store.data,
-            messages: [newMessage, ...store.data.messages],
-          },
-        });
+        const newMessage1 = JSON.parse(message.data).message;
+        if (
+          JSON.parse(message.data).sender_id === `${store.currentDialogue}` ||
+          JSON.parse(message.data).sender_id === `3`
+        ) {
+          reduxDispatch(AddChatNewMessage(newMessage1));
+        }
+
+        //в ифке надо будет 3 поменять на мой айди
+        if (
+          JSON.parse(message.data).sender_id === `${store.currentDialogue}` ||
+          JSON.parse(message.data).sender_id === `3`
+        ) {
+          dispatch({
+            ...store,
+            dataLoading: false,
+            newMessages: store.newMessages.concat(newMessage1),
+            data: store.data.concat(newMessage1),
+          });
+        }
+
         return;
       }
-      const data = JSON.parse(message.data);
+      const data = JSON.parse(message.data).messages;
       dispatch({
         ...store,
-        data: data,
+        dataLoading: false,
+        data: store.data.concat(data),
       });
     };
     return <ctx.Provider value={{ store, dispatch }} {...props} />;
@@ -76,11 +95,11 @@ export function createCtx(defaultValue) {
 const [SocketContext, SocketProvider] = createCtx(defaultValue);
 
 const useSocket = () => {
-  const context = useContext(SocketContext);
-  if (!context) {
+  const { store, dispatch } = useContext(SocketContext);
+  if (!store) {
     throw new Error(`useSocket must be used within a UserContext`);
   }
-  return [context.store, context.update];
+  return { store, dispatch };
 };
 
 export { SocketContext, SocketProvider, useSocket };
