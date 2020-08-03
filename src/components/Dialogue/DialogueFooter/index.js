@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Icon from "../../Icon";
 import { socket, useSocket } from "../../../store/socket";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const DialogueFooter = () => {
   const chat = useSelector((store) => store.chat);
+  const dispatch = useDispatch();
   //send Message
   const handleSendMessage = () => {
     if (newMessage.trim() === "") return;
@@ -30,7 +31,7 @@ const DialogueFooter = () => {
   const [newMessage, setNewMessage] = useState("");
   return (
     <div
-      className="position-relative rounded-right border-top d-flex justify-content-between bg-white-gray"
+      className="position-relative rounded-right border-top d-flex justify-content-between"
       style={{ minHeight: "50px" }}
     >
       <label
@@ -39,10 +40,14 @@ const DialogueFooter = () => {
         title="Загрузить изображение"
       >
         <Icon name="add-file" width="40px" height="40px" />
+
         <input
           id="image_uploads"
           accept=".jpg, .jpeg, .png"
-          style={{ width: "0px", height: "0px" }}
+          style={{
+            width: "0px",
+            height: "0px",
+          }}
           type="file"
           onChange={(e) => {
             // const formData = new FormData();
@@ -59,6 +64,7 @@ const DialogueFooter = () => {
         onChange={(e) => {
           setNewMessage(e.target.value);
         }}
+        style={{ border: "1px solid rgb(221, 221, 221)" }}
         onKeyPress={(e) => handlePressKey(e)}
       />
       <div

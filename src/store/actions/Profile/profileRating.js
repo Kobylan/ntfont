@@ -1,7 +1,7 @@
 import { API } from "../../API";
 const URI = `${API}/rating/`;
 
-export const getProfileRating = (page) => {
+export const getProfileRating = () => {
   return (dispatch) => {
     dispatch({
       type: "GET_PROFILE_RATING_FETCHING",

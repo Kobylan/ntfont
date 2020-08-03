@@ -3,6 +3,12 @@ export const dialogueDataReducer = (
   action
 ) => {
   switch (action.type) {
+    case "FETCH_DIALOGUE_MESSAGES_CLEAR":
+      return {
+        data: [],
+        loading: false,
+        hasMore: true,
+      };
     case "FETCH_DIALOGUE_MESSAGES_DATA":
       return {
         data: state.data.concat(action.payload.messages),
@@ -17,6 +23,8 @@ export const dialogueDataReducer = (
     case "FETCH_DIALOGUE_MESSAGES_NEWDATA":
       return {
         data: [action.payload, ...state.data],
+        loading: false,
+        hasMore: action.payload.next,
       };
     default:
       return state;

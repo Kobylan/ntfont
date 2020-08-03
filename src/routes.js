@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
-import Switch from "react-router-dom/es/Switch";
-import Route from "react-router-dom/es/Route";
-import Redirect from "react-router-dom/es/Redirect";
+import { Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const Routes = () => {
   const FindOrder = lazy(() => import("./pages/FindOrders"));

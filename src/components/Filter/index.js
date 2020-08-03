@@ -13,7 +13,6 @@ const Filter = () => {
     weight_gte: 0,
     weight_lte: 50000,
   });
-  console.log(filter);
   const dispatch = useDispatch();
   if (filter["price_lte"] < filter["price_gte"]) {
     setFilter({

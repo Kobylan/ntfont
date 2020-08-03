@@ -5,7 +5,7 @@ export const unreadMessagesReducer = (
   switch (action.type) {
     case "UNREAD_MESSAGES_DATA":
       return {
-        data: state.data.concat(action.payload.unread_messages),
+        data: action.payload.unread_messages,
         loading: false,
       };
     case "UNREAD_MESSAGES_LOADING":

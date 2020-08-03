@@ -6,7 +6,7 @@ const Message = ({ message, from }) => {
   return (
     <div className={`d-flex justify-content-${position}`}>
       <div
-        className="rounded"
+        className="rounded text-break-word"
         style={{
           margin: " 5px",
           maxWidth: "80%",

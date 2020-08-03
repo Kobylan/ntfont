@@ -39,7 +39,7 @@ export function createCtx(defaultValue) {
     };
 
     socket.onmessage = (message) => {
-      //PING POING FOR CONNECTION NOT CLOSED
+      //PING PONG FOR CONNECTION NOT CLOSED
       if (message.data === `{"pong": "pong"}`) {
         return;
       }
@@ -54,27 +54,53 @@ export function createCtx(defaultValue) {
       }
       //NEW MESSAGES
       if (data.command === "new_message") {
-        if (data.sender_id === `${chat.dialogueID}` || data.sender_id === `1`) {
+        //set new_message to store
+        reduxDispatch({
+          type: "NEW_MESSAGES_DATA",
+          payload: data.message,
+        });
+        //concat new message with current dialogue messages if its from u or from ur interlocutor
+        if (
+          data.sender_id === `${chat.dialogueID.id}` ||
+          data.sender_id === `1`
+        ) {
           reduxDispatch({
             type: "FETCH_DIALOGUE_MESSAGES_NEWDATA",
             payload: data.message,
           });
         }
+        //re render unread messages when new message came
+        reduxDispatch({
+          type: "UNREAD_MESSAGES_LOADING",
+          payload: true,
+        });
+        socket.send(JSON.stringify({ command: "unread_messages" }));
         return;
       }
       //UNREAD MESSAGES
       if (data.command === "unread_message") {
-        reduxDispatch({
-          type: "UNREAD_MESSAGES_DATA",
-          payload: data,
-        });
+        //set unread messages to store
+        if (data.from_user_id !== `${chat.dialogueID.id}`) {
+          reduxDispatch({
+            type: "UNREAD_MESSAGES_DATA",
+            payload: data,
+          });
+        }
         return;
       }
+      //fetch messages
       if (data.command === "messages") {
+        //set fetched messages to store
         reduxDispatch({
           type: "FETCH_DIALOGUE_MESSAGES_DATA",
           payload: data,
         });
+        //re render unread messages when messages is fetched
+        reduxDispatch({
+          type: "UNREAD_MESSAGES_LOADING",
+          payload: true,
+        });
+        socket.send(JSON.stringify({ command: "unread_messages" }));
       }
     };
     return <ctx.Provider value={{ store, dispatch }} {...props} />;
