@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React from "react";
 import ContainerFluid from "../../components/ContainerFluid";
-import { socket, useSocket } from "../../store/socket";
+import { useSocket } from "../../store/socket";
 import ChatList from "../../sections/Chat/ChatList";
 import ChatBody from "../../sections/Chat/ChatBody";
-import { useSelector } from "react-redux";
 
 const Chat = () => {
   return useSocket().store.connected ? (

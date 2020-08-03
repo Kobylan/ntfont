@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import Icon from "../../Icon";
 import { socket, useSocket } from "../../../store/socket";
+import { useSelector } from "react-redux";
 
 const DialogueFooter = () => {
-  const { store, dispatch } = useSocket();
-
+  const chat = useSelector((store) => store.chat);
   //send Message
   const handleSendMessage = () => {
-    if (!store.dataLoading) {
+    if (newMessage.trim() === "") return;
+    if (!chat.dialogue.loading) {
       setNewMessage("");
       socket.send(
         JSON.stringify({
           command: "new_message",
           message: newMessage,
-          recipient: store.currentDialogue,
+          recipient: chat.dialogueID.id,
         })
       );
     }

@@ -25,10 +25,18 @@ import { ReactComponent as Todo } from "../../assets/icons/todo.svg";
 import { ReactComponent as TodoFilled } from "../../assets/icons/todo-filled.svg";
 import { ReactComponent as Weight } from "../../assets/icons/weight.svg";
 import { ReactComponent as Search } from "../../assets/icons/search.svg";
+import { ReactComponent as Chat } from "../../assets/icons/chat.svg";
+import { ReactComponent as ChatFilled } from "../../assets/icons/cha-filled.svg";
 // Иконки - принимает имя, размеры(не обязательно) и класс
 const Icon = ({ name, width, height, className, onClick }) => {
   const getIcon = () => {
     switch (name) {
+      case "chat":
+        return <Chat width={width} height={height} className={className} />;
+      case "chat-filled":
+        return (
+          <ChatFilled width={width} height={height} className={className} />
+        );
       case "add-file":
         return <AddFile width={width} height={height} className={className} />;
       case "search":

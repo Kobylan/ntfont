@@ -1,121 +1,58 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Message from "./Message";
-import Skeleton from "../../Skeleton";
-import { socket, useSocket } from "../../../store/socket";
+import { socket } from "../../../store/socket";
+import { useDispatch, useSelector } from "react-redux";
 const DialogueBody = () => {
-  const { store, dispatch } = useSocket();
-  console.log(store.data);
+  const { dialogue, dialogueID, listChats } = useSelector(
+    (store) => store.chat
+  );
+  const reduxDispatch = useDispatch();
   const [page, setPage] = useState(1);
-  useEffect(() => console.log(page), [page]);
   useEffect(() => {
-    if (store.currentDialogue !== 0) {
-      dispatch({
-        ...store,
-        dataLoading: true,
+    if (!dialogue.loading) {
+      reduxDispatch({
+        type: "FETCH_DIALOGUE_MESSAGES_LOADING",
+        payload: true,
       });
       socket.send(
         JSON.stringify({
           command: "fetch_messages",
-          recipient: `${store.currentDialogue}`,
+          recipient: `${dialogueID.id}`,
           page: `${page}`,
         })
       );
     }
-  }, [store.currentDialogue && page]);
-  const [messages, setMessages] = useState(store.data?.reverse());
-  useEffect(() => {
-    !store.dataLoading && store.data !== undefined && setMessages(store.data);
-  }, [store.data]);
-  //SCROLL TO BOTTOM IN CHAT BODY
-  const messagesEndRef = React.createRef();
-  const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView();
-  };
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
+  }, [dialogueID.id && page]);
   //infinite scroll
-
-  const [element, setElement] = useState(null);
-  const observer = useRef(
-    new IntersectionObserver(
-      (entries) => {
-        const last = entries[0];
-        if (last.isIntersecting) {
+  const observer = useRef();
+  const lastElementRef = useCallback(
+    (node) => {
+      if (dialogue.loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && dialogue.hasMore) {
           setPage(page + 1);
         }
-      },
-      { threshold: 1 }
-    )
+      });
+      if (node) observer.current.observe(node);
+    },
+    [dialogue.loading, dialogue.hasMore, dialogue.data]
   );
-  useEffect(() => {
-    const currentElement = element;
-    const currentObserver = observer.current;
-    if (currentElement) {
-      currentObserver.observe(currentElement);
-    }
-    return () => {
-      if (currentElement) {
-        currentObserver.unobserve(currentElement);
-      }
-    };
-  }, [element]);
-  // const lastOrderElementRef = useCallback(
-  //   (node) => {
-  //     if (store.dataLoading) return;
-  //     if (observer.current) observer.current.disconnect();
-  //     observer.current = new IntersectionObserver((entries) => {
-  //       if (entries[0].isIntersecting) {
-  //         setPage(page + 1);
-  //
-  //         dispatch({
-  //           ...store,
-  //           dataLoading: true,
-  //         });
-  //         socket.send(
-  //           JSON.stringify({
-  //             command: "fetch_messages",
-  //             recipient: `${store.currentDialogue}`,
-  //             page: `${page}`,
-  //           })
-  //         );
-  //       }
-  //     });
-  //     if (node) observer.current.observe(node);
-  //   },
-  //   [store.dataLoading, true]
-  // );
-
   return (
     <div className="h-100 position-relative">
       <div className="h-100 position-absolute w-100 d-flex flex-column justify-content-end">
         <div
-          className="h-auto max-height-100 rounded-left p-20 w-100"
-          style={{ overflow: "hidden scroll" }}
+          className="h-auto max-height-100 rounded-left p-20 w-100 d-flex"
+          style={{ overflow: "hidden scroll", flexDirection: "column-reverse" }}
         >
-          {!store.dataLoading && store.data !== undefined ? (
-            store.dataLoading ? (
-              <Skeleton height={50} width="235" />
-            ) : (
-              <>
-                <div className="w-100 h-50px" ref={setElement}></div>
-                {messages?.map((e) => (
-                  <div>
-                    <Message
-                      message={e}
-                      from={store.listChats.find(
-                        (e) => e.user_id === store.currentDialogue
-                      )}
-                    />
-                  </div>
-                ))}
-              </>
-            )
-          ) : (
-            "asd"
-          )}
-          <div ref={messagesEndRef} />
+          {dialogue.data?.map((e, i) => (
+            <div ref={lastElementRef} key={i}>
+              <Message
+                message={e}
+                from={listChats.data.find((e) => e.user_id === dialogueID.id)}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import InputRange from "../../components/InputRange";
 import { useDispatch, useSelector } from "react-redux";
-import { getFindOrder } from "../../store/actions/FindOrder/FindOrder";
+import {
+  getFindOrder,
+  getFindOrderByFilter,
+} from "../../store/actions/FindOrder/FindOrder";
 
 const Filter = () => {
   const [filter, setFilter] = useState({
@@ -10,6 +13,7 @@ const Filter = () => {
     weight_gte: 0,
     weight_lte: 50000,
   });
+  console.log(filter);
   const dispatch = useDispatch();
   if (filter["price_lte"] < filter["price_gte"]) {
     setFilter({
@@ -134,7 +138,10 @@ const Filter = () => {
         />
       </div>
       <div className="d-flex justify-content-end mt-5">
-        <div className="btn" onClick={() => dispatch(getFindOrder(1, filter))}>
+        <div
+          className="btn"
+          onClick={() => dispatch(getFindOrderByFilter(1, filter))}
+        >
           Применить
         </div>
       </div>

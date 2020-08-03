@@ -34,8 +34,8 @@ export const config = [
   {
     id: "5",
     title: "Чат",
-    icon: <Icon name="todo" />,
-    filledIcon: <Icon name="todo-filled" />,
+    icon: <Icon name="chat" />,
+    filledIcon: <Icon name="chat-filled" />,
     path: "/chat",
   },
 ];

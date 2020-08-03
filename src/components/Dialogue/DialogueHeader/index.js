@@ -1,11 +1,10 @@
 import React from "react";
-import { useSocket } from "../../../store/socket";
+import { useSelector } from "react-redux";
 
 const DialogueHeader = () => {
-  const { store, dispatch } = useSocket();
-  const author = store.listChats.find(
-    (e) => e.user_id === store.currentDialogue
-  );
+  const listChats = useSelector((store) => store.chat.listChats);
+  const dialogueID = useSelector((store) => store.chat.dialogueID.id);
+  const author = listChats.data.find((e) => e.user_id === dialogueID);
   return (
     <div
       className=" bg-white z-1 w-100 rounded-right border-bottom d-flex align-items-center"
