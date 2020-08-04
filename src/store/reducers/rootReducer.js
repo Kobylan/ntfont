@@ -4,6 +4,7 @@ import { todoListItemsReducer } from "./TodoList/";
 import { myOrdersReducer } from "./MyOrders";
 import { findOrderReducer } from "./FindOrder";
 import { chatReducer } from "./Chat";
+import { resolutionReducer } from "./resolution";
 
 export const rootReducer = combineReducers({
   profile: profileReducer,
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
   myOrders: myOrdersReducer,
   findOrder: findOrderReducer,
   chat: chatReducer,
+  resolution: resolutionReducer,
 });

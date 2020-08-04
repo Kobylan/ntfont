@@ -1,8 +1,18 @@
 import React from "react";
 
 import LeftSidebar from "../../sections/LeftSideBar";
+import { useDispatch } from "react-redux";
 
 const Layout = ({ children }) => {
+  const dispatch = useDispatch();
+  const resize = () => {
+    const r = { width: window.innerWidth, height: window.innerHeight };
+    dispatch({
+      type: "SET_RESOLUTION",
+      payload: r,
+    });
+  };
+  window.addEventListener("resize", resize, false);
   return (
     <>
       <LeftSidebar />
