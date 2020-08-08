@@ -1,5 +1,5 @@
 import { API } from "../../API";
-const URI = `${API}/todo/`;
+const URI = `${API}/api/todo/`;
 
 export const getTodoList = () => {
   return (dispatch) => {

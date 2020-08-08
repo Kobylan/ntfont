@@ -8,6 +8,7 @@ import Skeleton from "../../components/Skeleton";
 const TodoList = () => {
   const dispatch = useDispatch();
   const todo = useSelector((state) => state.todoList);
+  console.log(todo);
   useEffect(() => {
     dispatch(getTodoList());
   }, []);
@@ -36,7 +37,11 @@ const TodoList = () => {
     return a;
   };
 
-  return (
+  return todo.error ? (
+    <div className="text-dark text-align-center m-20 font-size-24">
+      Сервер временно не доступен
+    </div>
+  ) : (
     <div>
       <div className="d-flex justify-content-between h-50px align-items-center pg-20">
         <div title="Назад">

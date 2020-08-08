@@ -25,20 +25,23 @@ const InfinityScrollBlock = ({
     },
     [loading, hasMore]
   );
-  const renderItems = data.map((item) => (
-    <div ref={lastOrderElementRef} key={item.id}>
-      {type === "avatar-card" && <AvatarCard item={item} />}
-    </div>
-  ));
 
   return (
     <>
-      {renderItems}
+      {!loading &&
+        data !== undefined &&
+        data.map((item) => (
+          <div ref={lastOrderElementRef} key={item.id}>
+            {type === "avatar-card" && <AvatarCard item={item} />}
+          </div>
+        ))}
       {loading && <Loader />}
       {hasMore && <div className="mv-20" />}
 
       {error && (
-        <div className="text-white text-align-center m-20">Ошибка!</div>
+        <div className="text-white text-align-center m-20">
+          Сервер временно не доступен
+        </div>
       )}
       {!loading && !error && data.length === 0 && (
         <div className="text-white text-align-center m-20">Пока ничего нет</div>

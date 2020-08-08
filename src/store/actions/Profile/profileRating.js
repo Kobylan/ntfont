@@ -1,5 +1,5 @@
 import { API } from "../../API";
-const URI = `${API}/rating/`;
+const URI = `${API}/api/rating/`;
 
 export const getProfileRating = () => {
   return (dispatch) => {

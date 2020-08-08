@@ -1,5 +1,5 @@
 import { API } from "../../API";
-const URI = `${API}/findorders/`;
+const URI = `${API}/api/findorders/`;
 
 export const getFindOrderByFilter = (
   page,

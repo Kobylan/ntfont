@@ -1,5 +1,5 @@
 import { API } from "../../API";
-const URI = `${API}/avatar`;
+const URI = `${API}/api/avatar`;
 
 export const getProfileAvatar = () => {
   return (dispatch) => {

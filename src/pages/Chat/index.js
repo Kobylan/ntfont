@@ -21,8 +21,8 @@ const Chat = () => {
       </div>
     </ContainerFluid>
   ) : (
-    <div className="text-white font-size-24 mt-20">
-      Не удалось подключится к серверу
+    <div className="text-white text-align-center m-20 font-size-24">
+      Сервер временно не доступен
     </div>
   );
 };

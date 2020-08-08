@@ -9,6 +9,7 @@ import { getProfileAvatar } from "../../store/actions/Profile/profileAvatar";
 
 const ProfileInformation = () => {
   let profile = useSelector((state) => state.profile.info);
+  console.log(profile);
   let avatar = useSelector((state) => state.profile.avatar);
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
@@ -19,17 +20,27 @@ const ProfileInformation = () => {
   return (
     <>
       <Title title="Мой профиль" />
-      <Card>
-        {edit ? (
-          <EditInfo
-            avatar={avatar}
-            profile={profile}
-            setEdit={(e) => setEdit(e)}
-          />
-        ) : (
-          <Info avatar={avatar} profile={profile} setEdit={(e) => setEdit(e)} />
-        )}
-      </Card>
+      {profile.error ? (
+        <div className="text-white text-align-center m-20">
+          Сервер временно не доступен
+        </div>
+      ) : (
+        <Card>
+          {edit ? (
+            <EditInfo
+              avatar={avatar}
+              profile={profile}
+              setEdit={(e) => setEdit(e)}
+            />
+          ) : (
+            <Info
+              avatar={avatar}
+              profile={profile}
+              setEdit={(e) => setEdit(e)}
+            />
+          )}
+        </Card>
+      )}
     </>
   );
 };
