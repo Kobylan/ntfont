@@ -2,22 +2,29 @@ import React from "react";
 
 import LeftSidebar from "../../sections/LeftSideBar";
 import { useDispatch } from "react-redux";
+import { useMedia } from "../../store/hooks/meida";
 
 const Layout = ({ children }) => {
-  const dispatch = useDispatch();
-  const resize = () => {
-    const r = { width: window.innerWidth, height: window.innerHeight };
-    dispatch({
-      type: "SET_RESOLUTION",
-      payload: r,
-    });
-  };
-  window.addEventListener("resize", resize, false);
+  const minWidth1100 = useMedia("(min-width:1100px)");
+  const minWidth680 = useMedia("(min-width:680px)");
+  const minHeight500 = useMedia("(min-height:500px)");
   return (
     <>
       <LeftSidebar />
-      <div className="d-flex align-items-start flex-grow-1 flex-shrink-1">
-        <div className="min-width-990px d-flex h-100 ">{children}</div>
+      <div
+        className={`d-flex align-items-start flex-grow-1 flex-shrink-1 ${
+          !minHeight500 && `justify-content-center`
+        }`}
+      >
+        <div
+          className={`${
+            minWidth1100
+              ? `min-width-990px`
+              : `${minWidth680 ? `min-width-600px` : `w-100`} pg-5`
+          } d-flex h-100 `}
+        >
+          {children}
+        </div>
       </div>
     </>
   );

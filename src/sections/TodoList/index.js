@@ -8,7 +8,6 @@ import Skeleton from "../../components/Skeleton";
 const TodoList = () => {
   const dispatch = useDispatch();
   const todo = useSelector((state) => state.todoList);
-  console.log(todo);
   useEffect(() => {
     dispatch(getTodoList());
   }, []);

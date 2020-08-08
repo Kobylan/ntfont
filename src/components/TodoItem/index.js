@@ -5,7 +5,12 @@ const TodoItem = ({ day, data, index }) => {
   return (
     <div className="d-flex w-100 h-150px bg-gray rounded border-bottom hover-float ">
       <div className="border-grey-right text-align-center font-size-20 text-muted">
-        <div className="p-15 text w-150px">
+        <div
+          className="text"
+          style={{
+            width: "110px",
+          }}
+        >
           {day} {days[index]}
         </div>
       </div>

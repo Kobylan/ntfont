@@ -31,13 +31,14 @@ const DialogueFooter = () => {
   const [newMessage, setNewMessage] = useState("");
   return (
     <div
-      className="position-relative rounded-right border-top d-flex justify-content-between"
+      className="position-relative rounded-right border-top d-flex justify-content-between w-100"
       style={{ minHeight: "50px" }}
     >
       <label
         htmlFor="image_uploads"
         className="cursor-pointer p-10 d-flex align-items-center hover-blue"
         title="Загрузить изображение"
+        style={{ maxWidth: "60px" }}
       >
         <Icon name="add-file" width="40px" height="40px" />
 

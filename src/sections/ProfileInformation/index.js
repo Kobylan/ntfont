@@ -9,7 +9,6 @@ import { getProfileAvatar } from "../../store/actions/Profile/profileAvatar";
 
 const ProfileInformation = () => {
   let profile = useSelector((state) => state.profile.info);
-  console.log(profile);
   let avatar = useSelector((state) => state.profile.avatar);
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);

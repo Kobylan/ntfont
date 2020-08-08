@@ -184,6 +184,9 @@ html {
     &-200px {
       min-width: 200px;
     }
+    &-600px {
+      min-width: 600px;
+    }
     &-990px {
       min-width: 990px;
     }
@@ -616,6 +619,10 @@ html {
   &-30 {
     width: 30px;
     height: 30px;
+  }
+  &-45 {
+    width: 45px;
+    height: 45px;
   }
   &-20 {
     width: 20px;

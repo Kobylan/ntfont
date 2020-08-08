@@ -30,7 +30,7 @@ const ChatListElement = ({ chat }) => {
   const dialogueID = useSelector((store) => store.chat.dialogueID.id);
   return (
     <div
-      className="w-100 pl-15 d-flex  cursor-pointer hover-whitegray "
+      className="w-100 pl-15 d-flex  cursor-pointer hover-whitegray bg-white"
       key={chat.id}
       style={{
         height: "65px",
