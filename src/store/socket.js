@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const socket = new WebSocket(
-  "ws://thawing-reef-32246.herokuapp.com/ws/chat/1/"
+  "wss://thawing-reef-32246.herokuapp.com/ws/chat/1/"
 );
 
 export const responseReducer = (state, action) => {
