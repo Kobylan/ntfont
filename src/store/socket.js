@@ -68,6 +68,12 @@ export function createCtx(defaultValue) {
             type: "FETCH_DIALOGUE_MESSAGES_NEWDATA",
             payload: data.message,
           });
+          socket.send(
+            JSON.stringify({
+              command: "clear_unread_messages",
+              recipient: `${chat.dialogueID.id}`,
+            })
+          );
         }
         //re render unread messages when new message came
         reduxDispatch({

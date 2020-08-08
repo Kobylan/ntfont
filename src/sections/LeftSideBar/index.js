@@ -44,7 +44,7 @@ const LeftSidebar = () => {
                       to={item.path}
                     >
                       <div
-                        className={`icon-30 ${
+                        className={`icon-30 position-relative ${
                           pathname === item.path || active === item.path
                             ? "fill-white"
                             : "fill-gray"
@@ -53,6 +53,21 @@ const LeftSidebar = () => {
                         {pathname === item.path || active === item.path
                           ? item.filledIcon
                           : item.icon}
+                        {calculateNotifications(unreadMessages, dialogueID) !==
+                          null && (
+                          <div
+                            className="position-absolute bg-white text-dark rounded-circle text-align-center"
+                            style={{
+                              width: "16px",
+                              height: "16px",
+                              fontSize: "14px",
+                              top: "0",
+                              right: "0",
+                            }}
+                          >
+                            {calculateNotifications(unreadMessages, dialogueID)}
+                          </div>
+                        )}
                       </div>
                       <div
                         className={`mg-20 font-size-20 ${
@@ -60,9 +75,6 @@ const LeftSidebar = () => {
                         }`}
                       >
                         {item.title}
-                      </div>
-                      <div>
-                        {calculateNotifications(unreadMessages, dialogueID)}
                       </div>
                     </NavLink>
                   </div>
