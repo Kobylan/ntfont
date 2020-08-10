@@ -65,7 +65,7 @@ const DialogueFooter = () => {
         onChange={(e) => {
           setNewMessage(e.target.value);
         }}
-        style={{ border: "1px solid rgb(221, 221, 221)" }}
+        style={{ border: "1px solid rgb(221, 221, 221)", fontSize: "16px" }}
         onKeyPress={(e) => handlePressKey(e)}
       />
       <div

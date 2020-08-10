@@ -8,10 +8,7 @@ const ChatBody = ({ setMobile }) => {
   return (
     <div className="w-100 h-100 d-flex flex-column justify-content-between position-relative ">
       {useSelector((store) => store.chat.dialogueID.id) !== 0 ? (
-        <div
-          className="h-100 d-flex flex-column position-relative "
-          style={{ paddingBottom: "30px" }}
-        >
+        <div className="h-100 d-flex flex-column position-relative">
           <DialogueHeader setMobile={setMobile} />
           <DialogueBody />
           <DialogueFooter />
