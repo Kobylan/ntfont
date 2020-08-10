@@ -1,16 +1,19 @@
 import React from "react";
 
 import LeftSidebar from "../../sections/LeftSideBar";
-import { useDispatch } from "react-redux";
 import { useMedia } from "../../store/hooks/meida";
-
+import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Layout = ({ children }) => {
+  const qwe = useSelector((store) => store.chat.dialogueID.id);
   const minWidth1100 = useMedia("(min-width:1100px)");
   const minWidth680 = useMedia("(min-width:680px)");
   const minHeight500 = useMedia("(min-height:500px)");
+  const minWidth500 = useMedia("(min-width:500px)");
+  console.log(qwe === 0);
   return (
     <>
-      <LeftSidebar />
+      {(!minHeight500 || !minWidth500) && qwe === 0 && <LeftSidebar />}
       <div
         className={`d-flex align-items-start flex-grow-1 flex-shrink-1 ${
           !minHeight500 && `justify-content-center`

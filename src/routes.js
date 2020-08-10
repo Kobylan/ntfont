@@ -9,6 +9,7 @@ const Routes = () => {
   const MyOrders = lazy(() => import("./pages/MyOrders"));
   const Chat = lazy(() => import("./pages/Chat"));
   const TodoList = lazy(() => import("./pages/TodoList"));
+  const Auth = lazy(() => import("./pages/Auth"));
 
   return (
     <Suspense fallback={""}>
@@ -33,6 +34,9 @@ const Routes = () => {
         </Route>
         <Route path={"/chat"}>
           <Chat />
+        </Route>
+        <Route path={"/auth"}>
+          <Auth />
         </Route>
       </Switch>
     </Suspense>

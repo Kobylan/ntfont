@@ -60,8 +60,62 @@ const InputRange = ({ filter, setFilter, type }) => {
       });
     }
   });
+  window.addEventListener("pointermove", (e) => {
+    if (draggingLeft) {
+      offset = e.clientX + 10 - trackRef.current?.offsetLeft;
+      if (offset < 0) {
+        offset = 0;
+      }
+      if (offset > trackRef.current?.offsetWidth) {
+        offset = trackRef.current?.offsetWidth;
+      }
+      if ((offset / trackRef.current?.offsetWidth) * 100 >= right) {
+        setRight((offset / trackRef.current?.offsetWidth) * 100);
+        filter[type + "_lte"] = Math.floor(
+          (offset / trackRef.current.offsetWidth) * 50000
+        );
+      }
+      setLeft((offset / trackRef.current?.offsetWidth) * 100);
+      setFilter({
+        ...filter,
+        [type + "_gte"]: Math.floor(
+          (offset / trackRef.current.offsetWidth) * 50000
+        ),
+      });
+    }
+    if (draggingRight) {
+      offset = e.clientX - 10 - trackRef.current?.offsetLeft;
+      if (offset < 0) {
+        offset = 0;
+      }
+      if (offset > trackRef.current?.offsetWidth) {
+        offset = trackRef.current?.offsetWidth;
+      }
+      if ((offset / trackRef.current?.offsetWidth) * 100 <= left) {
+        setLeft((offset / trackRef.current?.offsetWidth) * 100);
+        filter[type + "_gte"] = Math.floor(
+          (offset / trackRef.current.offsetWidth) * 50000
+        );
+      }
+
+      setRight((offset / trackRef.current?.offsetWidth) * 100);
+      setFilter({
+        ...filter,
+        [type + "_lte"]: Math.floor(
+          (offset / trackRef.current.offsetWidth) * 50000
+        ),
+      });
+    }
+  });
 
   window.addEventListener("mouseup", () => {
+    draggingLeft = false;
+    setDrag(false);
+    draggingRight = false;
+    root.userSelect = "auto";
+    root.cursor = "auto";
+  });
+  window.addEventListener("pointerup", () => {
     draggingLeft = false;
     setDrag(false);
     draggingRight = false;
@@ -103,6 +157,11 @@ const InputRange = ({ filter, setFilter, type }) => {
               setDrag(true);
               root.cursor = "grabbing";
             }}
+            onPointerDown={() => {
+              draggingLeft = true;
+              setDrag(true);
+              root.cursor = "grabbing";
+            }}
           />
           <div
             className={`position-absolute cursor-${drag ? `grabbing` : `grab`}`}
@@ -116,6 +175,11 @@ const InputRange = ({ filter, setFilter, type }) => {
                 "transparent transparent rgb(29, 161, 242) rgb(29, 161, 242)",
             }}
             onMouseDown={() => {
+              draggingRight = true;
+              setDrag(true);
+              root.cursor = "grabbing";
+            }}
+            onPointerDown={() => {
               draggingRight = true;
               setDrag(true);
               root.cursor = "grabbing";

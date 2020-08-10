@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const socket = new WebSocket(

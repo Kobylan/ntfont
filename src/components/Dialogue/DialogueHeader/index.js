@@ -27,6 +27,13 @@ const DialogueHeader = ({ setMobile }) => {
                 dispatch({
                   type: "LIST_CHATS_DATA_CLEAR",
                 });
+                dispatch({
+                  type: "SET_DIALOGUE_ID",
+                  payload: 0,
+                });
+                dispatch({
+                  type: "FETCH_DIALOGUE_MESSAGES_CLEAR",
+                });
               }}
               className="ml-10"
             >
