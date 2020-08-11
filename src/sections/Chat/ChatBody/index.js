@@ -4,12 +4,12 @@ import DialogueHeader from "../../../components/Dialogue/DialogueHeader";
 import DialogueFooter from "../../../components/Dialogue/DialogueFooter";
 import { useSelector } from "react-redux";
 
-const ChatBody = ({ setMobile }) => {
+const ChatBody = ({ setChatListInMobile }) => {
   return (
     <div className="w-100 h-100 d-flex flex-column justify-content-between position-relative ">
       {useSelector((store) => store.chat.dialogueID.id) !== 0 ? (
         <div className="h-100 d-flex flex-column position-relative">
-          <DialogueHeader setMobile={setMobile} />
+          <DialogueHeader setChatListInMobile={setChatListInMobile} />
           <DialogueBody />
           <DialogueFooter />
         </div>

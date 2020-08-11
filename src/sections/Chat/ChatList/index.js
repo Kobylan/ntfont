@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { socket } from "../../../store/socket";
 import { useDispatch, useSelector } from "react-redux";
-import ChatListElement from "./chatListElement";
 import { useMedia } from "../../../store/hooks/meida";
-import BurgerBtn from "../../../components/BurgerBtn";
 import ChatListDesktop from "./chatListDesktop";
 import ChatListMobile from "./chatListMobile";
 import ChatListTablet from "./chatListTablet";
-const ChatList = ({ setMobile }) => {
+const ChatList = ({ setChatListInMobile }) => {
   const dispatch = useDispatch();
   const listChats = useSelector((store) => store.chat.listChats);
   const [page, setPage] = useState(1);
@@ -50,7 +48,7 @@ const ChatList = ({ setMobile }) => {
     <ChatListMobile
       listChats={listChats}
       lastElementRef={lastElementRef}
-      setMobile={setMobile}
+      setChatListInMobile={setChatListInMobile}
     />
   );
 };

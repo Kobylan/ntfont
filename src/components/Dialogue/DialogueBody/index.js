@@ -6,6 +6,7 @@ const DialogueBody = () => {
   const { dialogue, dialogueID, listChats, newMessages } = useSelector(
     (store) => store.chat
   );
+  console.log(dialogue.data);
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   useEffect(() => {

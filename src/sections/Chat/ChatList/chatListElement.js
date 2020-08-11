@@ -36,13 +36,15 @@ const ChatListElement = ({ chat }) => {
         height: "65px",
       }}
       onClick={() => {
-        dispatch({
-          type: "SET_DIALOGUE_ID",
-          payload: chat.user_id,
-        });
-        dispatch({
-          type: "FETCH_DIALOGUE_MESSAGES_CLEAR",
-        });
+        if (dialogueID !== chat.user_id) {
+          dispatch({
+            type: "SET_DIALOGUE_ID",
+            payload: chat.user_id,
+          });
+          dispatch({
+            type: "FETCH_DIALOGUE_MESSAGES_CLEAR",
+          });
+        }
       }}
     >
       <div

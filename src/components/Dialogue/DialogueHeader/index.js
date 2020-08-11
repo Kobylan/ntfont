@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMedia } from "../../../store/hooks/meida";
 import Icon from "../../Icon";
 
-const DialogueHeader = ({ setMobile }) => {
+const DialogueHeader = ({ setChatListInMobile }) => {
   const listChats = useSelector((store) => store.chat.listChats);
   const dialogueID = useSelector((store) => store.chat.dialogueID.id);
   const author = listChats.data.find((e) => e.user_id === dialogueID);
@@ -23,7 +23,7 @@ const DialogueHeader = ({ setMobile }) => {
           {(!minHeight500 || !minWidth500) && (
             <div
               onClick={() => {
-                setMobile(true);
+                setChatListInMobile(true);
                 dispatch({
                   type: "LIST_CHATS_DATA_CLEAR",
                 });

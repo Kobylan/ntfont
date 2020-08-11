@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ContainerFluid from "../../components/ContainerFluid";
 import { useSocket } from "../../store/socket";
-import ChatList from "../../sections/Chat/ChatList";
-import ChatBody from "../../sections/Chat/ChatBody";
 import { useDispatch } from "react-redux";
 import { useMedia } from "../../store/hooks/meida";
+import ChatDesktop from "./chatDesktop";
+import ChatMobile from "./chatMobile";
 
 const Chat = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Chat = () => {
       type: "LIST_CHATS_DATA_CLEAR",
     });
   }, []);
-  const [mobileActive, setMobileActive] = useState(true);
+  const [chatListInMobile, setChatListInMobile] = useState(true);
   const minWidth500 = useMedia("(min-width:500px)");
   const minHeight500 = useMedia("(min-height:500px)");
 
@@ -21,14 +21,12 @@ const Chat = () => {
     <ContainerFluid>
       <div className="d-flex h-100 rounded">
         {minWidth500 && minHeight500 ? (
-          <>
-            <ChatList />
-            <ChatBody />
-          </>
-        ) : mobileActive ? (
-          <ChatList setMobile={setMobileActive} />
+          <ChatDesktop />
         ) : (
-          <ChatBody setMobile={setMobileActive} />
+          <ChatMobile
+            chatListInMobile={chatListInMobile}
+            setChatListInMobile={setChatListInMobile}
+          />
         )}
       </div>
     </ContainerFluid>
