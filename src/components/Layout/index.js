@@ -10,10 +10,12 @@ const Layout = ({ children }) => {
   const minWidth680 = useMedia("(min-width:680px)");
   const minHeight500 = useMedia("(min-height:500px)");
   const minWidth500 = useMedia("(min-width:500px)");
-  console.log(qwe === 0);
+  // console.log(minHeight500 || minWidth500, "res");
+  // console.log(qwe === 0, "id");
+  // console.log((minHeight500 || minWidth500) && qwe === 0, "2");
   return (
     <>
-      {(!minHeight500 || !minWidth500) && qwe === 0 && <LeftSidebar />}
+      <LeftSidebar />
       <div
         className={`d-flex align-items-start flex-grow-1 flex-shrink-1 ${
           !minHeight500 && `justify-content-center`
