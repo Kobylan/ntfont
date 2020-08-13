@@ -137,6 +137,11 @@ const DesktopLeftSideBar = () => {
               active === "/logout" && "hover"
             }`}
             to={"/logout"}
+            onClick={() =>
+              fetch("https://thawing-reef-32246.herokuapp.com/auth/logout/", {
+                method: "get",
+              })
+            }
           >
             <Icon
               name="logout"

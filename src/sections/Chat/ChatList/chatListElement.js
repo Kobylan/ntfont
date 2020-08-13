@@ -1,6 +1,7 @@
 import React from "react";
 import { timeAgoUnix } from "../../../utils/time";
 import { useDispatch, useSelector } from "react-redux";
+import { useMedia } from "../../../store/hooks/meida";
 
 //calculating how many new messages
 const calculate = (arr, id) => {
@@ -28,6 +29,8 @@ const ChatListElement = ({ chat }) => {
   const dispatch = useDispatch();
   const unreadMessages = useSelector((store) => store.chat.unreadMessages);
   const dialogueID = useSelector((store) => store.chat.dialogueID.id);
+  const minWidth500 = useMedia("(min-width:500px)");
+  const minHeight500 = useMedia("(min-height:500px)");
   return (
     <div
       className="w-100 pl-15 d-flex  cursor-pointer hover-whitegray bg-white"
@@ -75,7 +78,7 @@ const ChatListElement = ({ chat }) => {
             <div
               className="text-muted"
               style={{
-                maxWidth: "220px",
+                maxWidth: `${minWidth500 && minHeight500 ? `220px` : `170px`}`,
                 textOverflow: "ellipsis",
                 overflow: "hidden",
                 whiteSpace: "nowrap",
