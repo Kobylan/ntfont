@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFindOrder } from "../../store/actions/FindOrder/FindOrder";
-import Title from "../../components/Title";
 import InfinityScrollBlock from "../../components/InfinityScrollBlock";
 import { timeAgoUnix, timeToUnix } from "../../utils/time";
 
 const FindOrder = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const [newData, setNewData] = useState([]);
-  const orders = useSelector((state) => state.findOrder);
   useEffect(() => {
     dispatch(getFindOrder(page));
   }, [page]);
+  const orders = useSelector((state) => state.findOrder);
+  console.log(orders);
+  const [newData, setNewData] = useState([]);
+
   useEffect(() => {
     const result = orders.data?.map((item) => ({
       field0: item.customer?.avatar?.file,

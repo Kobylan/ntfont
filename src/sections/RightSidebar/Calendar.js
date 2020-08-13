@@ -55,7 +55,7 @@ const Calendar = () => {
       <td
         key={d}
         className={`text-dark font-size-20 text-align-center ${cd} cursor-pointer`}
-        onClick={() => console.log(d, monthNames[currentMonth])}
+        // onClick={() => console.log(d, monthNames[currentMonth])}
       >
         {d}
       </td>

@@ -5,9 +5,9 @@ export const profileReviewsReducer = (
   switch (action.type) {
     case "GET_PROFILE_REVIEWS_FETCHING":
       if (!state.hasMore) {
-        return { data: [], isFetching: true };
+        return { ...state };
       } else {
-        return { ...state, isFetching: true };
+        return { ...state };
       }
     case "GET_PROFILE_REVIEWS_SUCCESS":
       return {

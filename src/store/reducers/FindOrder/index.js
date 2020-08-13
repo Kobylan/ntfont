@@ -7,9 +7,9 @@ export const findOrderReducer = (
       return { data: [], isFetching: true };
     case "GET_FIND_ORDER_FETCHING":
       if (!state.hasMore) {
-        return { data: [], isFetching: true };
+        return { ...state };
       } else {
-        return { ...state, isFetching: true };
+        return { ...state };
       }
 
     case "GET_FIND_ORDER_SUCCESS":
