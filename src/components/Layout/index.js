@@ -20,7 +20,9 @@ const Layout = ({ children }) => {
           className={`${
             minWidth1100
               ? `min-width-990px`
-              : `${minWidth680 ? `min-width-600px` : `w-100`} pg-5`
+              : `${minWidth680 ? `min-width-600px` : `w-100`} ${
+                  minWidth500 && minHeight500 && `pg-5`
+                }`
           } d-flex h-100 `}
         >
           {children}

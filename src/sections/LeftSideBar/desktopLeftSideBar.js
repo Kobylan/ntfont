@@ -23,142 +23,153 @@ const DesktopLeftSideBar = () => {
   const minWidth680 = useMedia("(min-width:680px)");
   return (
     <div
-      className={`d-flex flex-column ${
+      className={`${
         minWidth680 && `flex-grow-1`
-      } align-items-end text-white-opacity`}
+      } align-items-end text-white-opacity justify-content-end d-flex`}
     >
-      <div className="d-flex flex-column align-items-end h-100">
-        <div className="d-flex flex-column justify-content-between pr-20 h-100 w-275">
-          <div>
-            {show && (
-              <div>
-                <Icon name="logo" width={180} className="m-10" />
-              </div>
-            )}
-            {config.map((item) => {
-              if (item.title === "Чат") {
-                return (
-                  <div key={item.id}>
-                    <NavLink
-                      onMouseEnter={() => setActive(item.path)}
-                      onMouseLeave={() => setActive("")}
-                      key={item.id}
-                      className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
-                        active === item.path && "hover"
-                      }`}
-                      isActive={(match, location) => {
-                        setPathname(location.pathname);
-                      }}
-                      to={item.path}
-                    >
-                      <div
-                        className={`icon-30 position-relative ${
-                          pathname === item.path || active === item.path
-                            ? "fill-white"
-                            : "fill-gray"
+      <div
+        className={`d-flex flex-column align-items-end h-100 ${
+          show && `w-275px`
+        }`}
+      >
+        <div className={`${show && `position-fixed`} h-100`}>
+          <div className="d-flex flex-column justify-content-between pr-20 h-100 w-275 ">
+            <div>
+              {show && (
+                <div>
+                  <Icon name="logo" width={180} className="m-10" />
+                </div>
+              )}
+              {config.map((item) => {
+                if (item.title === "Чат") {
+                  return (
+                    <div key={item.id}>
+                      <NavLink
+                        onMouseEnter={() => setActive(item.path)}
+                        onMouseLeave={() => setActive("")}
+                        key={item.id}
+                        className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
+                          active === item.path && "hover"
                         }`}
+                        isActive={(match, location) => {
+                          setPathname(location.pathname);
+                        }}
+                        to={item.path}
                       >
-                        {pathname === item.path || active === item.path
-                          ? item.filledIcon
-                          : item.icon}
-                        {calculateNotifications(unreadMessages, dialogueID) !==
-                          null && (
+                        <div
+                          className={`icon-30 position-relative ${
+                            pathname === item.path || active === item.path
+                              ? "fill-white"
+                              : "fill-gray"
+                          }`}
+                        >
+                          {pathname === item.path || active === item.path
+                            ? item.filledIcon
+                            : item.icon}
+                          {calculateNotifications(
+                            unreadMessages,
+                            dialogueID
+                          ) !== null && (
+                            <div
+                              className="position-absolute bg-white text-dark rounded-circle text-align-center"
+                              style={{
+                                width: "16px",
+                                height: "16px",
+                                fontSize: "14px",
+                                top: "0",
+                                right: "0",
+                              }}
+                            >
+                              {calculateNotifications(
+                                unreadMessages,
+                                dialogueID
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        {show && (
                           <div
-                            className="position-absolute bg-white text-dark rounded-circle text-align-center"
-                            style={{
-                              width: "16px",
-                              height: "16px",
-                              fontSize: "14px",
-                              top: "0",
-                              right: "0",
-                            }}
+                            className={`mg-20 font-size-20 ${
+                              pathname === item.path && "text-white"
+                            }`}
                           >
-                            {calculateNotifications(unreadMessages, dialogueID)}
+                            {item.title}
                           </div>
                         )}
-                      </div>
-                      {show && (
-                        <div
-                          className={`mg-20 font-size-20 ${
-                            pathname === item.path && "text-white"
-                          }`}
-                        >
-                          {item.title}
-                        </div>
-                      )}
-                    </NavLink>
-                  </div>
-                );
-              } else {
-                return (
-                  <div key={item.id}>
-                    <NavLink
-                      onMouseEnter={() => setActive(item.path)}
-                      onMouseLeave={() => setActive("")}
-                      key={item.id}
-                      className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
-                        active === item.path && "hover"
-                      }`}
-                      isActive={(match, location) => {
-                        setPathname(location.pathname);
-                      }}
-                      to={item.path}
-                    >
-                      <div
-                        className={`icon-30 ${
-                          pathname === item.path || active === item.path
-                            ? "fill-white"
-                            : "fill-gray"
+                      </NavLink>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={item.id}>
+                      <NavLink
+                        onMouseEnter={() => setActive(item.path)}
+                        onMouseLeave={() => setActive("")}
+                        key={item.id}
+                        className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
+                          active === item.path && "hover"
                         }`}
+                        isActive={(match, location) => {
+                          setPathname(location.pathname);
+                        }}
+                        to={item.path}
                       >
-                        {pathname === item.path || active === item.path
-                          ? item.filledIcon
-                          : item.icon}
-                      </div>
-                      {show && (
                         <div
-                          className={`mg-20 font-size-20 ${
-                            pathname === item.path && "text-white"
+                          className={`icon-30 ${
+                            pathname === item.path || active === item.path
+                              ? "fill-white"
+                              : "fill-gray"
                           }`}
                         >
-                          {item.title}
+                          {pathname === item.path || active === item.path
+                            ? item.filledIcon
+                            : item.icon}
                         </div>
-                      )}
-                    </NavLink>
-                  </div>
-                );
-              }
-            })}
-          </div>
-          <NavLink
-            onMouseEnter={() => setActive("/logout")}
-            onMouseLeave={() => setActive("")}
-            className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
-              active === "/logout" && "hover"
-            }`}
-            to={"/logout"}
-            onClick={() =>
-              fetch("https://thawing-reef-32246.herokuapp.com/auth/logout/", {
-                method: "get",
-              })
-            }
-          >
-            <Icon
-              name="logout"
-              className={`icon-30 ${
-                active === "/logout" ? "fill-white" : "fill-gray"
+                        {show && (
+                          <div
+                            className={`mg-20 font-size-20 ${
+                              pathname === item.path && "text-white"
+                            }`}
+                          >
+                            {item.title}
+                          </div>
+                        )}
+                      </NavLink>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+            <NavLink
+              onMouseEnter={() => setActive("/logout")}
+              onMouseLeave={() => setActive("")}
+              className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
+                active === "/logout" && "hover"
               }`}
-            />
-            {show && (
-              <div
-                className={`mg-20 font-size-20 ${
-                  active === "/logout" && "text-white"
+              to={"/logout"}
+              onClick={() =>
+                fetch("https://thawing-reef-32246.herokuapp.com/auth/logout/", {
+                  method: "get",
+                })
+              }
+            >
+              <Icon
+                name="logout"
+                className={`icon-30 ${
+                  active === "/logout" ? "fill-white" : "fill-gray"
                 }`}
-              >
-                Выйти
-              </div>
-            )}
-          </NavLink>
+              />
+              {show && (
+                <div
+                  className={`mg-20 font-size-20 ${
+                    active === "/logout" && "text-white"
+                  }`}
+                >
+                  Выйти
+                </div>
+              )}
+            </NavLink>
+          </div>
         </div>
       </div>
     </div>

@@ -11,7 +11,6 @@ const FindOrder = () => {
     dispatch(getFindOrder(page));
   }, [page]);
   const orders = useSelector((state) => state.findOrder);
-  console.log(orders);
   const [newData, setNewData] = useState([]);
 
   useEffect(() => {
