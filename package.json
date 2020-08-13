@@ -19,7 +19,9 @@
     "build": "react-scripts build",
     "buildNF": "CI= react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "surge ./build nateste.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
