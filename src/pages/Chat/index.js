@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContainerFluid from "../../components/ContainerFluid";
 import { useSocket } from "../../store/socket";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useMedia } from "../../store/hooks/meida";
 import ChatDesktop from "./chatDesktop";
 import ChatMobile from "./chatMobile";
@@ -13,6 +13,15 @@ const Chat = () => {
       type: "LIST_CHATS_DATA_CLEAR",
     });
   }, []);
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: "SET_DIALOGUE_ID",
+        payload: 0,
+      });
+    };
+  }, []);
+
   const [chatListInMobile, setChatListInMobile] = useState(true);
   const minWidth500 = useMedia("(min-width:500px)");
   const minHeight500 = useMedia("(min-height:500px)");

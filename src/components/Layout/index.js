@@ -8,6 +8,8 @@ const Layout = ({ children }) => {
   const minWidth680 = useMedia("(min-width:680px)");
   const minHeight500 = useMedia("(min-height:500px)");
   const minWidth500 = useMedia("(min-width:500px)");
+  const qwe = useSelector((store) => store.chat.dialogueID.id);
+  console.log(qwe);
   return (
     <>
       {(!minHeight500 || !minWidth500) && id !== 0 ? null : <LeftSidebar />}
