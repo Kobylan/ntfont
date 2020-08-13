@@ -14,16 +14,28 @@ const Filter = () => {
     weight_lte: 50000,
   });
   const dispatch = useDispatch();
-  if (filter["price_lte"] < filter["price_gte"]) {
+  // if (filter["price_lte"] < filter["price_gte"]) {
+  //   setFilter({
+  //     ...filter,
+  //     ["price_gte"]: filter["price_lte"],
+  //   });
+  // }
+  if (filter["price_gte"] > filter["price_lte"]) {
     setFilter({
       ...filter,
-      ["price_gte"]: filter["price_lte"],
+      ["price_lte"]: filter["price_gte"],
     });
   }
-  if (filter["weight_lte"] < filter["weight_gte"]) {
+  // if (filter["weight_lte"] < filter["weight_gte"]) {
+  //   setFilter({
+  //     ...filter,
+  //     ["weight_gte"]: filter["weight_lte"],
+  //   });
+  // }
+  if (filter["weight_gte"] > filter["weight_lte"]) {
     setFilter({
       ...filter,
-      ["weight_gte"]: filter["weight_lte"],
+      ["weight_lte"]: filter["weight_gte"],
     });
   }
 
@@ -48,7 +60,9 @@ const Filter = () => {
             setFilter({
               ...filter,
               ["price_gte"]: isNaN(parseInt(e.target.value))
-                ? filter["price_gte"]
+                ? 0
+                : parseInt(e.target.value) >= 50000
+                ? 50000
                 : parseInt(e.target.value),
             });
           }}
@@ -73,8 +87,14 @@ const Filter = () => {
           onChange={(e) => {
             setFilter({
               ...filter,
+              ["price_gte"]:
+                isNaN(parseInt(e.target.value)) < filter.price_gte
+                  ? isNaN(parseInt(e.target.value))
+                    ? 0
+                    : parseInt(e.target.value)
+                  : filter.price_gte,
               ["price_lte"]: isNaN(parseInt(e.target.value))
-                ? filter["price_lte"]
+                ? 0
                 : parseInt(e.target.value) >= 50000
                 ? 50000
                 : parseInt(e.target.value),
@@ -101,7 +121,9 @@ const Filter = () => {
             setFilter({
               ...filter,
               ["weight_gte"]: isNaN(parseInt(e.target.value))
-                ? filter["weight_gte"]
+                ? 0
+                : parseInt(e.target.value) >= 50000
+                ? 50000
                 : parseInt(e.target.value),
             });
           }}
@@ -127,8 +149,14 @@ const Filter = () => {
           onChange={(e) => {
             setFilter({
               ...filter,
+              ["weight_gte"]:
+                isNaN(parseInt(e.target.value)) < filter.weight_gte
+                  ? isNaN(parseInt(e.target.value))
+                    ? 0
+                    : parseInt(e.target.value)
+                  : filter.weight_gte,
               ["weight_lte"]: isNaN(parseInt(e.target.value))
-                ? filter["weight_lte"]
+                ? 0
                 : parseInt(e.target.value) >= 50000
                 ? 50000
                 : parseInt(e.target.value),

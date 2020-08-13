@@ -1,5 +1,7 @@
 import React from "react";
-import { timeToUnix } from "../../../utils/time";
+import TimeAgo from "react-timeago/lib";
+import ruStrings from "react-timeago/lib/language-strings/ru";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
 const Message = ({ message, from }) => {
   const position = from.username === message?.author ? "start" : "end";
@@ -24,7 +26,10 @@ const Message = ({ message, from }) => {
             color: "rgba(250, 250, 250, 0.5)",
           }}
         >
-          <div>{timeToUnix(message?.timestamp)}</div>
+          <TimeAgo
+            date={new Date(message?.timestamp * 1000)}
+            formatter={buildFormatter(ruStrings)}
+          />
         </div>
       </div>
     </div>

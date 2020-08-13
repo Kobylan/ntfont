@@ -21,6 +21,7 @@ const DesktopLeftSideBar = () => {
   const dialogueID = useSelector((state) => state.chat.dialogueID.id);
   const show = useMedia("(min-width:1280px)");
   const minWidth680 = useMedia("(min-width:680px)");
+  const minWidth1024 = useMedia("(min-width:1024px)");
   return (
     <div
       className={`${
@@ -32,7 +33,7 @@ const DesktopLeftSideBar = () => {
           show && `w-275px`
         }`}
       >
-        <div className={`${show && `position-fixed`} h-100`}>
+        <div className={`${minWidth1024 && `position-fixed`} h-100`}>
           <div className="d-flex flex-column justify-content-between pr-20 h-100 w-275 ">
             <div>
               {show && (

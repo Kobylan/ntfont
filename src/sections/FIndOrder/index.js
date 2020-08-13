@@ -17,12 +17,12 @@ const FindOrder = () => {
     const result = orders.data?.map((item) => ({
       field0: item.customer?.avatar?.file,
       field1: item.title,
-      field2: "нужен " + timeToUnix(item.deadline),
+      field2: "нужен на " + new Date(item.deadline * 1000).toLocaleDateString(),
       field3: item.description,
       field4: "Цена " + item.price + " тг",
       field5: "Вес " + item.weight + " кг",
       field6: `${item.customer?.first_name} ${item.customer?.last_name}`,
-      field7: timeAgoUnix(item.created_at),
+      field7: item.created_at,
       field8: "anyFunc",
     }));
     setNewData(result);

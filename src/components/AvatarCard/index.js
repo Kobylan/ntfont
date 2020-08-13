@@ -1,7 +1,9 @@
 import React from "react";
-import { getFindOrder } from "../../store/actions/FindOrder/FindOrder";
 import { useMedia } from "../../store/hooks/meida";
 // Карта с автаром
+import ruStrings from "react-timeago/lib/language-strings/ru";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+import TimeAgo from "react-timeago/lib";
 const AvatarCard = ({ item }) => {
   const minWidth680 = useMedia("(min-width:680px)");
   return (
@@ -57,7 +59,12 @@ const AvatarCard = ({ item }) => {
           }}
         >
           <div className="text-muted align-self-end">{item.field6}</div>
-          <div className="text-muted align-self-end">{item.field7}</div>
+          <div className="text-muted align-self-end">
+            <TimeAgo
+              date={new Date(item.field7 * 1000)}
+              formatter={buildFormatter(ruStrings)}
+            />
+          </div>
         </div>
         {item.field8 && (
           <div

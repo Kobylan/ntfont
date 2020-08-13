@@ -21,7 +21,7 @@ const ProfileReviews = () => {
       field2: item.rating,
       field3: item.description,
       field6: `${item.customer.first_name} ${item.customer.last_name}`,
-      field7: timeAgoUnix(item.created_at),
+      field7: item.created_at,
     }));
     setNewData(result);
   }, [reviews.data]);
