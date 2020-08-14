@@ -2,7 +2,9 @@ import React from "react";
 import LeftSidebar from "../../sections/LeftSideBar";
 import { useMedia } from "../../store/hooks/meida";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 const Layout = ({ children }) => {
+  const pathname = useLocation().pathname;
   const id = useSelector((store) => store.chat.dialogueID.id);
   const minWidth1100 = useMedia("(min-width:1100px)");
   const minWidth680 = useMedia("(min-width:680px)");
@@ -21,7 +23,7 @@ const Layout = ({ children }) => {
             minWidth1100
               ? `min-width-990px`
               : `${minWidth680 ? `min-width-600px` : `w-100`} ${
-                  minWidth500 && minHeight500 && `pg-5`
+                  minWidth500 && minHeight500 && pathname === `/chat` && `pg-5`
                 }`
           } d-flex h-100 `}
         >

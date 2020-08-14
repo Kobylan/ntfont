@@ -265,6 +265,9 @@ html {
   &-300px {
     height: 300px;
   }
+  &-fit {
+    height: fit-content;
+  }
 }
 .z {
   &-1 {

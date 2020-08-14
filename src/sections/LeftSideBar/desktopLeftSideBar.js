@@ -34,7 +34,7 @@ const DesktopLeftSideBar = () => {
         }`}
       >
         <div className={`${minWidth1024 && `position-fixed`} h-100`}>
-          <div className="d-flex flex-column justify-content-between pr-20 h-100 w-275 ">
+          <div className="d-flex flex-column justify-content-between h-100 w-275 ">
             <div>
               {show && (
                 <div>
