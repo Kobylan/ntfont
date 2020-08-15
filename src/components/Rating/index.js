@@ -19,7 +19,9 @@ const Rating = ({ loading, rating }) => {
                 className="h-100 bg-blue animation-rating"
                 style={{
                   width: `${
-                    (rating?.counts[i].value / rating?.quantity) * 100
+                    (rating?.counts[i].value === 0
+                      ? 0
+                      : rating?.counts[i].value / rating?.quantity) * 100
                   }%`,
                 }}
               />
