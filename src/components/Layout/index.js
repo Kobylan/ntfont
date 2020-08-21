@@ -3,7 +3,6 @@ import LeftSidebar from "../../sections/LeftSideBar";
 import { useMedia } from "../../store/hooks/meida";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import Auth from "../../pages/Auth";
 const Layout = ({ children }) => {
   const pathname = useLocation().pathname;
   const id = useSelector((store) => store.chat.dialogueID.id);
@@ -12,9 +11,7 @@ const Layout = ({ children }) => {
   const minHeight500 = useMedia("(min-height:500px)");
   const minWidth500 = useMedia("(min-width:500px)");
   const loggedIn = useSelector((store) => store.loggedIn.loggedIn);
-  return !loggedIn ? (
-    <Auth />
-  ) : (
+  return loggedIn ? (
     <>
       {(!minHeight500 || !minWidth500) && id !== 0 ? null : <LeftSidebar />}
       <div
@@ -35,6 +32,8 @@ const Layout = ({ children }) => {
         </div>
       </div>
     </>
+  ) : (
+    <>{children}</>
   );
 };
 
