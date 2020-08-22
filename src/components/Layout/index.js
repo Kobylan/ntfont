@@ -16,7 +16,6 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(checkAuth())
-        console.log(loggedIn)
     },[loggedIn])
   return !loggedIn ? (
     <Auth />
@@ -41,7 +40,7 @@ const Layout = ({ children }) => {
         </div>
       </div>
     </>
-  );
+  )
 };
 
 export default Layout;
