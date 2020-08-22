@@ -3,7 +3,6 @@
   <component name="ProjectTasksOptions" suppressed-tasks="Sass">
     <enabled-global>
       <option value="SCSS" />
-      <option value="Prettier" />
     </enabled-global>
   </component>
 </project>

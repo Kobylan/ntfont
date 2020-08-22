@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import Icon from "../../components/Icon";
 import { useDispatch } from "react-redux";
+import {checkAuth} from "../../store/actions/loggedIn/LoggedIn";
 const Auth = () => {
   const [status, setStatus] = useState(0);
   const dispatch = useDispatch();
+  const [credentials, setCredentials] = useState({
+      username:"",
+      password:""
+  })
   return (
     <div
       className="w-100 h-100 overflow-hidden"
@@ -62,16 +67,16 @@ const Auth = () => {
             </div>
           )}
           {status === 1 && (
-            <form
-              className="d-flex flex-column align-items-center "
-              action="https://thawing-reef-32246.herokuapp.com/admin/login/?next=/admin/"
-              method="post"
+            <div
+              className="d-flex flex-column align-items-center"
             >
               <input
                 className="w-275px h-30px rounded"
                 type="text"
                 placeholder="Имя пользователя или номер"
                 name="username"
+                value={credentials.username}
+                onChange={(event)=>setCredentials({...credentials, username: event.target.value})}
                 required
               />
               <input
@@ -79,6 +84,8 @@ const Auth = () => {
                 type="password"
                 placeholder="Пароль"
                 name="password"
+                value={credentials.password}
+                onChange={(event)=>setCredentials({...credentials, password: event.target.value})}
                 required
               />
               <div className="d-flex justify-content-between w-275px">
@@ -88,16 +95,23 @@ const Auth = () => {
                 <button
                   style={{ width: "fit-content" }}
                   type="submit"
-                  onClick={() =>
-                    dispatch({
-                      type: "SET_LOGGED_IN_TRUE",
-                    })
+                  onClick={() => {
+                      fetch("/auth/login/",{
+                          method:"POST",
+                          body:JSON.stringify(credentials)
+                      }).then(
+                          resp => resp.JSON
+                      ).then(()=> {
+                              dispatch(checkAuth())
+                          }
+                      )
+                  }
                   }
                 >
                   Войти
                 </button>
               </div>
-            </form>
+            </div>
           )}
         </div>
         <div

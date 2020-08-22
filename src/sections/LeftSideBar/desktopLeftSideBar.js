@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { config } from "./config";
 import Icon from "../../components/Icon";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { useMedia } from "../../store/hooks/meida";
+import {checkAuth} from "../../store/actions/loggedIn/LoggedIn";
 
 const calculateNotifications = (arr, id) => {
   let count = 0;
@@ -15,6 +16,7 @@ const calculateNotifications = (arr, id) => {
   return count === 0 ? null : count;
 };
 const DesktopLeftSideBar = () => {
+  const dispatch = useDispatch()
   const [pathname, setPathname] = useState("");
   const [active, setActive] = useState("");
   const unreadMessages = useSelector((state) => state.chat.unreadMessages.data);
@@ -147,11 +149,13 @@ const DesktopLeftSideBar = () => {
               className={`d-flex align-items-center text-decoration-none p-5 m-10 ${
                 active === "/logout" && "hover"
               }`}
-              to={"/logout"}
-              onClick={() =>
-                fetch("https://thawing-reef-32246.herokuapp.com/auth/logout/", {
+              to={"/"}
+              onClick={() => {
+                // document.cookie = "cookie_name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                fetch("/auth/logout/", {
                   method: "get",
-                })
+                }).then(resp=>resp.JSON).then(()=>dispatch(checkAuth()))
+              }
               }
             >
               <Icon

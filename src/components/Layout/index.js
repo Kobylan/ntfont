@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import LeftSidebar from "../../sections/LeftSideBar";
 import { useMedia } from "../../store/hooks/meida";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { useLocation } from "react-router-dom";
 import Auth from "../../pages/Auth";
+import {checkAuth} from "../../store/actions/loggedIn/LoggedIn";
 const Layout = ({ children }) => {
   const pathname = useLocation().pathname;
   const id = useSelector((store) => store.chat.dialogueID.id);
@@ -12,6 +13,11 @@ const Layout = ({ children }) => {
   const minHeight500 = useMedia("(min-height:500px)");
   const minWidth500 = useMedia("(min-width:500px)");
   const loggedIn = useSelector((store) => store.loggedIn.loggedIn);
+  const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(checkAuth())
+        console.log(loggedIn)
+    },[loggedIn])
   return !loggedIn ? (
     <Auth />
   ) : (
